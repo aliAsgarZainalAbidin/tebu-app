@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".fragment.kebun.AddKebunFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_layout">
+
+        <ImageView
+            android:id="@+id/iv_addkebun_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:rotation="270"
+            android:src="@drawable/ic_baseline_keyboard_arrow_up_24_blue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_addkebun_title"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Kebun"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iv_addkebun_back"
+            app:layout_constraintTop_toTopOf="@id/iv_addkebun_back" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addkebun_nama"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Nama Kebun"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mtv_addkebun_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addkebun_nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:text="R1W2" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addkebun_luas"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Luas (Ha)"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addkebun_nama">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addkebun_luas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="3.4" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addkebun_petak"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Petak"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addkebun_luas"
+            app:passwordToggleEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addkebun_petak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="5" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addkebun_jenis"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Jenis Tebu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addkebun_petak">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addkebun_jenis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="KK" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addkebun_kategori"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Kategori"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addkebun_jenis">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addkebun_kategori"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="R1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addkebun_sinder"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Nama Sinder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addkebun_kategori">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/mactv_addkebun_sinder"
+                style="@style/AutoCompleteTextView.Custom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:text="Sinder" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addkebun_wilayah"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Wilayah"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addkebun_sinder">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/mactv_addkebun_wilayah"
+                style="@style/AutoCompleteTextView.Custom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:text="Rayon 1 A" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_addkebun_save"
+            style="@style/MaterialButton.Custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_item"
+            android:text="Simpan"
+            app:layout_constraintTop_toBottomOf="@id/til_addkebun_wilayah" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/view_rvitem_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_rvitem"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@id/cl_rvitem_container"/>
+
+    <ImageView
+        android:id="@+id/iv_rvitem_icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="@dimen/margin_rvitem_small"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_circle"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtv_rvitem_mandor"
+        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Mandor"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/iv_rvitem_icon"
+        app:layout_constraintStart_toEndOf="@id/iv_rvitem_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_rvitem_icon" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_rvitem_ktg2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="132dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtv_rvitem_name"
+        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Ali Asgar Zainal Abidin"
+        android:textColor="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_mandor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gl_rvitem_ktg2"
+        app:layout_constraintTop_toTopOf="@id/mtv_rvitem_mandor" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_rvitem_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_name">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_rvitem_ktg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="132dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_titlekebun"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="Kebun"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_kebun"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="ArogaN61"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_titlekebun"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl_rvitem_ktg"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_titlekebun" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_ptk"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="PTK"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_titlekebun"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_titlekebun" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_ptk"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="3"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_title_ptk"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl_rvitem_ktg"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_ptk" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_luas"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="Luas (Ha)"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_ptk"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_ptk" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_luas"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="081524752447"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_title_luas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl_rvitem_ktg"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_luas" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_jenis"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="Jenis Tebu"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_luas"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_luas" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_jenis"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Palleko"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_title_jenis"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl_rvitem_ktg"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_jenis" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_ktg"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="KTG"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_jenis"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_jenis" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_ktg"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Rayon 1 A"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_title_ktg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl_rvitem_ktg"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_ktg" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_jml_batang"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="Jumlah Batang"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_ktg"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_ktg" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_faktor"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="Faktor Leng"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_jml_batang"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_jml_batang" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_faktor"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="74"
+            android:textColor="@color/gray"
+            app:layout_constraintStart_toEndOf="@id/gl_rvitem_batang"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_faktor" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_jml_bpm"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:text="Jumlah Batang Per Meter"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_faktor"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_faktor" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_jml_bpm"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="74"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_title_jml_bpm"
+            app:layout_constraintStart_toEndOf="@id/gl_rvitem_batang"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_jml_bpm" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_jml_bpr"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jumlah Batang Per Row"
+            android:textColor="@color/red"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_jml_bpm"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_jml_bpm" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_jml_bpr"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="74"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_title_jml_bpr"
+            app:layout_constraintStart_toEndOf="@id/gl_rvitem_batang"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_jml_bpr" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_jml_bph"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jumlah Batang Per Ha"
+            android:textColor="@color/red"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_jml_bpr"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_jml_bpr" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_jml_bph"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="74"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_title_jml_bph"
+            app:layout_constraintStart_toEndOf="@id/gl_rvitem_batang"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_jml_bph" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_rvitem_batang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="185dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_tinggi_batang"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="Tinggi Batang"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_ktg"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_jml_bph" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_ini"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="Saat ini"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/mtv_rvitem_title_tebang"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_tinggi_batang"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_tinggi_batang" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_ini"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="74"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="@id/mtv_rvitem_title_ini"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_ini"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_ini" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_tebang"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:text="Saat Tebang"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/mtv_rvitem_title_ini"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_ini" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_tebang"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="74"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="@id/mtv_rvitem_title_tebang"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_tebang"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_tebang" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_diameter"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:maxLines="2"
+            android:text="Diameter Batang"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_ktg"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_ini" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_diameter"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="2.2"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_title_diameter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl_rvitem_ktg"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_diameter" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_berat"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:maxLines="2"
+            android:text="Berat/Meter"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_diameter"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_diameter" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_berat"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="0.37"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_title_berat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl_rvitem_ktg"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_berat" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_kuha"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="Ku/Ha"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_ktg"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_berat" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_hit"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="Hit"
+            android:textColor="@color/red"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/mtv_rvitem_title_tebang"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_kuha"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_kuha" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_hit"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="74"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="@id/mtv_rvitem_title_hit"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_hit"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_hit" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_pandangan"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:text="Pandangan"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/mtv_rvitem_title_hit"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_hit" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_pandangan"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="450"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="@id/mtv_rvitem_title_pandangan"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_pandangan"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_pandangan" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_tebu"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="Jumlah Tebu Taksasi"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_ktg"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_hit" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_perhit"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="Per Hit"
+            android:textColor="@color/red"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/mtv_rvitem_title_tebang"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_tebu"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_tebu" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_perhit"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="74"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="@id/mtv_rvitem_title_perhit"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_perhit"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_perhit" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_title_kui"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:text="KUI"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/mtv_rvitem_title_perhit"
+            app:layout_constraintTop_toTopOf="@id/mtv_rvitem_title_perhit" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_rvitem_kui"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_rvitem_small"
+            android:text="450"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="@id/mtv_rvitem_title_kui"
+            app:layout_constraintStart_toStartOf="@id/mtv_rvitem_title_kui"
+            app:layout_constraintTop_toBottomOf="@id/mtv_rvitem_title_kui" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

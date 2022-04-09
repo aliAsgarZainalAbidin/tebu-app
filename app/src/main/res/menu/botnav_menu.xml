@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/rayonFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_analytics_24"
+        android:title="Rayon" />
+    <item
+        android:id="@+id/wilayahFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_analytics_24"
+        android:title="Wilayah" />
+    <item
+        android:id="@+id/laporanFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_analytics_24"
+        android:title="Laporan" />
+    <item
+        android:id="@+id/sinderFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_analytics_24"
+        android:title="Sinder" />
+    <item
+        android:id="@+id/kebunFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_analytics_24"
+        android:title="Kebun" />
+</menu>

@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".fragment.taksasi.TaksasiFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue_clay">
+
+        <View
+            android:id="@+id/view_taksasi_header"
+            android:layout_width="match_parent"
+            android:layout_height="215dp"
+            android:background="@color/blue"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_taksasi_greeting"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Nama Mandor : Sinder"
+            app:layout_constraintEnd_toEndOf="@id/mtv_taksasi_title"
+            app:layout_constraintStart_toStartOf="@id/mtv_taksasi_title"
+            app:layout_constraintTop_toBottomOf="@id/mtv_taksasi_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_taksasi_title"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/padding_layout"
+            android:layout_marginTop="48dp"
+            android:drawableStart="@drawable/ic_baseline_analytics_24"
+            android:drawablePadding="8dp"
+            android:text="Detail Taksasi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/padding_layout"
+            android:layout_marginTop="16dp"
+            android:elevation="8dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mtv_taksasi_greeting">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_detailtaksasi_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_layout"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gl_detailtaksasi_ktg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="125dp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_titlekebun"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="Kebun"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_kebun"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="ArogaN61"
+                        android:textColor="@color/gray"
+                        app:layout_constraintBottom_toBottomOf="@id/mtv_detailtaksasi_titlekebun"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/gl_detailtaksasi_ktg"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_titlekebun" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_ptk"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="PTK"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_titlekebun"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_titlekebun" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_ptk"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="3"
+                        android:textColor="@color/gray"
+                        app:layout_constraintBottom_toBottomOf="@id/mtv_detailtaksasi_title_ptk"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/gl_detailtaksasi_ktg"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_ptk" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_luas"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="Luas (Ha)"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_ptk"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_ptk" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_luas"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="081524752447"
+                        android:textColor="@color/gray"
+                        app:layout_constraintBottom_toBottomOf="@id/mtv_detailtaksasi_title_luas"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/gl_detailtaksasi_ktg"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_luas" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_jenis"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="Jenis Tebu"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_luas"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_luas" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_jenis"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="Palleko"
+                        android:textColor="@color/gray"
+                        app:layout_constraintBottom_toBottomOf="@id/mtv_detailtaksasi_title_jenis"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/gl_detailtaksasi_ktg"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_jenis" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_ktg"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="KTG"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_jenis"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_jenis" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_ktg"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="Rayon 1 A"
+                        android:textColor="@color/gray"
+                        app:layout_constraintBottom_toBottomOf="@id/mtv_detailtaksasi_title_ktg"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/gl_detailtaksasi_ktg"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_ktg" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_jml_batang"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="Jumlah Batang"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_ktg"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_ktg" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_faktor"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="Faktor Leng"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_jml_batang"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_jml_batang" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_faktor"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="74"
+                        android:textColor="@color/gray"
+                        app:layout_constraintStart_toEndOf="@id/gl_detailtaksasi_batang"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_faktor" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_jml_bpm"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:text="Jumlah Batang Per Meter"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_faktor"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_faktor" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_jml_bpm"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="74"
+                        android:textColor="@color/gray"
+                        app:layout_constraintBottom_toBottomOf="@id/mtv_detailtaksasi_title_jml_bpm"
+                        app:layout_constraintStart_toEndOf="@id/gl_detailtaksasi_batang"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_jml_bpm" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_jml_bpr"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Batang Per Row"
+                        android:textColor="@color/red"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_jml_bpm"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_jml_bpm" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_jml_bpr"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="74"
+                        android:textColor="@color/gray"
+                        app:layout_constraintBottom_toBottomOf="@id/mtv_detailtaksasi_title_jml_bpr"
+                        app:layout_constraintStart_toEndOf="@id/gl_detailtaksasi_batang"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_jml_bpr" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_jml_bph"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Batang Per Ha"
+                        android:textColor="@color/red"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_jml_bpr"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_jml_bpr" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_jml_bph"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="74"
+                        android:textColor="@color/gray"
+                        app:layout_constraintBottom_toBottomOf="@id/mtv_detailtaksasi_title_jml_bph"
+                        app:layout_constraintStart_toEndOf="@id/gl_detailtaksasi_batang"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_jml_bph" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gl_detailtaksasi_batang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="125dp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_tinggi_batang"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="Tinggi Batang"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_ktg"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_jml_bph" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_ini"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="Saat ini"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toStartOf="@id/mtv_detailtaksasi_title_tebang"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_tinggi_batang"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_tinggi_batang" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_ini"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="74"
+                        android:textColor="@color/gray"
+                        app:layout_constraintEnd_toEndOf="@id/mtv_detailtaksasi_title_ini"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_ini"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_ini" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_tebang"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:text="Saat Tebang"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/mtv_detailtaksasi_title_ini"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_ini" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_tebang"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="74"
+                        android:textColor="@color/gray"
+                        app:layout_constraintEnd_toEndOf="@id/mtv_detailtaksasi_title_tebang"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_tebang"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_tebang" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_diameter"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="68dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:maxLines="2"
+                        android:text="Diameter Batang"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_ktg"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_ini" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_diameter"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="2.2"
+                        android:textColor="@color/gray"
+                        app:layout_constraintBottom_toBottomOf="@id/mtv_detailtaksasi_title_diameter"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/gl_detailtaksasi_ktg"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_diameter" />
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_berat"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="68dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:maxLines="2"
+                        android:text="Berat/Meter"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_diameter"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_diameter" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_berat"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="0.37"
+                        android:textColor="@color/gray"
+                        app:layout_constraintBottom_toBottomOf="@id/mtv_detailtaksasi_title_berat"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/gl_detailtaksasi_ktg"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_berat" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_kuha"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="Ku/Ha"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_ktg"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_berat" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_hit"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="Hit"
+                        android:textColor="@color/red"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@id/mtv_detailtaksasi_title_tebang"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_kuha"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_kuha" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_hit"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="74"
+                        android:textColor="@color/gray"
+                        app:layout_constraintEnd_toEndOf="@id/mtv_detailtaksasi_title_hit"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_hit"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_hit" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_pandangan"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:text="Pandangan"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/mtv_detailtaksasi_title_hit"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_hit" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_pandangan"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="450"
+                        android:textColor="@color/gray"
+                        app:layout_constraintEnd_toEndOf="@id/mtv_detailtaksasi_title_pandangan"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_pandangan"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_pandangan" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_tebu"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="Jumlah Tebu Taksasi"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_ktg"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_hit" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_perhit"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="Per Hit"
+                        android:textColor="@color/red"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@id/mtv_detailtaksasi_title_tebang"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_tebu"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_tebu" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_perhit"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="74"
+                        android:textColor="@color/gray"
+                        app:layout_constraintEnd_toEndOf="@id/mtv_detailtaksasi_title_perhit"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_perhit"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_perhit" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_title_kui"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:text="KUI"
+                        android:textColor="@color/red"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/mtv_detailtaksasi_title_perhit"
+                        app:layout_constraintTop_toTopOf="@id/mtv_detailtaksasi_title_perhit" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_detailtaksasi_kui"
+                        style="@style/TextAppearance.MdcTypographyStyles.Subtitle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_rvitem_small"
+                        android:text="450"
+                        android:textColor="@color/gray"
+                        app:layout_constraintEnd_toEndOf="@id/mtv_detailtaksasi_title_kui"
+                        app:layout_constraintStart_toStartOf="@id/mtv_detailtaksasi_title_kui"
+                        app:layout_constraintTop_toBottomOf="@id/mtv_detailtaksasi_title_kui" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

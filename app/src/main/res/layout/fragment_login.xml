@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".fragment.LoginFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:padding="@dimen/padding_layout">
+
+        <ImageView
+            android:id="@+id/logo_login_item"
+            android:layout_width="159dp"
+            android:layout_height="159dp"
+            android:layout_marginTop="92dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ptpn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_login_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:textColorHint="@color/blue"
+            android:layout_marginTop="48dp"
+            app:boxStrokeColor="@drawable/selector_et_boxcolor"
+            app:layout_constraintTop_toBottomOf="@id/logo_login_item">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_login_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:text="yue" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_login_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:hint="Password"
+            android:textColorHint="@color/blue"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_item"
+            app:boxStrokeColor="@drawable/selector_et_boxcolor"
+            app:layout_constraintTop_toBottomOf="@id/til_login_email"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12345678"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_login_login"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="48dp"
+            android:text="Masuk"
+            app:layout_constraintTop_toBottomOf="@id/til_login_password" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".fragment.wilayah.AddWilayahFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_layout">
+
+        <ImageView
+            android:id="@+id/iv_addwilayah_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:rotation="270"
+            android:src="@drawable/ic_baseline_keyboard_arrow_up_24_blue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_addwilayah_title"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Wilayah"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iv_addwilayah_back"
+            app:layout_constraintTop_toTopOf="@id/iv_addwilayah_back" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addwilayah_id"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="ID Wilayah"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mtv_addwilayah_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addwilayah_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R1W2" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addwilayah_wilayah"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Nama Wilayah"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addwilayah_id">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addwilayah_wilayah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="Ali Asgar Zainal Abidin" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addwilayah_rayon"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Nama Rayon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addwilayah_wilayah">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/mactv_addwilayah_rayon"
+                style="@style/AutoCompleteTextView.Custom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:text="Takalar" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addwilayah_lokasi"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Lokasi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addwilayah_rayon">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/mactv_addwilayah_lokasi"
+                style="@style/AutoCompleteTextView.Custom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:text="Takalar" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_addwilayah_save"
+            style="@style/MaterialButton.Custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_item"
+            android:text="Simpan"
+            app:layout_constraintTop_toBottomOf="@id/til_addwilayah_lokasi" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

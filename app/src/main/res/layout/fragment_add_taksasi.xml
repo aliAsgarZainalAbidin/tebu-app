@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".fragment.taksasi.AddTaksasiFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_layout">
+
+        <ImageView
+            android:id="@+id/iv_addtaksasi_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:rotation="270"
+            android:src="@drawable/ic_baseline_keyboard_arrow_up_24_blue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_addtaksasi_title"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data Kebun"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iv_addtaksasi_back"
+            app:layout_constraintTop_toTopOf="@id/iv_addtaksasi_back" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addtaksasi_nama"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:enabled="false"
+            android:hint="Nama Kebun"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mtv_addtaksasi_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addtaksasi_nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:text="R1W2" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addtaksasi_luas"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:enabled="false"
+            android:hint="Luas (Ha)"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addtaksasi_nama">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addtaksasi_luas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="3.4" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addtaksasi_mandor"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Mandor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addtaksasi_luas"
+            app:passwordToggleEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addtaksasi_mandor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="Sinder Mandor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addtaksasi_faktor"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Faktor Leng"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addtaksasi_mandor">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addtaksasi_faktor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="11" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addtaksasi_jmlh"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Jumlah Batang Per Meter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addtaksasi_faktor">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addtaksasi_jmlh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addtaksasi_ini"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Tinggi Batang (Saat ini)"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addtaksasi_jmlh">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addtaksasi_ini"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="1.2" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addtaksasi_tebang"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Tinggi Batang (Saat Tebang)"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addtaksasi_ini">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addtaksasi_tebang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="1.2" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addtaksasi_diameter"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Diameter Batang"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addtaksasi_tebang">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addtaksasi_diameter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="1.2" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addtaksasi_berat"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Berat/Meter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addtaksasi_diameter">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addtaksasi_berat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="1.2" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_addtaksasi_pandangan"
+            style="@style/TextInputLayoutOutline.Custom"
+            android:layout_marginTop="@dimen/margin_item"
+            android:hint="Ku/Ha Pandangan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_addtaksasi_berat">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_addtaksasi_kategori"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="1000" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_addtaksasi_save"
+            style="@style/MaterialButton.Custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_item"
+            android:text="Simpan"
+            app:layout_constraintTop_toBottomOf="@id/til_addtaksasi_pandangan" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

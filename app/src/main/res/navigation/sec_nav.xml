@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sec_nav"
+    app:startDestination="@id/rayonFragment">
+
+    <fragment
+        android:id="@+id/rayonFragment"
+        android:name="id.deval.tebu.fragment.rayon.RayonFragment"
+        android:label="fragment_rayon"
+        tools:layout="@layout/fragment_rayon" />
+    <fragment
+        android:id="@+id/wilayahFragment"
+        android:name="id.deval.tebu.fragment.wilayah.WilayahFragment"
+        android:label="fragment_wilayah"
+        tools:layout="@layout/fragment_wilayah" />
+    <fragment
+        android:id="@+id/kebunFragment"
+        android:name="id.deval.tebu.fragment.kebun.KebunFragment"
+        android:label="fragment_kebun"
+        tools:layout="@layout/fragment_kebun" />
+    <fragment
+        android:id="@+id/sinderFragment"
+        android:name="id.deval.tebu.fragment.sinder.SinderFragment"
+        android:label="fragment_sinder"
+        tools:layout="@layout/fragment_sinder" />
+    <fragment
+        android:id="@+id/laporanFragment"
+        android:name="id.deval.tebu.fragment.laporan.LaporanFragment"
+        android:label="fragment_laporan"
+        tools:layout="@layout/fragment_laporan" />
+</navigation>

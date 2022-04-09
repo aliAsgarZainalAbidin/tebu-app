@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".fragment.laporan.DetailLaporanFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue_clay">
+
+        <View
+            android:id="@+id/view_laporan_header"
+            android:layout_width="match_parent"
+            android:layout_height="215dp"
+            android:background="@color/blue"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_laporan_greeting"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Hai, Admin!"
+            app:layout_constraintEnd_toEndOf="@id/mtv_laporan_title"
+            app:layout_constraintStart_toStartOf="@id/mtv_laporan_title"
+            app:layout_constraintTop_toBottomOf="@id/mtv_laporan_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/mtv_laporan_title"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/padding_layout"
+            android:layout_marginTop="48dp"
+            android:drawableStart="@drawable/ic_baseline_analytics_24"
+            android:drawablePadding="8dp"
+            android:text="Rincian Laporan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/padding_layout"
+            android:layout_marginTop="16dp"
+            android:elevation="8dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mtv_laporan_greeting">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="4dp"
+                android:padding="@dimen/padding_layout">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_detail_vertikal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="104dp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mtv_laporan_title_nama_sinder"
+                    style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Sinder"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mtv_laporan_nama_sinder"
+                    style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sinder"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@id/gl_detail_vertikal"
+                    app:layout_constraintTop_toTopOf="@id/mtv_laporan_title_nama_sinder" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mtv_laporan_title_wilayah"
+                    style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wilayah"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mtv_laporan_title_nama_sinder" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mtv_laporan_wilayah"
+                    style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Samata"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@id/gl_detail_vertikal"
+                    app:layout_constraintTop_toTopOf="@id/mtv_laporan_title_wilayah" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mtv_laporan_title_lokasi"
+                    style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lokasi"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mtv_laporan_title_wilayah" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mtv_laporan_lokasi"
+                    style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Takalar"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@id/gl_detail_vertikal"
+                    app:layout_constraintTop_toTopOf="@id/mtv_laporan_title_lokasi" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_laporan_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mtv_laporan_title_lokasi"
+                    tools:itemCount="7"
+                    tools:listitem="@layout/rv_item_rincian_laporan" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
