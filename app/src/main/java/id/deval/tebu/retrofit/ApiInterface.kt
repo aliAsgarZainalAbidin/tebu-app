@@ -51,13 +51,13 @@ interface ApiInterface {
     @POST("login")
     suspend fun login(
         @Body loginRequest: LoginRequest
-    ):GlobalWrapperResponse<User>
+    ): GlobalWrapperResponse<User>
 
     @GET("logout/{id}")
     suspend fun logout(
-        @Path("id") id:Int,
-        @Header("token") token:String
-    ):User
+        @Path("id") id: Int,
+        @Header("token") token: String
+    ): User
 
 //    @POST()
 //    suspend fun addRayon(
@@ -66,6 +66,6 @@ interface ApiInterface {
 
     @POST("sinder")
     suspend fun addSinder(
-        @Body sinderRequest: SinderRequest
-    ):MessageResponse
+        @Body sinderRequest: SinderRequest, @Header("token") token: String
+    ): MessageResponse
 }

@@ -2,6 +2,7 @@ package id.deval.tebu.utils
 
 import android.app.Activity
 import android.content.Context
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -25,5 +26,9 @@ object HelperView {
 
     fun getMainNavController(activity: Activity):NavController{
         return activity.findNavController(R.id.fcv_main_host)
+    }
+
+    fun showToast(message:String, context: Context):Toast{
+        return Toast.makeText(context,message, Toast.LENGTH_SHORT)
     }
 }

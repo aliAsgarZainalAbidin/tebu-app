@@ -7,5 +7,6 @@ data class SinderRequest(
     val telepon:String,
     val alamat:String,
     val wilayah:String,
+    val role: String = "sinder",
     val lokasi:String
 )
