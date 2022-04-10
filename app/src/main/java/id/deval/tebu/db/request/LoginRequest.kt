@@ -1,4 +1,4 @@
-package id.deval.tebu.db
+package id.deval.tebu.db.request
 
 data class LoginRequest(
     val username:String,

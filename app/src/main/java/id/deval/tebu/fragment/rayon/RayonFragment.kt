@@ -36,12 +36,16 @@ class RayonFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController = activity?.findNavController(R.id.fcv_main_host)!!
-//        navController = childFragmentManager.findFragmentById(R.id.fcv_base_host)?.findNavController() ?: findNavController()
+        navController = HelperView.getMainNavController(requireActivity())
+
         with(binding){
             mtvRayonLogout.setOnClickListener {
                 loginViewModel.logout(session.id,session.token!!)
                 HelperView.logout(navController, session)
+            }
+
+            btnRayonAdd.setOnClickListener {
+                navController.navigate(R.id.action_baseFragment_to_addRayonFragment)
             }
         }
     }

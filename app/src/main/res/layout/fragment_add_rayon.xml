@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:text="Ali Asgar Zainal Abidin" />
+                tools:text="Ali Asgar Zainal Abidin" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
-                android:inputType="textEmailAddress"
+                android:inputType="none"
                 android:text="Takalar" />
 
         </com.google.android.material.textfield.TextInputLayout>

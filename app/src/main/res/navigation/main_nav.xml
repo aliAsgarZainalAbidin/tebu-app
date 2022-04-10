@@ -34,6 +34,21 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/baseFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_baseFragment_to_addRayonFragment"
+            app:destination="@id/addRayonFragment" />
+        <action
+            android:id="@+id/action_baseFragment_to_addWilayahFragment"
+            app:destination="@id/addWilayahFragment" />
+        <action
+            android:id="@+id/action_baseFragment_to_addKebunFragment"
+            app:destination="@id/addKebunFragment" />
+        <action
+            android:id="@+id/action_baseFragment_to_addSinderFragment2"
+            app:destination="@id/addSinderFragment2" />
+        <action
+            android:id="@+id/action_baseFragment_to_addTaksasiFragment"
+            app:destination="@id/addTaksasiFragment" />
     </fragment>
 
     <fragment
@@ -48,4 +63,29 @@
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/addRayonFragment"
+        android:name="id.deval.tebu.fragment.rayon.AddRayonFragment"
+        android:label="fragment_add_rayon"
+        tools:layout="@layout/fragment_add_rayon" />
+    <fragment
+        android:id="@+id/addWilayahFragment"
+        android:name="id.deval.tebu.fragment.wilayah.AddWilayahFragment"
+        android:label="fragment_add_wilayah"
+        tools:layout="@layout/fragment_add_wilayah" />
+    <fragment
+        android:id="@+id/addKebunFragment"
+        android:name="id.deval.tebu.fragment.kebun.AddKebunFragment"
+        android:label="fragment_add_kebun"
+        tools:layout="@layout/fragment_add_kebun" />
+    <fragment
+        android:id="@+id/addSinderFragment2"
+        android:name="id.deval.tebu.fragment.sinder.AddSinderFragment"
+        android:label="fragment_add_sinder"
+        tools:layout="@layout/fragment_add_sinder" />
+    <fragment
+        android:id="@+id/addTaksasiFragment"
+        android:name="id.deval.tebu.fragment.taksasi.AddTaksasiFragment"
+        android:label="fragment_add_taksasi"
+        tools:layout="@layout/fragment_add_taksasi" />
 </navigation>

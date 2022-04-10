@@ -1,9 +1,10 @@
 package id.deval.tebu.retrofit
 
-import id.deval.tebu.db.LoginRequest
+import id.deval.tebu.db.request.LoginRequest
+import id.deval.tebu.db.request.SinderRequest
 import id.deval.tebu.db.response.GlobalWrapperResponse
+import id.deval.tebu.db.response.MessageResponse
 import id.deval.tebu.db.response.User
-import kotlinx.coroutines.Deferred
 import retrofit2.http.*
 
 
@@ -57,4 +58,14 @@ interface ApiInterface {
         @Path("id") id:Int,
         @Header("token") token:String
     ):User
+
+//    @POST()
+//    suspend fun addRayon(
+//        @Body rayonRequest:rayonRequest
+//    ):
+
+    @POST("sinder")
+    suspend fun addSinder(
+        @Body sinderRequest: SinderRequest
+    ):MessageResponse
 }

@@ -6,15 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
 import dagger.hilt.android.AndroidEntryPoint
+import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentWilayahBinding
+import id.deval.tebu.db.Session
 import id.deval.tebu.db.models.Wilayah
+import id.deval.tebu.utils.HelperView
+import id.deval.tebu.viewmodels.LoginViewModel
 import id.deval.tebu.viewmodels.WilayahViewModel
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class WilayahFragment : Fragment() {
-    private val wilayahViewModel : id.deval.tebu.viewmodels.WilayahViewModel by viewModels()
-
+    private val wilayahViewModel : WilayahViewModel by viewModels()
+    private val loginViewModel:LoginViewModel by viewModels()
+    @Inject lateinit var session: Session
+    private lateinit var navController: NavController
     private lateinit var _binding: FragmentWilayahBinding
     private val binding get() = _binding
 
@@ -28,10 +36,16 @@ class WilayahFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = HelperView.getMainNavController(requireActivity())
+        with(binding){
+            mtvWilayahLogout.setOnClickListener {
+                loginViewModel.logout(session.id,session.token!!)
+                HelperView.logout(navController, session)
+            }
 
-        binding.btnWilayahAdd.setOnClickListener {
-            val wilayah = Wilayah(null,"r1w1","Rayon 1 A", "Rayon 1","Takalar")
-            wilayahViewModel.save(wilayah)
+            btnWilayahAdd.setOnClickListener {
+                navController.navigate(R.id.action_baseFragment_to_addWilayahFragment)
+            }
         }
     }
 

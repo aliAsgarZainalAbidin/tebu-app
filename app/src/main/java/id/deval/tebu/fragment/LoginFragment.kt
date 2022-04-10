@@ -12,12 +12,10 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentLoginBinding
-import id.deval.tebu.db.LoginRequest
+import id.deval.tebu.db.request.LoginRequest
 import id.deval.tebu.db.Session
 import id.deval.tebu.db.response.User
 import id.deval.tebu.viewmodels.LoginViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint

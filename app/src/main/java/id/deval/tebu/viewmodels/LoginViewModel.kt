@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import id.deval.tebu.db.LoginRequest
+import id.deval.tebu.db.request.LoginRequest
 import id.deval.tebu.db.Repository
 import id.deval.tebu.db.response.User
 import kotlinx.coroutines.GlobalScope
