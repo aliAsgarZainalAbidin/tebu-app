@@ -21,17 +21,19 @@ class Repository @Inject constructor(
         return loginInformation.data
     }
 
-    suspend fun logout(id:Int,token:String):User{
+    suspend fun logout(id: Int, token: String): User {
         val logout = apiInterface.logout(id, token)
         return logout
     }
 
-    suspend fun addSinder(sinderRequest: SinderRequest,token: String):MessageResponse{
-        return try {
-            apiInterface.addSinder(sinderRequest,token)
-        } catch (err: Exception){
-            Log.d("TAG", "addSinder: $err")
-            MessageResponse("$err")
-        }
+    suspend fun addSinder(sinderRequest: SinderRequest, token: String): MessageResponse {
+        return apiInterface.addSinder(sinderRequest, token)
+    }
+
+    suspend fun getAllSinder(token: String): ArrayList<User> {
+        val listUser = arrayListOf<User>()
+        val userSinder = apiInterface.getAllSinder(token).data
+        listUser.addAll(userSinder as ArrayList)
+        return listUser
     }
 }

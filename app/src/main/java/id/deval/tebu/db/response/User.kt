@@ -12,6 +12,9 @@ data class User(
     @field:SerializedName("username")
     val username: String,
 
+    @field:SerializedName("password")
+    val password: String,
+
     @field:SerializedName("role")
     val role:String,
 

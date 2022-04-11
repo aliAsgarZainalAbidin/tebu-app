@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.databinding.FragmentAddSinderBinding
 import id.deval.tebu.db.Session
@@ -19,6 +21,7 @@ import javax.inject.Inject
 class AddSinderFragment : Fragment() {
 
     private val sinderViewModel: SinderViewModel by viewModels()
+    private lateinit var navController: NavController
     private lateinit var _binding: FragmentAddSinderBinding
     @Inject lateinit var session : Session
     private val binding get() = _binding
@@ -33,6 +36,8 @@ class AddSinderFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        navController = findNavController()
+
         with(binding) {
             btnAddsinderSave.setOnClickListener {
                 val namaSinder = tietAddsinderNama.text.toString()
@@ -59,6 +64,8 @@ class AddSinderFragment : Fragment() {
                     HelperView.showToast(it.message, requireContext()).show()
                 }
             }
+
+
         }
     }
 

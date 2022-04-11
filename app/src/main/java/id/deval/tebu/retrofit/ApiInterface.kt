@@ -68,4 +68,9 @@ interface ApiInterface {
     suspend fun addSinder(
         @Body sinderRequest: SinderRequest, @Header("token") token: String
     ): MessageResponse
+
+    @GET("sinder")
+    suspend fun getAllSinder(
+        @Header("token") token: String
+    ):GlobalWrapperResponse<ArrayList<User>>
 }
