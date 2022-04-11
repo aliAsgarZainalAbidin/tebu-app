@@ -58,13 +58,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv_kebun_container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/padding_layout"
             android:layout_marginTop="16dp"
             android:elevation="8dp"
             app:cardCornerRadius="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mtv_kebun_greeting">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -84,7 +84,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_kebun_list"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/btn_kebun_add"
@@ -94,6 +94,11 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
+        <View
+            app:layout_constraintTop_toBottomOf="@id/mcv_kebun_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_layout"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

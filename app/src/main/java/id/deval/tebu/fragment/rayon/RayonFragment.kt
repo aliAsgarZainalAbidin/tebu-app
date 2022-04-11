@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentRayonBinding
@@ -21,6 +22,7 @@ import javax.inject.Inject
 class RayonFragment : Fragment() {
 
     private val loginViewModel : LoginViewModel by viewModels()
+    private val rayonViewModel : RayonViewModel by viewModels()
     private lateinit var _binding: FragmentRayonBinding
     private val binding get() = _binding
     private lateinit var navController: NavController
@@ -46,6 +48,15 @@ class RayonFragment : Fragment() {
 
             btnRayonAdd.setOnClickListener {
                 navController.navigate(R.id.action_baseFragment_to_addRayonFragment)
+            }
+
+            rayonViewModel.getAllRayon(session.token!!).observe(viewLifecycleOwner){
+                val adapterRayon = RayonAdapter(it,navController,requireActivity())
+                val lm = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                rvRayonList.apply {
+                    adapter = adapterRayon
+                    layoutManager = lm
+                }
             }
         }
     }

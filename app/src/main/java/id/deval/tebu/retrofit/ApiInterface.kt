@@ -1,6 +1,7 @@
 package id.deval.tebu.retrofit
 
 import id.deval.tebu.db.request.LoginRequest
+import id.deval.tebu.db.request.RayonRequest
 import id.deval.tebu.db.request.SinderRequest
 import id.deval.tebu.db.response.GlobalWrapperResponse
 import id.deval.tebu.db.response.MessageResponse
@@ -59,10 +60,16 @@ interface ApiInterface {
         @Header("token") token: String
     ): User
 
-//    @POST()
-//    suspend fun addRayon(
-//        @Body rayonRequest:rayonRequest
-//    ):
+    @POST("rayon")
+    suspend fun addRayon(
+        @Body rayonRequest:RayonRequest,
+        @Header("token") token: String
+    ):MessageResponse
+
+    @GET("rayon")
+    suspend fun getAllRayon(
+        @Header("token") token:String
+    ):ArrayList<RayonRequest>
 
     @POST("sinder")
     suspend fun addSinder(

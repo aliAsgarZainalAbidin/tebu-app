@@ -2,7 +2,10 @@ package id.deval.tebu.utils
 
 import android.app.Activity
 import android.content.Context
+import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -30,5 +33,15 @@ object HelperView {
 
     fun showToast(message:String, context: Context):Toast{
         return Toast.makeText(context,message, Toast.LENGTH_SHORT)
+    }
+
+    fun expandListItemRecycler(ivRvitemIcon: ImageView, clRvitemContainer:ConstraintLayout){
+        if (ivRvitemIcon.rotation != 0F){
+            clRvitemContainer.visibility = View.VISIBLE
+            ivRvitemIcon.rotation = 0F
+        }  else {
+            clRvitemContainer.visibility = View.GONE
+            ivRvitemIcon.rotation = 180F
+        }
     }
 }

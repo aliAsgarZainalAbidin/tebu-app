@@ -140,5 +140,6 @@
 
     <style name="AutoCompleteTextView.Custom" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
         <item name="android:drawableEnd">@drawable/ic_baseline_keyboard_arrow_down_24</item>
+        <item name="android:inputType">none</item>
     </style>
 </resources>

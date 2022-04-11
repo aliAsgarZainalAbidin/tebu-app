@@ -136,6 +136,7 @@
                 android:id="@+id/mactv_addsinder_wilayah"
                 style="@style/AutoCompleteTextView.Custom"
                 android:layout_width="match_parent"
+                android:inputType="none"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                 android:text="Takalar" />
@@ -156,6 +157,7 @@
                 style="@style/AutoCompleteTextView.Custom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="none"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                 android:text="Takalar" />
 

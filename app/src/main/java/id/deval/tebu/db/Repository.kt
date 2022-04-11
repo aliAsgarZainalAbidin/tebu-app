@@ -2,6 +2,7 @@ package id.deval.tebu.db
 
 import android.util.Log
 import id.deval.tebu.db.request.LoginRequest
+import id.deval.tebu.db.request.RayonRequest
 import id.deval.tebu.db.request.SinderRequest
 import id.deval.tebu.db.response.MessageResponse
 import id.deval.tebu.db.response.User
@@ -35,5 +36,13 @@ class Repository @Inject constructor(
         val userSinder = apiInterface.getAllSinder(token).data
         listUser.addAll(userSinder as ArrayList)
         return listUser
+    }
+
+    suspend fun addRayon(rayonRequest: RayonRequest, token: String):MessageResponse{
+        return apiInterface.addRayon(rayonRequest, token)
+    }
+
+    suspend fun getAllrayon(token:String):ArrayList<RayonRequest>{
+        return apiInterface.getAllRayon(token)
     }
 }

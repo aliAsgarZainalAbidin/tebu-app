@@ -6,12 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.constraintlayout.solver.widgets.Helper
+import androidx.fragment.app.viewModels
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentAddRayonBinding
+import id.deval.tebu.db.Session
+import id.deval.tebu.db.request.RayonRequest
+import id.deval.tebu.utils.HelperView
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AddRayonFragment : Fragment() {
 
+    private val rayonViewModel: RayonViewModel by viewModels()
+    @Inject lateinit var session : Session
     private lateinit var _binding: FragmentAddRayonBinding
     private val binding get() = _binding
 
@@ -32,7 +42,14 @@ class AddRayonFragment : Fragment() {
             tietAddrayonLokasi.setAdapter(adapterLokasi)
 
             btnAddrayonSave.setOnClickListener {
+                val namaRayon = tietAddrayonNama.text.toString()
+                val lokasi = tietAddrayonLokasi.text.toString()
 
+                val rayonRequest = RayonRequest(namaRayon, lokasi)
+
+                rayonViewModel.addRayon(rayonRequest,session.token!!).observe(viewLifecycleOwner){
+                    HelperView.showToast(it.message, requireContext()).show()
+                }
             }
         }
     }
