@@ -6,6 +6,7 @@ import id.deval.tebu.db.request.SinderRequest
 import id.deval.tebu.db.response.GlobalWrapperResponse
 import id.deval.tebu.db.response.MessageResponse
 import id.deval.tebu.db.response.User
+import id.deval.tebu.db.response.Wilayah
 import retrofit2.http.*
 
 
@@ -80,4 +81,15 @@ interface ApiInterface {
     suspend fun getAllSinder(
         @Header("token") token: String
     ):GlobalWrapperResponse<ArrayList<User>>
+
+    @GET("wilayah")
+    suspend fun getAllWilayah(
+        @Header("token") token: String
+    ):ArrayList<Wilayah>
+
+    @POST("wilayah")
+    suspend fun addWilayah(
+        @Header("token") token: String,
+        @Body wilayah: Wilayah
+    ):MessageResponse
 }

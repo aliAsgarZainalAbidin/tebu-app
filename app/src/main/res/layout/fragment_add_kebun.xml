@@ -125,16 +125,15 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_addkebun_sinder"
-            style="@style/TextInputLayoutOutline.Custom"
+            style="@style/AutoCompleteTextView.Custom"
             android:layout_marginTop="@dimen/margin_item"
             android:hint="Nama Sinder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_addkebun_kategori">
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            <AutoCompleteTextView
                 android:id="@+id/mactv_addkebun_sinder"
-                style="@style/AutoCompleteTextView.Custom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
@@ -144,14 +143,14 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_addkebun_wilayah"
-            style="@style/TextInputLayoutOutline.Custom"
+            style="@style/AutoCompleteTextView.Custom"
             android:layout_marginTop="@dimen/margin_item"
             android:hint="Wilayah"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_addkebun_sinder">
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            <AutoCompleteTextView
                 android:id="@+id/mactv_addkebun_wilayah"
                 style="@style/AutoCompleteTextView.Custom"
                 android:layout_width="match_parent"

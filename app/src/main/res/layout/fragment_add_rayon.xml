@@ -52,16 +52,15 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_addrayon_lokasi"
-            style="@style/TextInputLayoutOutline.Custom"
+            style="@style/AutoCompleteTextView.Custom"
             android:layout_marginTop="@dimen/margin_item"
             android:hint="Lokasi"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_addrayon_nama">
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            <AutoCompleteTextView
                 android:id="@+id/tiet_addrayon_lokasi"
-                style="@style/AutoCompleteTextView.Custom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"

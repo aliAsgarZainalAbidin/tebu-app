@@ -6,6 +6,7 @@ import id.deval.tebu.db.request.RayonRequest
 import id.deval.tebu.db.request.SinderRequest
 import id.deval.tebu.db.response.MessageResponse
 import id.deval.tebu.db.response.User
+import id.deval.tebu.db.response.Wilayah
 import id.deval.tebu.retrofit.ApiInterface
 import java.lang.Exception
 import javax.inject.Inject
@@ -44,5 +45,13 @@ class Repository @Inject constructor(
 
     suspend fun getAllrayon(token:String):ArrayList<RayonRequest>{
         return apiInterface.getAllRayon(token)
+    }
+
+    suspend fun getAllWilayah(token:String):ArrayList<Wilayah>{
+        return apiInterface.getAllWilayah(token)
+    }
+
+    suspend fun addWilayah(wilayah: Wilayah, token: String):MessageResponse{
+        return apiInterface.addWilayah(token, wilayah)
     }
 }
