@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
@@ -16,6 +14,7 @@ import id.deval.tebu.databinding.FragmentRayonBinding
 import id.deval.tebu.db.Session
 import id.deval.tebu.utils.HelperView
 import id.deval.tebu.viewmodels.LoginViewModel
+import id.deval.tebu.viewmodels.RayonViewModel
 import javax.inject.Inject
 
 @AndroidEntryPoint

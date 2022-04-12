@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import androidx.constraintlayout.solver.widgets.Helper
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentKebunBinding
 import id.deval.tebu.db.Session
 import id.deval.tebu.utils.HelperView
+import id.deval.tebu.viewmodels.KebunViewModel
 import id.deval.tebu.viewmodels.LoginViewModel
 import javax.inject.Inject
 
@@ -21,6 +23,7 @@ import javax.inject.Inject
 class KebunFragment : Fragment() {
 
     private val loginViewModel : LoginViewModel by viewModels()
+    private val kebunViewModel : KebunViewModel by viewModels()
     private lateinit var navController: NavController
     @Inject lateinit var session : Session
     private lateinit var _binding: FragmentKebunBinding
@@ -46,6 +49,15 @@ class KebunFragment : Fragment() {
 
             btnKebunAdd.setOnClickListener {
                 navController.navigate(R.id.action_baseFragment_to_addKebunFragment)
+            }
+
+            kebunViewModel.getAllKebun(session.token!!).observe(viewLifecycleOwner){
+                val adapterKebun = KebunAdapter(it,navController,requireActivity())
+                val lm = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+                rvKebunList.apply {
+                    adapter = adapterKebun
+                    layoutManager = lm
+                }
             }
         }
     }

@@ -4,6 +4,7 @@ import android.util.Log
 import id.deval.tebu.db.request.LoginRequest
 import id.deval.tebu.db.request.RayonRequest
 import id.deval.tebu.db.request.SinderRequest
+import id.deval.tebu.db.response.Kebun
 import id.deval.tebu.db.response.MessageResponse
 import id.deval.tebu.db.response.User
 import id.deval.tebu.db.response.Wilayah
@@ -53,5 +54,13 @@ class Repository @Inject constructor(
 
     suspend fun addWilayah(wilayah: Wilayah, token: String):MessageResponse{
         return apiInterface.addWilayah(token, wilayah)
+    }
+
+    suspend fun addKebun(token:String,kebun: Kebun):MessageResponse{
+        return apiInterface.addKebun(token, kebun)
+    }
+
+    suspend fun getAllKebun(token:String):ArrayList<Kebun>{
+        return apiInterface.getAllKebun(token)
     }
 }

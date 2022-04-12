@@ -1,4 +1,4 @@
-package id.deval.tebu.fragment.rayon
+package id.deval.tebu.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

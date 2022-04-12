@@ -6,15 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.constraintlayout.solver.widgets.Helper
 import androidx.fragment.app.viewModels
-import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentAddRayonBinding
 import id.deval.tebu.db.Session
 import id.deval.tebu.db.request.RayonRequest
 import id.deval.tebu.utils.HelperView
+import id.deval.tebu.viewmodels.RayonViewModel
 import javax.inject.Inject
 
 @AndroidEntryPoint

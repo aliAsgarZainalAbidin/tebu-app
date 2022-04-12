@@ -3,10 +3,7 @@ package id.deval.tebu.retrofit
 import id.deval.tebu.db.request.LoginRequest
 import id.deval.tebu.db.request.RayonRequest
 import id.deval.tebu.db.request.SinderRequest
-import id.deval.tebu.db.response.GlobalWrapperResponse
-import id.deval.tebu.db.response.MessageResponse
-import id.deval.tebu.db.response.User
-import id.deval.tebu.db.response.Wilayah
+import id.deval.tebu.db.response.*
 import retrofit2.http.*
 
 
@@ -87,9 +84,20 @@ interface ApiInterface {
         @Header("token") token: String
     ):ArrayList<Wilayah>
 
+    @GET("kebun")
+    suspend fun getAllKebun(
+        @Header("token") token: String
+    ):ArrayList<Kebun>
+
     @POST("wilayah")
     suspend fun addWilayah(
         @Header("token") token: String,
         @Body wilayah: Wilayah
+    ):MessageResponse
+
+    @POST("kebun")
+    suspend fun addKebun(
+        @Header("token") token: String,
+        @Body kebun: Kebun
     ):MessageResponse
 }
