@@ -44,11 +44,21 @@ class AddRayonFragment : Fragment() {
             btnAddrayonSave.setOnClickListener {
                 val namaRayon = tietAddrayonNama.text.toString()
                 val lokasi = tietAddrayonLokasi.text.toString()
+                var allow = true
+                if (namaRayon.isEmpty()){
+                    allow = false
+                    tietAddrayonNama.error = "Silahkan isi Data"
 
-                val rayonRequest = RayonRequest(namaRayon, lokasi)
-
-                rayonViewModel.addRayon(rayonRequest,session.token!!).observe(viewLifecycleOwner){
-                    HelperView.showToast(it.message, requireContext()).show()
+                }
+                if (lokasi.isEmpty()){
+                    allow= false
+                    tietAddrayonLokasi.error = "Silahkan isi Data"
+                }
+                if(allow){
+                    val rayonRequest = RayonRequest(namaRayon, lokasi)
+                    rayonViewModel.addRayon(rayonRequest,session.token!!).observe(viewLifecycleOwner){
+                        HelperView.showToast(it.message, requireContext()).show()
+                    }
                 }
             }
         }

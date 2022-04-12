@@ -79,10 +79,10 @@
 
             <AutoCompleteTextView
                 android:id="@+id/mactv_addwilayah_rayon"
+                style="@style/AutoCompleteTextView.Custom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
-                android:text="Takalar" />
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,18 +90,18 @@
             android:id="@+id/til_addwilayah_lokasi"
             style="@style/AutoCompleteTextView.Custom"
             android:layout_marginTop="@dimen/margin_item"
+            android:enabled="false"
             android:hint="Lokasi"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_addwilayah_rayon">
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            <AutoCompleteTextView
                 android:id="@+id/mactv_addwilayah_lokasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
-                android:text="Takalar" />
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

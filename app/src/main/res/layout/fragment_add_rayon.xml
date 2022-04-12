@@ -62,6 +62,7 @@
             <AutoCompleteTextView
                 android:id="@+id/tiet_addrayon_lokasi"
                 android:layout_width="match_parent"
+                style="@style/AutoCompleteTextView.Custom"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                 android:inputType="none"

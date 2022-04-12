@@ -134,6 +134,7 @@
 
             <AutoCompleteTextView
                 android:id="@+id/mactv_addkebun_sinder"
+                style="@style/AutoCompleteTextView.Custom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"

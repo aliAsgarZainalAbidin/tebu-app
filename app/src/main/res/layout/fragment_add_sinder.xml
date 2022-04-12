@@ -45,7 +45,7 @@
                 android:id="@+id/tiet_addsinder_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:text="Ali Asgar Zainal Abidin" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -135,10 +135,10 @@
             <AutoCompleteTextView
                 android:id="@+id/mactv_addsinder_wilayah"
                 android:layout_width="match_parent"
+                style="@style/AutoCompleteTextView.Custom"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
-                android:inputType="none"
-                android:text="Takalar" />
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,9 +155,9 @@
                 android:id="@+id/mactv_addsinder_lokasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/AutoCompleteTextView.Custom"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
-                android:inputType="none"
-                android:text="Takalar" />
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
