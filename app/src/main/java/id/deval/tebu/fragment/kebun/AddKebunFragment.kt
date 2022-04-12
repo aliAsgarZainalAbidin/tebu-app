@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentAddKebunBinding
 import id.deval.tebu.db.Session
 import id.deval.tebu.db.response.Kebun
@@ -23,6 +25,7 @@ class AddKebunFragment : Fragment() {
     private val sinderViewModel : SinderViewModel by viewModels()
     private val wilayahViewModel : WilayahViewModel by viewModels()
     @Inject lateinit var session: Session
+    private lateinit var listSinder : ArrayList<String>
     private lateinit var _binding : FragmentAddKebunBinding
     private val binding get() = _binding
 
@@ -36,6 +39,8 @@ class AddKebunFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        listSinder = arrayListOf()
+
         with(binding){
             btnAddkebunSave.setOnClickListener {
                 val namaKebun = tietAddkebunNama.text.toString()
@@ -45,10 +50,57 @@ class AddKebunFragment : Fragment() {
                 val kategori = tietAddkebunKategori.text.toString()
                 val namaSinder = mactvAddkebunSinder.text.toString()
                 val wilayah = mactvAddkebunWilayah.text.toString()
+                    .split("\\")[0]
+                    .trim()
+                var allow = true
 
-                val kebun = Kebun(namaKebun, luas, petak, jenisTebu, kategori, namaSinder, wilayah)
-                kebunViewModel.addKebun(session.token!!,kebun).observe(viewLifecycleOwner){
-                    HelperView.showToast(it.message,requireContext()).show()
+                if (namaKebun.isEmpty()){
+                    allow = false
+                    tietAddkebunNama.error = "Silahkan Isi Data"
+                }
+                if (luas.isEmpty()){
+                    allow = false
+                    tietAddkebunLuas.error = "Silahkan Isi Data"
+                }
+                if (petak.isEmpty()){
+                    allow = false
+                    tietAddkebunPetak.error = "Silahkan Isi Data"
+                }
+                if (jenisTebu.isEmpty()){
+                    allow = false
+                    tietAddkebunJenis.error = "Silahkan Isi Data"
+                }
+                if (kategori.isEmpty()){
+                    allow = false
+                    tietAddkebunKategori.error = "Silahkan Isi Data"
+                }
+                if (namaSinder.isEmpty()){
+                    allow = false
+                    mactvAddkebunSinder.error = "Silahkan Isi Data"
+                }
+                if (jenisTebu.isEmpty()){
+                    allow = false
+                    tietAddkebunJenis.error = "Silahkan Isi Data"
+                }
+
+                if (allow){
+                    val kebun = Kebun(namaKebun, luas, petak, jenisTebu, kategori, namaSinder, wilayah)
+                    kebunViewModel.addKebun(session.token!!,kebun).observe(viewLifecycleOwner){
+                        HelperView.showToast(it.message,requireContext()).show()
+                    }
+                }
+
+            }
+
+            sinderViewModel.getAllSinder(session.token!!).observe(viewLifecycleOwner){
+                it.map {
+                    listSinder.add("${it.nama}\\${it.wilayah}")
+                }
+                val adapterUser = ArrayAdapter(requireContext(), R.layout.list_item,listSinder)
+                mactvAddkebunSinder.setAdapter(adapterUser)
+                mactvAddkebunSinder.setOnItemClickListener { adapterView, view, i, l ->
+                    mactvAddkebunWilayah.setText(it[i].wilayah)
+                    mactvAddkebunSinder.error = null
                 }
             }
         }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.constraintlayout.solver.widgets.Helper
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -16,6 +17,7 @@ import id.deval.tebu.db.Session
 import id.deval.tebu.utils.HelperView
 import id.deval.tebu.viewmodels.KebunViewModel
 import id.deval.tebu.viewmodels.LoginViewModel
+import id.deval.tebu.viewmodels.SinderViewModel
 import javax.inject.Inject
 
 
@@ -59,6 +61,7 @@ class KebunFragment : Fragment() {
                     layoutManager = lm
                 }
             }
+
         }
     }
 
