@@ -46,6 +46,10 @@ class AddSinderFragment : Fragment() {
         listWilayah = arrayListOf()
 
         with(binding) {
+            ivAddsinderBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
+
             btnAddsinderSave.setOnClickListener {
                 val namaSinder = tietAddsinderNama.text.toString()
                 val username = tietAddsinderUsername.text.toString()

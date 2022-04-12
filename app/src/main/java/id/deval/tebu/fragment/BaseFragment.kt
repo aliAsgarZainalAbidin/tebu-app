@@ -34,8 +34,8 @@ class BaseFragment : Fragment() {
         navController = childFragmentManager.findFragmentById(R.id.fcv_base_host)?.findNavController() ?: findNavController()
         Log.d("TAG", "onViewCreated: ${navController.graph}")
 
-        navController.popBackStack(navController.currentDestination?.id ?: R.id.rayonFragment, true)
         binding.bnvBaseContainer.setOnItemSelectedListener {
+            navController.popBackStack(navController.currentDestination?.id ?: R.id.rayonFragment, true)
             when (it.itemId) {
                 R.id.rayonFragment -> {
                     navController.navigate(R.id.rayonFragment)

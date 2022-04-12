@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentAddWilayahBinding
@@ -41,6 +42,10 @@ class AddWilayahFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         listRayon = arrayListOf()
         with(binding) {
+            ivAddwilayahBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
+
             rayonViewModel.getAllRayon(session.token!!).observe(viewLifecycleOwner) {
                 it.map {
                     listRayon.add("${it.nama} \\ ${it.lokasi}")

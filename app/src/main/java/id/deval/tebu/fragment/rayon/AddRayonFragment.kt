@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentAddRayonBinding
@@ -39,6 +40,10 @@ class AddRayonFragment : Fragment() {
         with(binding) {
             val adapterLokasi = ArrayAdapter(requireContext(), R.layout.list_item, itemsLokasi)
             tietAddrayonLokasi.setAdapter(adapterLokasi)
+
+            ivAddrayonBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
 
             btnAddrayonSave.setOnClickListener {
                 val namaRayon = tietAddrayonNama.text.toString()

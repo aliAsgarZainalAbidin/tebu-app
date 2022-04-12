@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentAddKebunBinding
@@ -42,6 +43,10 @@ class AddKebunFragment : Fragment() {
         listSinder = arrayListOf()
 
         with(binding){
+            ivAddkebunBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
+
             btnAddkebunSave.setOnClickListener {
                 val namaKebun = tietAddkebunNama.text.toString()
                 val luas = tietAddkebunLuas.text.toString()
