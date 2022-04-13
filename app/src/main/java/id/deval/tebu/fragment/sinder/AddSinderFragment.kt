@@ -15,6 +15,7 @@ import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentAddSinderBinding
 import id.deval.tebu.db.Session
 import id.deval.tebu.db.request.SinderRequest
+import id.deval.tebu.utils.Constanta
 import id.deval.tebu.utils.HelperView
 import id.deval.tebu.viewmodels.SinderViewModel
 import id.deval.tebu.viewmodels.WilayahViewModel
@@ -44,10 +45,23 @@ class AddSinderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = findNavController()
         listWilayah = arrayListOf()
+        val id = arguments?.getString(Constanta.ID_ITEM_ARGS)
 
         with(binding) {
             ivAddsinderBack.setOnClickListener {
                 findNavController().popBackStack()
+            }
+
+            if (!id.isNullOrEmpty()){
+                sinderViewModel.getSinderById(session.token!!,id).observe(viewLifecycleOwner){
+                    tietAddsinderNama.setText(it.nama)
+                    tietAddsinderPassword.setText(it.password)
+                    tietAddsinderUsername.setText(it.username)
+                    tietAddsinderTelepon.setText(it.telepon)
+                    tietAddsinderAlamat.setText(it.alamat)
+                    mactvAddsinderWilayah.setText(it.wilayah,false)
+                    mactvAddsinderLokasi.setText(it.lokasi,false)
+                }
             }
 
             btnAddsinderSave.setOnClickListener {

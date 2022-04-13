@@ -1,6 +1,7 @@
 package id.deval.tebu.fragment.wilayah
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentAddWilayahBinding
 import id.deval.tebu.db.Session
 import id.deval.tebu.db.response.Wilayah
+import id.deval.tebu.utils.Constanta
 import id.deval.tebu.viewmodels.RayonViewModel
 import id.deval.tebu.utils.HelperView
 import id.deval.tebu.viewmodels.WilayahViewModel
@@ -41,9 +43,20 @@ class AddWilayahFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listRayon = arrayListOf()
+        val id = arguments?.getString(Constanta.ID_ITEM_ARGS)
+        Log.d("TAG", "onViewCreated: $id")
+
         with(binding) {
             ivAddwilayahBack.setOnClickListener {
                 findNavController().popBackStack()
+            }
+
+            if (!id.isNullOrEmpty()) {
+                wilayahViewModel.getWilayahById(session.token!!, id).observe(viewLifecycleOwner) {
+                    tietAddwilayahWilayah.setText(it.wilayah)
+                    mactvAddwilayahRayon.setText(it.rayon,false)
+                    mactvAddwilayahLokasi.setText(it.lokasi,false)
+                }
             }
 
             rayonViewModel.getAllRayon(session.token!!).observe(viewLifecycleOwner) {
@@ -54,7 +67,7 @@ class AddWilayahFragment : Fragment() {
                 adapterRayon.notifyDataSetChanged()
                 mactvAddwilayahRayon.setAdapter(adapterRayon)
                 mactvAddwilayahRayon.setOnItemClickListener { adapterView, view, i, l ->
-                    mactvAddwilayahLokasi.setText(it[i].lokasi)
+                    mactvAddwilayahLokasi.setText(it[i].lokasi,false)
                     mactvAddwilayahRayon.error = null
                 }
             }
@@ -62,27 +75,28 @@ class AddWilayahFragment : Fragment() {
             btnAddwilayahSave.setOnClickListener {
                 val namaWilayah = tietAddwilayahWilayah.text.toString()
                 val rayon = mactvAddwilayahRayon.text
-                        .toString()
-                        .split(" \\")[0]
-                        .trim()
+                    .toString()
+                    .split(" \\")[0]
+                    .trim()
                 val lokasi = mactvAddwilayahLokasi.text.toString()
                 var allow = true
 
-                if (namaWilayah.isEmpty()){
-                    allow=false
+                if (namaWilayah.isEmpty()) {
+                    allow = false
                     tietAddwilayahWilayah.error = "Silahkan Isi Data"
                 }
 
-                if (rayon.isEmpty()){
-                    allow=false
+                if (rayon.isEmpty()) {
+                    allow = false
                     mactvAddwilayahRayon.error = "Silahkan Isi Data"
                 }
 
-                if(allow){
+                if (allow) {
                     val wilayah = Wilayah(null, namaWilayah, rayon, lokasi)
-                    wilayahViewModel.addWilayah(session.token!!, wilayah).observe(viewLifecycleOwner) {
-                        HelperView.showToast(it.message, requireContext()).show()
-                    }
+                    wilayahViewModel.addWilayah(session.token!!, wilayah)
+                        .observe(viewLifecycleOwner) {
+                            HelperView.showToast(it.message, requireContext()).show()
+                        }
                 }
             }
         }

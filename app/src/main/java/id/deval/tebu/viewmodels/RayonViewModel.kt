@@ -17,6 +17,7 @@ class RayonViewModel @Inject constructor(
 ) :ViewModel() {
     private lateinit var mutableMessageResponse: MutableLiveData<MessageResponse>
     private lateinit var mutableListRayon : MutableLiveData<ArrayList<RayonRequest>>
+    private lateinit var mutableRayon : MutableLiveData<RayonRequest>
 
     fun addRayon(rayonRequest: RayonRequest, token :String):LiveData<MessageResponse>{
         mutableMessageResponse = MutableLiveData()
@@ -34,6 +35,15 @@ class RayonViewModel @Inject constructor(
             mutableListRayon.postValue(listRayon)
         }
         return mutableListRayon
+    }
+
+    fun getRayonById(token:String, id:String):LiveData<RayonRequest>{
+        mutableRayon = MutableLiveData()
+        GlobalScope.launch {
+            val rayon = repository.getRayonById(token,id)
+            mutableRayon.postValue(rayon)
+        }
+        return mutableRayon
     }
 
 }

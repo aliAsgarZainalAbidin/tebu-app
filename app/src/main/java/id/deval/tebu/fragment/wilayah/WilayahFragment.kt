@@ -40,7 +40,7 @@ class WilayahFragment : Fragment() {
         navController = HelperView.getMainNavController(requireActivity())
         with(binding){
             mtvWilayahLogout.setOnClickListener {
-                loginViewModel.logout(session.id,session.token!!)
+                loginViewModel.logout(session.id!!,session.token!!)
                 HelperView.logout(navController, session)
             }
 

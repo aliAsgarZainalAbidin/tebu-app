@@ -13,6 +13,7 @@ import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentAddKebunBinding
 import id.deval.tebu.db.Session
 import id.deval.tebu.db.response.Kebun
+import id.deval.tebu.utils.Constanta
 import id.deval.tebu.utils.HelperView
 import id.deval.tebu.viewmodels.KebunViewModel
 import id.deval.tebu.viewmodels.SinderViewModel
@@ -41,10 +42,23 @@ class AddKebunFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listSinder = arrayListOf()
+        val id = arguments?.getString(Constanta.ID_ITEM_ARGS)
 
         with(binding){
             ivAddkebunBack.setOnClickListener {
                 findNavController().popBackStack()
+            }
+
+            if(!id.isNullOrEmpty()){
+                kebunViewModel.getKebunById(session.token!!,id).observe(viewLifecycleOwner){
+                    tietAddkebunNama.setText(it.namaKebun)
+                    tietAddkebunLuas.setText(it.luas)
+                    tietAddkebunPetak.setText(it.petak)
+                    tietAddkebunJenis.setText(it.jenisTebu)
+                    tietAddkebunKategori.setText(it.kategori)
+                    mactvAddkebunSinder.setText(it.namaSinder, false)
+                    mactvAddkebunWilayah.setText(it.wilayah, false)
+                }
             }
 
             btnAddkebunSave.setOnClickListener {
@@ -89,7 +103,7 @@ class AddKebunFragment : Fragment() {
                 }
 
                 if (allow){
-                    val kebun = Kebun(namaKebun, luas, petak, jenisTebu, kategori, namaSinder, wilayah)
+                    val kebun = Kebun("",namaKebun, luas, petak, jenisTebu, kategori, namaSinder, wilayah)
                     kebunViewModel.addKebun(session.token!!,kebun).observe(viewLifecycleOwner){
                         HelperView.showToast(it.message,requireContext()).show()
                     }

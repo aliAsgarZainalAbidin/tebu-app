@@ -47,7 +47,7 @@ class SinderFragment : Fragment() {
             }
 
             mtvSinderLogout.setOnClickListener {
-                loginViewModel.logout(session.id, session.token!!)
+                loginViewModel.logout(session.id!!, session.token!!)
                 HelperView.logout(navController, session)
             }
 

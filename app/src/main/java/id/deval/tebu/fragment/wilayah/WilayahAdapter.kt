@@ -1,12 +1,15 @@
 package id.deval.tebu.fragment.wilayah
 
 import android.app.Activity
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import id.deval.tebu.R
 import id.deval.tebu.databinding.RvItemWilayahBinding
 import id.deval.tebu.db.response.Wilayah
+import id.deval.tebu.utils.Constanta
 import id.deval.tebu.utils.HelperView
 
 class WilayahAdapter(
@@ -16,7 +19,7 @@ class WilayahAdapter(
 ) : RecyclerView.Adapter<WilayahAdapter.WilayahViewHolder>() {
     class WilayahViewHolder(private val binding: RvItemWilayahBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Wilayah) {
+        fun bind(data: Wilayah,navController: NavController) {
             with(binding){
                 mtvRvitemName.text = data.id.toString()
                 mtvRvitemNamaWilayah.text = data.wilayah
@@ -26,6 +29,12 @@ class WilayahAdapter(
                 ivRvitemIcon.setOnClickListener {
                     HelperView.expandListItemRecycler(ivRvitemIcon,clRvitemContainer)
                 }
+                ivRvitemEdit.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putString(Constanta.ID_ITEM_ARGS,data.id)
+                    navController.navigate(R.id.action_baseFragment_to_addWilayahFragment,bundle)
+                }
+                ivRvitemDelete.setOnClickListener {  }
             }
         }
     }
@@ -36,7 +45,7 @@ class WilayahAdapter(
     }
 
     override fun onBindViewHolder(holder: WilayahViewHolder, position: Int) {
-        holder.bind(listWilayah[position])
+        holder.bind(listWilayah[position],navController)
     }
 
     override fun getItemCount(): Int {

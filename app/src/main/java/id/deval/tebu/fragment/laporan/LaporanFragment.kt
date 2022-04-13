@@ -37,7 +37,7 @@ class LaporanFragment : Fragment() {
         navController = HelperView.getMainNavController(requireActivity())
         with(binding){
             mtvLaporanLogout.setOnClickListener {
-                loginViewModel.logout(session.id,session.token!!)
+                loginViewModel.logout(session.id!!,session.token!!)
                 HelperView.logout(navController, session)
             }
         }

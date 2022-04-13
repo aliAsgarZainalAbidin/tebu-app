@@ -1,12 +1,15 @@
 package id.deval.tebu.fragment.kebun
 
 import android.app.Activity
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import id.deval.tebu.R
 import id.deval.tebu.databinding.RvItemKebunBinding
 import id.deval.tebu.db.response.Kebun
+import id.deval.tebu.utils.Constanta
 import id.deval.tebu.utils.HelperView
 
 class KebunAdapter(
@@ -16,7 +19,7 @@ class KebunAdapter(
 ) : RecyclerView.Adapter<KebunAdapter.KebunViewHolder>() {
     class KebunViewHolder(private val binding: RvItemKebunBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data : Kebun){
+        fun bind(data : Kebun,navController: NavController){
             with(binding){
                 with(data){
                     mtvRvitemName.text = namaKebun
@@ -25,10 +28,16 @@ class KebunAdapter(
                     mtvRvitemJenis.text = jenisTebu
                     mtvRvitemKategori.text = kategori
                     mtvRvitemSinder.text = namaSinder
-                    mtvRvitemTitleWilayah.text = wilayah
+                    mtvRvitemWilayah.text = wilayah
 
                     ivRvitemIcon.setOnClickListener {
                         HelperView.expandListItemRecycler(ivRvitemIcon,clRvitemContainer)
+                    }
+
+                    ivRvitemEdit.setOnClickListener {
+                        val bundle = Bundle()
+                        bundle.putString(Constanta.ID_ITEM_ARGS,data.id)
+                        navController.navigate(R.id.action_baseFragment_to_addKebunFragment, bundle)
                     }
                 }
             }
@@ -41,7 +50,7 @@ class KebunAdapter(
     }
 
     override fun onBindViewHolder(holder: KebunViewHolder, position: Int) {
-        holder.bind(listKebun[position])
+        holder.bind(listKebun[position],navController)
     }
 
     override fun getItemCount(): Int {

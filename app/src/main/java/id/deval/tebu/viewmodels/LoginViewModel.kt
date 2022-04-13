@@ -28,7 +28,7 @@ class LoginViewModel @Inject constructor(
         return mutableUserLogin
     }
 
-    fun logout(id:Int, token:String):LiveData<User>{
+    fun logout(id:String, token:String):LiveData<User>{
         mutableUserLogout = MutableLiveData()
         GlobalScope.launch {
             val data = repository.logout(id, token)

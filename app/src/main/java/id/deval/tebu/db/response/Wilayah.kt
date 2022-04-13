@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Wilayah(
     @field:SerializedName("id")
-    val id:Int?,
+    val id:String?,
 
     @field:SerializedName("nama_wilayah")
     val wilayah:String,

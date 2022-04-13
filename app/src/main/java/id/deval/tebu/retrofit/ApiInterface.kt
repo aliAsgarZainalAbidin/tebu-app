@@ -54,7 +54,7 @@ interface ApiInterface {
 
     @GET("logout/{id}")
     suspend fun logout(
-        @Path("id") id: Int,
+        @Path("id") id: String,
         @Header("token") token: String
     ): User
 
@@ -69,6 +69,12 @@ interface ApiInterface {
         @Header("token") token:String
     ):ArrayList<RayonRequest>
 
+    @GET("rayon/{id}")
+    suspend fun getRayonById(
+        @Header("token") token:String,
+        @Path("id") id:String
+    ):RayonRequest
+
     @POST("sinder")
     suspend fun addSinder(
         @Body sinderRequest: SinderRequest, @Header("token") token: String
@@ -79,15 +85,33 @@ interface ApiInterface {
         @Header("token") token: String
     ):GlobalWrapperResponse<ArrayList<User>>
 
+    @GET("sinder/{id}")
+    suspend fun getSinderById(
+        @Header("token") token:String,
+        @Path("id") id:String
+    ):User
+
     @GET("wilayah")
     suspend fun getAllWilayah(
         @Header("token") token: String
     ):ArrayList<Wilayah>
 
+    @GET("wilayah/{id}")
+    suspend fun getWilayahById(
+        @Header("token") token:String,
+        @Path("id") id:String
+    ):Wilayah
+
     @GET("kebun")
     suspend fun getAllKebun(
         @Header("token") token: String
     ):ArrayList<Kebun>
+
+    @GET("kebun/{id}")
+    suspend fun getKebunById(
+        @Header("token") token:String,
+        @Path("id") id:String
+    ):Kebun
 
     @POST("wilayah")
     suspend fun addWilayah(

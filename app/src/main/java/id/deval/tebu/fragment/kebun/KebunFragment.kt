@@ -45,7 +45,7 @@ class KebunFragment : Fragment() {
 
         with(binding){
             mtvKebunLogout.setOnClickListener {
-                loginViewModel.logout(session.id,session.token!!)
+                loginViewModel.logout(session.id!!,session.token!!)
                 HelperView.logout(navController, session)
             }
 

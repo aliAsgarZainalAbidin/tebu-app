@@ -2,6 +2,7 @@ package id.deval.tebu.fragment.sinder
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import id.deval.tebu.R
 import id.deval.tebu.databinding.RvItemSinderBinding
 import id.deval.tebu.db.response.User
+import id.deval.tebu.utils.Constanta
+import id.deval.tebu.utils.HelperView
 
 class SinderAdapter(
     private val listSinder: ArrayList<User>,
@@ -19,7 +22,7 @@ class SinderAdapter(
     class SinderViewHolder(private val binding: RvItemSinderBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-        fun bind(data: User) {
+        fun bind(data: User,navController: NavController) {
             with(binding){
                 mtvRvitemName.text = ": ${data.nama}"
                 mtvRvitemUsername.text = ": ${data.username}"
@@ -30,16 +33,14 @@ class SinderAdapter(
                 mtvRvitemLokasi.text = ": ${data.lokasi}"
 
                 ivRvitemIcon.setOnClickListener {
-                    if (ivRvitemIcon.rotation != 0F){
-                        clRvitemContainer.visibility = View.VISIBLE
-                        ivRvitemIcon.rotation = 0F
-                    }  else {
-                        clRvitemContainer.visibility = View.GONE
-                        ivRvitemIcon.rotation = 180F
-                    }
+                    HelperView.expandListItemRecycler(ivRvitemIcon,clRvitemContainer)
                 }
                 ivRvitemDelete.setOnClickListener {  }
-                ivRvitemEdit.setOnClickListener {  }
+                ivRvitemEdit.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putString(Constanta.ID_ITEM_ARGS,data.id)
+                    navController.navigate(R.id.action_baseFragment_to_addSinderFragment2,bundle)
+                }
             }
         }
     }
@@ -54,7 +55,7 @@ class SinderAdapter(
     }
 
     override fun onBindViewHolder(holder: SinderViewHolder, position: Int) {
-        holder.bind(listSinder[position])
+        holder.bind(listSinder[position],navController)
     }
 
     override fun getItemCount(): Int {

@@ -15,7 +15,7 @@ class Session(
 
     val token get() = pref.getString(KEY_TOKEN, "")
     val role get() = pref.getString(ROLE, "")
-    val id get() = pref.getInt(ID,0)
+    val id get() = pref.getString(ID,"")
 
     init {
         pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
@@ -25,7 +25,7 @@ class Session(
     fun createLoginSession(user: User) {
         editor.putString(KEY_TOKEN, user.token)
         editor.putString(ROLE, user.role)
-        editor.putInt(ID, user.id)
+        editor.putString(ID, user.id)
         editor.commit()
     }
 

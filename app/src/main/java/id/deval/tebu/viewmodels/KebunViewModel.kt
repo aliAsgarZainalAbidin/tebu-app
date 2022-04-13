@@ -16,7 +16,8 @@ data class KebunViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
     private lateinit var mutableMessageResponse: MutableLiveData<MessageResponse>
-    private lateinit var mutableKebun : MutableLiveData<ArrayList<Kebun>>
+    private lateinit var mutableListKebun : MutableLiveData<ArrayList<Kebun>>
+    private lateinit var mutableKebun : MutableLiveData<Kebun>
 
     fun addKebun(token: String, kebun: Kebun): LiveData<MessageResponse> {
         mutableMessageResponse = MutableLiveData()
@@ -28,9 +29,18 @@ data class KebunViewModel @Inject constructor(
     }
 
     fun getAllKebun(token: String):LiveData<ArrayList<Kebun>>{
-        mutableKebun = MutableLiveData()
+        mutableListKebun = MutableLiveData()
         GlobalScope.launch {
             val data = repository.getAllKebun(token)
+            mutableListKebun.postValue(data)
+        }
+        return mutableListKebun
+    }
+
+    fun getKebunById(token: String, id:String):LiveData<Kebun>{
+        mutableKebun = MutableLiveData()
+        GlobalScope.launch {
+            val data = repository.getKebunById(token, id)
             mutableKebun.postValue(data)
         }
         return mutableKebun

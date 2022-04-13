@@ -9,7 +9,7 @@
         android:id="@+id/loginFragment"
         android:name="id.deval.tebu.fragment.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_baseFragment"
             app:destination="@id/baseFragment"
@@ -27,7 +27,7 @@
         android:id="@+id/baseFragment"
         android:name="id.deval.tebu.fragment.BaseFragment"
         android:label="fragment_base"
-        tools:layout="@layout/fragment_base" >
+        tools:layout="@layout/fragment_base">
         <action
             android:id="@+id/action_baseFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -36,10 +36,18 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_baseFragment_to_addRayonFragment"
-            app:destination="@id/addRayonFragment" />
+            app:destination="@id/addRayonFragment">
+            <argument
+                android:name="idItem"
+                app:argType="string" />
+        </action>
         <action
             android:id="@+id/action_baseFragment_to_addWilayahFragment"
-            app:destination="@id/addWilayahFragment" />
+            app:destination="@id/addWilayahFragment" >
+            <argument
+                android:name="idItem"
+                app:argType="string" />
+        </action>
         <action
             android:id="@+id/action_baseFragment_to_addKebunFragment"
             app:destination="@id/addKebunFragment" />
@@ -49,6 +57,10 @@
         <action
             android:id="@+id/action_baseFragment_to_addTaksasiFragment"
             app:destination="@id/addTaksasiFragment" />
+        <argument
+            android:name="idItem"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 
     <fragment

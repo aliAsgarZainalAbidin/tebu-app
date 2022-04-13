@@ -3,6 +3,8 @@ package id.deval.tebu.db.response
 import com.google.gson.annotations.SerializedName
 
 data class Kebun(
+    @field:SerializedName("id")
+    val id:String,
     @field:SerializedName("nama_kebun")
     val namaKebun: String,
     @field:SerializedName("luas")

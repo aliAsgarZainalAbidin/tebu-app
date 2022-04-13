@@ -41,7 +41,7 @@ class RayonFragment : Fragment() {
 
         with(binding){
             mtvRayonLogout.setOnClickListener {
-                loginViewModel.logout(session.id,session.token!!)
+                loginViewModel.logout(session.id!!,session.token!!)
                 HelperView.logout(navController, session)
             }
 
