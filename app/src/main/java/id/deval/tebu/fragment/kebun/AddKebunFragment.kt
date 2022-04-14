@@ -23,12 +23,13 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class AddKebunFragment : Fragment() {
 
-    private val kebunViewModel : KebunViewModel by viewModels()
-    private val sinderViewModel : SinderViewModel by viewModels()
-    private val wilayahViewModel : WilayahViewModel by viewModels()
-    @Inject lateinit var session: Session
-    private lateinit var listSinder : ArrayList<String>
-    private lateinit var _binding : FragmentAddKebunBinding
+    private val kebunViewModel: KebunViewModel by viewModels()
+    private val sinderViewModel: SinderViewModel by viewModels()
+    private val wilayahViewModel: WilayahViewModel by viewModels()
+    @Inject
+    lateinit var session: Session
+    private lateinit var listSinder: ArrayList<String>
+    private lateinit var _binding: FragmentAddKebunBinding
     private val binding get() = _binding
 
     override fun onCreateView(
@@ -42,15 +43,15 @@ class AddKebunFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listSinder = arrayListOf()
-        val id = arguments?.getString(Constanta.ID_ITEM_ARGS)
+        val id = arguments?.getString(Constanta.ID_ITEM_ARGS) ?: ""
 
-        with(binding){
+        with(binding) {
             ivAddkebunBack.setOnClickListener {
                 findNavController().popBackStack()
             }
 
-            if(!id.isNullOrEmpty()){
-                kebunViewModel.getKebunById(session.token!!,id).observe(viewLifecycleOwner){
+            if (!id.isNullOrEmpty()) {
+                kebunViewModel.getKebunById(session.token!!, id).observe(viewLifecycleOwner) {
                     tietAddkebunNama.setText(it.namaKebun)
                     tietAddkebunLuas.setText(it.luas)
                     tietAddkebunPetak.setText(it.petak)
@@ -68,54 +69,62 @@ class AddKebunFragment : Fragment() {
                 val jenisTebu = tietAddkebunJenis.text.toString()
                 val kategori = tietAddkebunKategori.text.toString()
                 val namaSinder = mactvAddkebunSinder.text.toString()
+                    .split("\\")[0]
+                    .trim()
                 val wilayah = mactvAddkebunWilayah.text.toString()
                     .split("\\")[0]
                     .trim()
                 var allow = true
 
-                if (namaKebun.isEmpty()){
+                if (namaKebun.isEmpty()) {
                     allow = false
                     tietAddkebunNama.error = "Silahkan Isi Data"
                 }
-                if (luas.isEmpty()){
+                if (luas.isEmpty()) {
                     allow = false
                     tietAddkebunLuas.error = "Silahkan Isi Data"
                 }
-                if (petak.isEmpty()){
+                if (petak.isEmpty()) {
                     allow = false
                     tietAddkebunPetak.error = "Silahkan Isi Data"
                 }
-                if (jenisTebu.isEmpty()){
+                if (jenisTebu.isEmpty()) {
                     allow = false
                     tietAddkebunJenis.error = "Silahkan Isi Data"
                 }
-                if (kategori.isEmpty()){
+                if (kategori.isEmpty()) {
                     allow = false
                     tietAddkebunKategori.error = "Silahkan Isi Data"
                 }
-                if (namaSinder.isEmpty()){
+                if (namaSinder.isEmpty()) {
                     allow = false
                     mactvAddkebunSinder.error = "Silahkan Isi Data"
                 }
-                if (jenisTebu.isEmpty()){
+                if (jenisTebu.isEmpty()) {
                     allow = false
                     tietAddkebunJenis.error = "Silahkan Isi Data"
                 }
 
-                if (allow){
-                    val kebun = Kebun("",namaKebun, luas, petak, jenisTebu, kategori, namaSinder, wilayah)
-                    kebunViewModel.addKebun(session.token!!,kebun).observe(viewLifecycleOwner){
-                        HelperView.showToast(it.message,requireContext()).show()
+                if (allow) {
+                    val kebun =
+                        Kebun(id, namaKebun, luas, petak, jenisTebu, kategori, namaSinder, wilayah)
+                    if (id.isNullOrEmpty()) {
+                        kebunViewModel.addKebun(session.token!!, kebun)
+                            .observe(viewLifecycleOwner) {
+                                HelperView.showToast(it.message, requireContext()).show()
+                            }
+                    } else {
+                        //UPDATE BY ID
                     }
                 }
 
             }
 
-            sinderViewModel.getAllSinder(session.token!!).observe(viewLifecycleOwner){
+            sinderViewModel.getAllSinder(session.token!!).observe(viewLifecycleOwner) {
                 it.map {
                     listSinder.add("${it.nama}\\${it.wilayah}")
                 }
-                val adapterUser = ArrayAdapter(requireContext(), R.layout.list_item,listSinder)
+                val adapterUser = ArrayAdapter(requireContext(), R.layout.list_item, listSinder)
                 mactvAddkebunSinder.setAdapter(adapterUser)
                 mactvAddkebunSinder.setOnItemClickListener { adapterView, view, i, l ->
                     mactvAddkebunWilayah.setText(it[i].wilayah)

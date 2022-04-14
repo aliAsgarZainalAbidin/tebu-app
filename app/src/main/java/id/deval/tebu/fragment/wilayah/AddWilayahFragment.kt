@@ -43,7 +43,7 @@ class AddWilayahFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listRayon = arrayListOf()
-        val id = arguments?.getString(Constanta.ID_ITEM_ARGS)
+        val id = arguments?.getString(Constanta.ID_ITEM_ARGS) ?: ""
         Log.d("TAG", "onViewCreated: $id")
 
         with(binding) {
@@ -51,11 +51,11 @@ class AddWilayahFragment : Fragment() {
                 findNavController().popBackStack()
             }
 
-            if (!id.isNullOrEmpty()) {
+            if (!id.isEmpty()) {
                 wilayahViewModel.getWilayahById(session.token!!, id).observe(viewLifecycleOwner) {
                     tietAddwilayahWilayah.setText(it.wilayah)
-                    mactvAddwilayahRayon.setText(it.rayon,false)
-                    mactvAddwilayahLokasi.setText(it.lokasi,false)
+                    mactvAddwilayahRayon.setText(it.rayon, false)
+                    mactvAddwilayahLokasi.setText(it.lokasi, false)
                 }
             }
 
@@ -67,7 +67,7 @@ class AddWilayahFragment : Fragment() {
                 adapterRayon.notifyDataSetChanged()
                 mactvAddwilayahRayon.setAdapter(adapterRayon)
                 mactvAddwilayahRayon.setOnItemClickListener { adapterView, view, i, l ->
-                    mactvAddwilayahLokasi.setText(it[i].lokasi,false)
+                    mactvAddwilayahLokasi.setText(it[i].lokasi, false)
                     mactvAddwilayahRayon.error = null
                 }
             }
@@ -92,11 +92,15 @@ class AddWilayahFragment : Fragment() {
                 }
 
                 if (allow) {
-                    val wilayah = Wilayah(null, namaWilayah, rayon, lokasi)
-                    wilayahViewModel.addWilayah(session.token!!, wilayah)
-                        .observe(viewLifecycleOwner) {
-                            HelperView.showToast(it.message, requireContext()).show()
-                        }
+                    val wilayah = Wilayah(id, namaWilayah, rayon, lokasi)
+                    if (id.isEmpty()) {
+                        wilayahViewModel.addWilayah(session.token!!, wilayah)
+                            .observe(viewLifecycleOwner) {
+                                HelperView.showToast(it.message, requireContext()).show()
+                            }
+                    } else {
+                        //UPDATE BY ID
+                    }
                 }
             }
         }

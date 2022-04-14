@@ -14,6 +14,9 @@ class Session(
     var editor: SharedPreferences.Editor
 
     val token get() = pref.getString(KEY_TOKEN, "")
+    val nama get() = pref.getString(NAMA, "")
+    val wilayah get() = pref.getString(WILAYAH, "")
+    val lokasi get() = pref.getString(LOKASI, "")
     val role get() = pref.getString(ROLE, "")
     val id get() = pref.getString(ID,"")
 
@@ -26,6 +29,9 @@ class Session(
         editor.putString(KEY_TOKEN, user.token)
         editor.putString(ROLE, user.role)
         editor.putString(ID, user.id)
+        editor.putString(NAMA, user.nama)
+        editor.putString(WILAYAH, user.wilayah)
+        editor.putString(LOKASI, user.lokasi)
         editor.commit()
     }
 
@@ -37,6 +43,9 @@ class Session(
     companion object {
         val PREF_NAME = "tebu-app"
         val KEY_TOKEN = "token"
+        val NAMA = "nama"
+        val WILAYAH = "wilayah"
+        val LOKASI = "lokasi"
         val ROLE = "role"
         val ID = "id"
     }

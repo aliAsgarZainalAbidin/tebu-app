@@ -60,20 +60,20 @@ interface ApiInterface {
 
     @POST("rayon")
     suspend fun addRayon(
-        @Body rayonRequest:RayonRequest,
+        @Body rayonRequest: RayonRequest,
         @Header("token") token: String
-    ):MessageResponse
+    ): MessageResponse
 
     @GET("rayon")
     suspend fun getAllRayon(
-        @Header("token") token:String
-    ):ArrayList<RayonRequest>
+        @Header("token") token: String
+    ): ArrayList<RayonRequest>
 
     @GET("rayon/{id}")
     suspend fun getRayonById(
-        @Header("token") token:String,
-        @Path("id") id:String
-    ):RayonRequest
+        @Header("token") token: String,
+        @Path("id") id: String
+    ): RayonRequest
 
     @POST("sinder")
     suspend fun addSinder(
@@ -83,45 +83,63 @@ interface ApiInterface {
     @GET("sinder")
     suspend fun getAllSinder(
         @Header("token") token: String
-    ):GlobalWrapperResponse<ArrayList<User>>
+    ): GlobalWrapperResponse<ArrayList<User>>
 
     @GET("sinder/{id}")
     suspend fun getSinderById(
-        @Header("token") token:String,
-        @Path("id") id:String
-    ):User
+        @Header("token") token: String,
+        @Path("id") id: String
+    ): User
 
     @GET("wilayah")
     suspend fun getAllWilayah(
         @Header("token") token: String
-    ):ArrayList<Wilayah>
+    ): ArrayList<Wilayah>
 
     @GET("wilayah/{id}")
     suspend fun getWilayahById(
-        @Header("token") token:String,
-        @Path("id") id:String
-    ):Wilayah
+        @Header("token") token: String,
+        @Path("id") id: String
+    ): Wilayah
 
     @GET("kebun")
     suspend fun getAllKebun(
         @Header("token") token: String
-    ):ArrayList<Kebun>
+    ): ArrayList<Kebun>
 
     @GET("kebun/{id}")
     suspend fun getKebunById(
-        @Header("token") token:String,
-        @Path("id") id:String
-    ):Kebun
+        @Header("token") token: String,
+        @Path("id") id: String
+    ): Kebun
 
     @POST("wilayah")
     suspend fun addWilayah(
         @Header("token") token: String,
         @Body wilayah: Wilayah
-    ):MessageResponse
+    ): MessageResponse
 
     @POST("kebun")
     suspend fun addKebun(
         @Header("token") token: String,
         @Body kebun: Kebun
+    ): MessageResponse
+
+    @GET("taksasi")
+    suspend fun getTaksasiByUser(
+        @Header("token") token:String,
+    ):ArrayList<Taksasi>
+
+    @GET("taksasi/{id}")
+    suspend fun getTaksasiByUser(
+        @Header("token") token:String,
+        @Path("id") id:String
+    ):ArrayList<Taksasi>
+
+    @PUT("taksasi/{id}")
+    suspend fun updateTaksasiUser(
+        @Header("token") token:String,
+        @Path("id") id:String,
+        @Body taksasi: Taksasi,
     ):MessageResponse
 }

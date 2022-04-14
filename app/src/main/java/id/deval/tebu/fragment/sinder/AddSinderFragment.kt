@@ -45,14 +45,14 @@ class AddSinderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = findNavController()
         listWilayah = arrayListOf()
-        val id = arguments?.getString(Constanta.ID_ITEM_ARGS)
+        val id = arguments?.getString(Constanta.ID_ITEM_ARGS)?:""
 
         with(binding) {
             ivAddsinderBack.setOnClickListener {
                 findNavController().popBackStack()
             }
 
-            if (!id.isNullOrEmpty()){
+            if (!id.isEmpty()){
                 sinderViewModel.getSinderById(session.token!!,id).observe(viewLifecycleOwner){
                     tietAddsinderNama.setText(it.nama)
                     tietAddsinderPassword.setText(it.password)
@@ -84,7 +84,7 @@ class AddSinderFragment : Fragment() {
                     allow = false
                     tietAddsinderUsername.error = "Silahkan isi data"
                 }
-                if (password.isEmpty()||password.length>=8) {
+                if (password.isEmpty()||password.length<8) {
                     allow = false
                     tietAddsinderPassword.error = "Silahkan isi data minimal 8 karakter"
                 }
@@ -102,21 +102,25 @@ class AddSinderFragment : Fragment() {
                     mactvAddsinderWilayah.error = "Silahkan isi data"
                 }
                 if (allow) {
-                    val sinder =
-                        SinderRequest(
-                            namaSinder,
-                            username,
-                            password,
-                            telepon,
-                            alamat,
-                            wilayah,
-                            lokasi = lokasi
-                        )
+                    if (id.isEmpty()){
+                        val sinder =
+                            SinderRequest(
+                                namaSinder,
+                                username,
+                                password,
+                                telepon,
+                                alamat,
+                                wilayah,
+                                lokasi = lokasi
+                            )
 
-                    sinderViewModel.addSinder(sinder, session.token.toString())
-                        .observe(viewLifecycleOwner) {
-                            HelperView.showToast(it.message, requireContext()).show()
-                        }
+                        sinderViewModel.addSinder(sinder, session.token.toString())
+                            .observe(viewLifecycleOwner) {
+                                HelperView.showToast(it.message, requireContext()).show()
+                            }
+                    } else {
+                        //UPDATE BY ID
+                    }
                 }
             }
 

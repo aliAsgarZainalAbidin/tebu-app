@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="132dp" />
+        app:layout_constraintGuide_begin="150dp" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/mtv_rvitem_name"
@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="132dp" />
+            app:layout_constraintGuide_begin="150dp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/mtv_rvitem_titleluas"

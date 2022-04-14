@@ -4,10 +4,7 @@ import android.util.Log
 import id.deval.tebu.db.request.LoginRequest
 import id.deval.tebu.db.request.RayonRequest
 import id.deval.tebu.db.request.SinderRequest
-import id.deval.tebu.db.response.Kebun
-import id.deval.tebu.db.response.MessageResponse
-import id.deval.tebu.db.response.User
-import id.deval.tebu.db.response.Wilayah
+import id.deval.tebu.db.response.*
 import id.deval.tebu.retrofit.ApiInterface
 import java.lang.Exception
 import javax.inject.Inject
@@ -78,5 +75,17 @@ class Repository @Inject constructor(
 
     suspend fun getKebunById(token:String,id:String):Kebun{
         return apiInterface.getKebunById(token,id)
+    }
+
+    suspend fun getTaksasiByUser(token: String):ArrayList<Taksasi>{
+        return apiInterface.getTaksasiByUser(token)
+    }
+
+    suspend fun getTaksasiById(token: String, id:String):ArrayList<Taksasi>{
+        return apiInterface.getTaksasiByUser(token,id)
+    }
+
+    suspend fun updateTaksasiUser(token: String, id:String,taksasi: Taksasi):MessageResponse{
+        return apiInterface.updateTaksasiUser(token,id,taksasi)
     }
 }

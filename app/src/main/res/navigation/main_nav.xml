@@ -74,6 +74,12 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_taksasiFragment_to_detailTaksasiFragment"
+            app:destination="@id/detailTaksasiFragment" />
+        <action
+            android:id="@+id/action_taksasiFragment_to_addTaksasiFragment"
+            app:destination="@id/addTaksasiFragment" />
     </fragment>
     <fragment
         android:id="@+id/addRayonFragment"
@@ -100,4 +106,8 @@
         android:name="id.deval.tebu.fragment.taksasi.AddTaksasiFragment"
         android:label="fragment_add_taksasi"
         tools:layout="@layout/fragment_add_taksasi" />
+    <fragment
+        android:id="@+id/detailTaksasiFragment"
+        android:name="id.deval.tebu.fragment.taksasi.DetailTaksasiFragment"
+        android:label="DetailTaksasiFragment" />
 </navigation>
