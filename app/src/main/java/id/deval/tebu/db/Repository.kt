@@ -57,6 +57,10 @@ class Repository @Inject constructor(
         return apiInterface.getRayonById(token,id)
     }
 
+    suspend fun updateRayonById(rayonRequest: RayonRequest,token:String,id:String):RayonRequest{
+        return apiInterface.updateRayonById(rayonRequest,token,id)
+    }
+
     suspend fun deleteRayonById(token: String, id: String):MessageResponse{
         return apiInterface.deleteRayonById(token, id)
     }

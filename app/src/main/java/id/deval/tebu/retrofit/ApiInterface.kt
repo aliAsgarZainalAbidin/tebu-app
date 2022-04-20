@@ -81,6 +81,13 @@ interface ApiInterface {
         @Path("id") id: String
     ): RayonRequest
 
+    @PUT("rayon/{id}")
+    suspend fun updateRayonById(
+        @Body rayonRequest: RayonRequest,
+        @Header("token") token: String,
+        @Path("id") id: String
+    ): RayonRequest
+
     @POST("sinder")
     suspend fun addSinder(
         @Body sinderRequest: SinderRequest, @Header("token") token: String
