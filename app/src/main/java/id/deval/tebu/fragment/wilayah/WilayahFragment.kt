@@ -13,24 +13,29 @@ import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentWilayahBinding
 import id.deval.tebu.db.Session
 import id.deval.tebu.db.models.Wilayah
+import id.deval.tebu.utils.BasedFragment
 import id.deval.tebu.utils.HelperView
+import id.deval.tebu.utils.event.CommonParams
 import id.deval.tebu.viewmodels.LoginViewModel
 import id.deval.tebu.viewmodels.WilayahViewModel
+import org.greenrobot.eventbus.Subscribe
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class WilayahFragment : Fragment() {
-    private val wilayahViewModel : WilayahViewModel by viewModels()
-    private val loginViewModel:LoginViewModel by viewModels()
-    @Inject lateinit var session: Session
+class WilayahFragment : BasedFragment() {
+
+    @Inject
+    lateinit var session: Session
     private lateinit var navController: NavController
     private lateinit var _binding: FragmentWilayahBinding
     private val binding get() = _binding
+    private val wilayahViewModel: WilayahViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentWilayahBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -38,25 +43,39 @@ class WilayahFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = HelperView.getMainNavController(requireActivity())
-        with(binding){
+        with(binding) {
             mtvWilayahLogout.setOnClickListener {
-                loginViewModel.logout(session.id!!,session.token!!)
+                loginViewModel.logout(session.id!!, session.token!!)
                 HelperView.logout(navController, session)
             }
 
             btnWilayahAdd.setOnClickListener {
                 navController.navigate(R.id.action_baseFragment_to_addWilayahFragment)
             }
+            refreshRecyclerView()
+        }
+    }
 
-            wilayahViewModel.getAllWilayah(session.token!!).observe(viewLifecycleOwner){
-                val wilayahAdapter = WilayahAdapter(it,navController,requireActivity())
-                val lm = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
-                rvWilayahList.apply{
+    fun refreshRecyclerView(){
+        with(binding){
+            wilayahViewModel.getAllWilayah(session.token!!).observe(viewLifecycleOwner) {
+                val wilayahAdapter = WilayahAdapter(it, navController, requireActivity())
+                val lm = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                rvWilayahList.apply {
                     adapter = wilayahAdapter
                     layoutManager = lm
                 }
             }
         }
+    }
+
+    @Subscribe
+    fun iconDeleteListener(commonParams: CommonParams) {
+        wilayahViewModel.deleteWilayah(session.token!!, commonParams.id!!)
+            .observe(viewLifecycleOwner) {
+                HelperView.showToast(it.message, requireContext()).show()
+                refreshRecyclerView()
+            }
     }
 
 }

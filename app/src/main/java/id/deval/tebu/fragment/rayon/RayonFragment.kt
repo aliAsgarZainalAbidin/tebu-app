@@ -13,19 +13,24 @@ import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentRayonBinding
 import id.deval.tebu.db.Session
 import id.deval.tebu.utils.HelperView
+import id.deval.tebu.utils.event.CommonParams
 import id.deval.tebu.viewmodels.LoginViewModel
 import id.deval.tebu.viewmodels.RayonViewModel
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class RayonFragment : Fragment() {
 
-    private val loginViewModel : LoginViewModel by viewModels()
-    private val rayonViewModel : RayonViewModel by viewModels()
+    private val bus = EventBus.getDefault()
+    private val loginViewModel: LoginViewModel by viewModels()
+    private val rayonViewModel: RayonViewModel by viewModels()
     private lateinit var _binding: FragmentRayonBinding
     private val binding get() = _binding
     private lateinit var navController: NavController
-    @Inject lateinit var session: Session
+    @Inject
+    lateinit var session: Session
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,13 +40,23 @@ class RayonFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        bus.register(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        bus.unregister(this)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = HelperView.getMainNavController(requireActivity())
 
-        with(binding){
+        with(binding) {
             mtvRayonLogout.setOnClickListener {
-                loginViewModel.logout(session.id!!,session.token!!)
+                loginViewModel.logout(session.id!!, session.token!!)
                 HelperView.logout(navController, session)
             }
 
@@ -49,14 +64,29 @@ class RayonFragment : Fragment() {
                 navController.navigate(R.id.action_baseFragment_to_addRayonFragment)
             }
 
-            rayonViewModel.getAllRayon(session.token!!).observe(viewLifecycleOwner){
-                val adapterRayon = RayonAdapter(it,navController,requireActivity())
+            refreshDataRecycler()
+        }
+    }
+
+    fun refreshDataRecycler(){
+        with(binding){
+            rayonViewModel.getAllRayon(session.token!!).observe(viewLifecycleOwner) {
+                val adapterRayon = RayonAdapter(it, navController, requireActivity())
+                adapterRayon.notifyDataSetChanged()
                 val lm = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 rvRayonList.apply {
                     adapter = adapterRayon
                     layoutManager = lm
                 }
             }
+        }
+    }
+
+    @Subscribe
+    fun iconDeleteListener(commonParams: CommonParams) {
+        rayonViewModel.deleteRayon(session.token!!, commonParams.id!!).observe(viewLifecycleOwner) {
+            HelperView.showToast(it.message,requireContext()).show()
+            refreshDataRecycler()
         }
     }
 

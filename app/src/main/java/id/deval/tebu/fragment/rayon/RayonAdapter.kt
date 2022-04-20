@@ -11,6 +11,8 @@ import id.deval.tebu.databinding.RvItemRayonBinding
 import id.deval.tebu.db.request.RayonRequest
 import id.deval.tebu.utils.Constanta
 import id.deval.tebu.utils.HelperView
+import id.deval.tebu.utils.event.CommonParams
+import org.greenrobot.eventbus.EventBus
 
 class RayonAdapter(
     private val listRayon: ArrayList<RayonRequest>,
@@ -18,9 +20,11 @@ class RayonAdapter(
     private val activity: Activity
 ) : RecyclerView.Adapter<RayonAdapter.RayonViewHolder>() {
 
+    private val bus = EventBus.getDefault()
+
     class RayonViewHolder(private val binding: RvItemRayonBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: RayonRequest, navController: NavController) {
+        fun bind(data: RayonRequest, navController: NavController, bus: EventBus) {
             with(binding) {
                 mtvRvitemName.text = data.nama
                 mtvRvitemLokasi.text = data.lokasi
@@ -33,6 +37,9 @@ class RayonAdapter(
                     bundle.putString(Constanta.ID_ITEM_ARGS,data.id)
                     navController.navigate(R.id.action_baseFragment_to_addRayonFragment,bundle)
                 }
+                ivRvitemDelete.setOnClickListener {
+                    bus.post(CommonParams(data.id))
+                }
             }
         }
     }
@@ -43,7 +50,7 @@ class RayonAdapter(
     }
 
     override fun onBindViewHolder(holder: RayonViewHolder, position: Int) {
-        holder.bind(listRayon[position],navController)
+        holder.bind(listRayon[position],navController, bus)
     }
 
     override fun getItemCount(): Int {

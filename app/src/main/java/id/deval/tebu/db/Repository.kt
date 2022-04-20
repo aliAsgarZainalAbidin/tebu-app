@@ -41,6 +41,10 @@ class Repository @Inject constructor(
         return apiInterface.getSinderById(token, id)
     }
 
+    suspend fun deleteSinderById(token: String, id: String):MessageResponse{
+        return apiInterface.deleteSinderById(token, id)
+    }
+
     suspend fun addRayon(rayonRequest: RayonRequest, token: String):MessageResponse{
         return apiInterface.addRayon(rayonRequest, token)
     }
@@ -53,12 +57,20 @@ class Repository @Inject constructor(
         return apiInterface.getRayonById(token,id)
     }
 
+    suspend fun deleteRayonById(token: String, id: String):MessageResponse{
+        return apiInterface.deleteRayonById(token, id)
+    }
+
     suspend fun getAllWilayah(token:String):ArrayList<Wilayah>{
         return apiInterface.getAllWilayah(token)
     }
 
     suspend fun getWilayahById(token:String,id:String):Wilayah{
         return apiInterface.getWilayahById(token,id)
+    }
+
+    suspend fun deleteWilayahById(token: String, id: String):MessageResponse{
+        return apiInterface.deleteWilayahById(token, id)
     }
 
     suspend fun addWilayah(wilayah: Wilayah, token: String):MessageResponse{
@@ -75,6 +87,10 @@ class Repository @Inject constructor(
 
     suspend fun getKebunById(token:String,id:String):Kebun{
         return apiInterface.getKebunById(token,id)
+    }
+
+    suspend fun deleteKebunById(token: String, id: String):MessageResponse{
+        return apiInterface.deleteKebunById(token, id)
     }
 
     suspend fun getTaksasiByUser(token: String):ArrayList<Taksasi>{

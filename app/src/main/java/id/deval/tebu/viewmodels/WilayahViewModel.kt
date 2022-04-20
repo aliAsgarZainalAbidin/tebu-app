@@ -23,6 +23,7 @@ class WilayahViewModel @Inject constructor(
     val status: MutableLiveData<Boolean> = MutableLiveData()
     lateinit var mutableListWilayah : MutableLiveData<ArrayList<Wilayah>>
     lateinit var mutableliveMessageResponse: MutableLiveData<MessageResponse>
+    lateinit var mutableliveMessageResponseDelete: MutableLiveData<MessageResponse>
     lateinit var mutableWilayah : MutableLiveData<Wilayah>
 
     fun getAllWilayah(token:String):LiveData<ArrayList<Wilayah>>{
@@ -41,6 +42,15 @@ class WilayahViewModel @Inject constructor(
             mutableliveMessageResponse.postValue(message)
         }
         return mutableliveMessageResponse
+    }
+
+    fun deleteWilayah(token: String, id: String):LiveData<MessageResponse>{
+        mutableliveMessageResponseDelete = MutableLiveData()
+        GlobalScope.launch {
+            val message = repository.deleteWilayahById(token,id)
+            mutableliveMessageResponseDelete.postValue(message)
+        }
+        return mutableliveMessageResponseDelete
     }
 
     fun getWilayahById(token: String, id:String):LiveData<Wilayah>{

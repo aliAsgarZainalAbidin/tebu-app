@@ -69,6 +69,12 @@ interface ApiInterface {
         @Header("token") token: String
     ): ArrayList<RayonRequest>
 
+    @DELETE("rayon/{id}")
+    suspend fun deleteRayonById(
+        @Header("token") token: String,
+        @Path("id") id:String
+    ):MessageResponse
+
     @GET("rayon/{id}")
     suspend fun getRayonById(
         @Header("token") token: String,
@@ -91,6 +97,12 @@ interface ApiInterface {
         @Path("id") id: String
     ): User
 
+    @DELETE("sinder/{id}")
+    suspend fun deleteSinderById(
+        @Header("token") token: String,
+        @Path("id") id:String
+    ):MessageResponse
+
     @GET("wilayah")
     suspend fun getAllWilayah(
         @Header("token") token: String
@@ -102,6 +114,12 @@ interface ApiInterface {
         @Path("id") id: String
     ): Wilayah
 
+    @DELETE("wilayah/{id}")
+    suspend fun deleteWilayahById(
+        @Header("token") token: String,
+        @Path("id") id:String
+    ):MessageResponse
+
     @GET("kebun")
     suspend fun getAllKebun(
         @Header("token") token: String
@@ -112,6 +130,12 @@ interface ApiInterface {
         @Header("token") token: String,
         @Path("id") id: String
     ): Kebun
+
+    @DELETE("kebun/{id}")
+    suspend fun deleteKebunById(
+        @Header("token") token: String,
+        @Path("id") id:String
+    ):MessageResponse
 
     @POST("wilayah")
     suspend fun addWilayah(

@@ -71,8 +71,9 @@ class AddSinderFragment : Fragment() {
                 val telepon = tietAddsinderTelepon.text.toString()
                 val alamat = tietAddsinderAlamat.text.toString()
                 val wilayah = mactvAddsinderWilayah.text.toString()
-                    .split("\\")[2]
+                    .split("\\")[0]
                     .trim()
+                Log.d("TAG", "onViewCreated: RAYON ${wilayah}")
                 val lokasi = mactvAddsinderLokasi.text.toString()
                 var allow = true
                 if (namaSinder.isEmpty()) {

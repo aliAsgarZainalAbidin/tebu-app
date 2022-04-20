@@ -13,13 +13,16 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentSinderBinding
 import id.deval.tebu.db.Session
+import id.deval.tebu.utils.BasedFragment
 import id.deval.tebu.utils.HelperView
+import id.deval.tebu.utils.event.CommonParams
 import id.deval.tebu.viewmodels.LoginViewModel
 import id.deval.tebu.viewmodels.SinderViewModel
+import org.greenrobot.eventbus.Subscribe
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SinderFragment : Fragment() {
+class SinderFragment : BasedFragment() {
 
     private val sinderViewModel: SinderViewModel by viewModels()
     private val loginViewModel: LoginViewModel by viewModels()
@@ -51,6 +54,12 @@ class SinderFragment : Fragment() {
                 HelperView.logout(navController, session)
             }
 
+            refreshRecylcerView()
+        }
+    }
+
+    fun refreshRecylcerView(){
+        with(binding){
             sinderViewModel.getAllSinder(session.token.toString()).observe(viewLifecycleOwner) {
                 val sinderAdapter = SinderAdapter(it, navController, requireActivity())
                 val lm = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -59,6 +68,14 @@ class SinderFragment : Fragment() {
                     layoutManager = lm
                 }
             }
+        }
+    }
+
+    @Subscribe
+    fun iconDeleteListener(commonParams: CommonParams){
+        sinderViewModel.deleteSinder(session.token!!,commonParams.id!!).observe(viewLifecycleOwner){
+            HelperView.showToast(it.message,requireContext()).show()
+            refreshRecylcerView()
         }
     }
 }

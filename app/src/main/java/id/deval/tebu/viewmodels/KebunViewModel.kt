@@ -16,6 +16,7 @@ data class KebunViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
     private lateinit var mutableMessageResponse: MutableLiveData<MessageResponse>
+    private lateinit var mutableMessageResponseDelete: MutableLiveData<MessageResponse>
     private lateinit var mutableListKebun : MutableLiveData<ArrayList<Kebun>>
     private lateinit var mutableKebun : MutableLiveData<Kebun>
 
@@ -26,6 +27,15 @@ data class KebunViewModel @Inject constructor(
             mutableMessageResponse.postValue(message)
         }
         return mutableMessageResponse
+    }
+
+    fun deleteKebun(token: String, id: String): LiveData<MessageResponse> {
+        mutableMessageResponseDelete = MutableLiveData()
+        GlobalScope.launch {
+            val message = repository.deleteKebunById(token, id)
+            mutableMessageResponseDelete.postValue(message)
+        }
+        return mutableMessageResponseDelete
     }
 
     fun getAllKebun(token: String):LiveData<ArrayList<Kebun>>{

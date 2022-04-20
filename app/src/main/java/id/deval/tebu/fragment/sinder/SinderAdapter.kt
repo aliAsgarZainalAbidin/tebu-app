@@ -13,16 +13,20 @@ import id.deval.tebu.databinding.RvItemSinderBinding
 import id.deval.tebu.db.response.User
 import id.deval.tebu.utils.Constanta
 import id.deval.tebu.utils.HelperView
+import id.deval.tebu.utils.event.CommonParams
+import org.greenrobot.eventbus.EventBus
 
 class SinderAdapter(
     private val listSinder: ArrayList<User>,
     private val navController: NavController,
     private val activity: Activity
 ) : RecyclerView.Adapter<SinderAdapter.SinderViewHolder>() {
+    private val bus = EventBus.getDefault()
+
     class SinderViewHolder(private val binding: RvItemSinderBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-        fun bind(data: User,navController: NavController) {
+        fun bind(data: User,navController: NavController, bus: EventBus) {
             with(binding){
                 mtvRvitemName.text = ": ${data.nama}"
                 mtvRvitemUsername.text = ": ${data.username}"
@@ -35,7 +39,9 @@ class SinderAdapter(
                 ivRvitemIcon.setOnClickListener {
                     HelperView.expandListItemRecycler(ivRvitemIcon,clRvitemContainer)
                 }
-                ivRvitemDelete.setOnClickListener {  }
+                ivRvitemDelete.setOnClickListener {
+                    bus.post(CommonParams(data.id))
+                }
                 ivRvitemEdit.setOnClickListener {
                     val bundle = Bundle()
                     bundle.putString(Constanta.ID_ITEM_ARGS,data.id)
@@ -55,7 +61,7 @@ class SinderAdapter(
     }
 
     override fun onBindViewHolder(holder: SinderViewHolder, position: Int) {
-        holder.bind(listSinder[position],navController)
+        holder.bind(listSinder[position],navController, bus)
     }
 
     override fun getItemCount(): Int {

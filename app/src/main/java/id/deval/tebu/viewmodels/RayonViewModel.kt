@@ -16,6 +16,7 @@ class RayonViewModel @Inject constructor(
     private val repository: Repository
 ) :ViewModel() {
     private lateinit var mutableMessageResponse: MutableLiveData<MessageResponse>
+    private lateinit var mutableMessageResponseDelete: MutableLiveData<MessageResponse>
     private lateinit var mutableListRayon : MutableLiveData<ArrayList<RayonRequest>>
     private lateinit var mutableRayon : MutableLiveData<RayonRequest>
 
@@ -26,6 +27,15 @@ class RayonViewModel @Inject constructor(
             mutableMessageResponse.postValue(message)
         }
         return mutableMessageResponse
+    }
+
+    fun deleteRayon(token: String,id: String):LiveData<MessageResponse>{
+        mutableMessageResponseDelete = MutableLiveData()
+        GlobalScope.launch {
+            val message = repository.deleteRayonById(token, id)
+            mutableMessageResponseDelete.postValue(message)
+        }
+        return mutableMessageResponseDelete
     }
 
     fun getAllRayon(token: String):LiveData<ArrayList<RayonRequest>>{

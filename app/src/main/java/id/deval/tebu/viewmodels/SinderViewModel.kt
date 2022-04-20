@@ -18,6 +18,7 @@ class SinderViewModel @Inject constructor(
 ) : ViewModel() {
 
     private lateinit var mutableMessageResponse: MutableLiveData<MessageResponse>
+    private lateinit var mutableMessageResponseDelete: MutableLiveData<MessageResponse>
     private lateinit var mutableListSinder: MutableLiveData<ArrayList<User>>
     private lateinit var mutableUser : MutableLiveData<User>
 
@@ -46,5 +47,14 @@ class SinderViewModel @Inject constructor(
             mutableUser.postValue(data)
         }
         return mutableUser
+    }
+
+    fun deleteSinder(token: String, id: String):LiveData<MessageResponse>{
+        mutableMessageResponseDelete = MutableLiveData()
+        GlobalScope.launch {
+            val data = repository.deleteSinderById(token, id)
+            mutableMessageResponseDelete.postValue(data)
+        }
+        return mutableMessageResponseDelete
     }
 }

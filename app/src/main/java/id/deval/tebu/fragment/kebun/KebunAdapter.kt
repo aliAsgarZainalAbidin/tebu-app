@@ -11,15 +11,20 @@ import id.deval.tebu.databinding.RvItemKebunBinding
 import id.deval.tebu.db.response.Kebun
 import id.deval.tebu.utils.Constanta
 import id.deval.tebu.utils.HelperView
+import id.deval.tebu.utils.event.CommonParams
+import org.greenrobot.eventbus.EventBus
 
 class KebunAdapter(
     private var listKebun : ArrayList<Kebun>,
     private var navController: NavController,
     private var activity:Activity
 ) : RecyclerView.Adapter<KebunAdapter.KebunViewHolder>() {
+
+    private val bus = EventBus.getDefault()
+
     class KebunViewHolder(private val binding: RvItemKebunBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data : Kebun,navController: NavController){
+        fun bind(data : Kebun,navController: NavController, bus: EventBus){
             with(binding){
                 with(data){
                     mtvRvitemName.text = namaKebun
@@ -39,6 +44,10 @@ class KebunAdapter(
                         bundle.putString(Constanta.ID_ITEM_ARGS,data.id)
                         navController.navigate(R.id.action_baseFragment_to_addKebunFragment, bundle)
                     }
+
+                    ivRvitemDelete.setOnClickListener {
+                        bus.post(CommonParams(data.id))
+                    }
                 }
             }
         }
@@ -50,7 +59,7 @@ class KebunAdapter(
     }
 
     override fun onBindViewHolder(holder: KebunViewHolder, position: Int) {
-        holder.bind(listKebun[position],navController)
+        holder.bind(listKebun[position],navController,bus)
     }
 
     override fun getItemCount(): Int {

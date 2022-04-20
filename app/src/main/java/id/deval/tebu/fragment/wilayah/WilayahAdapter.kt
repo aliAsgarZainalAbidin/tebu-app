@@ -11,15 +11,19 @@ import id.deval.tebu.databinding.RvItemWilayahBinding
 import id.deval.tebu.db.response.Wilayah
 import id.deval.tebu.utils.Constanta
 import id.deval.tebu.utils.HelperView
+import id.deval.tebu.utils.event.CommonParams
+import org.greenrobot.eventbus.EventBus
 
 class WilayahAdapter(
     private val listWilayah: ArrayList<Wilayah>,
     private val navController: NavController,
     private val activity: Activity
 ) : RecyclerView.Adapter<WilayahAdapter.WilayahViewHolder>() {
+    private val bus = EventBus.getDefault()
+
     class WilayahViewHolder(private val binding: RvItemWilayahBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Wilayah,navController: NavController) {
+        fun bind(data: Wilayah,navController: NavController,bus: EventBus) {
             with(binding){
                 mtvRvitemName.text = data.id.toString()
                 mtvRvitemNamaWilayah.text = data.wilayah
@@ -34,7 +38,9 @@ class WilayahAdapter(
                     bundle.putString(Constanta.ID_ITEM_ARGS,data.id)
                     navController.navigate(R.id.action_baseFragment_to_addWilayahFragment,bundle)
                 }
-                ivRvitemDelete.setOnClickListener {  }
+                ivRvitemDelete.setOnClickListener {
+                    bus.post(CommonParams(data.id))
+                }
             }
         }
     }
@@ -45,7 +51,7 @@ class WilayahAdapter(
     }
 
     override fun onBindViewHolder(holder: WilayahViewHolder, position: Int) {
-        holder.bind(listWilayah[position],navController)
+        holder.bind(listWilayah[position],navController,bus)
     }
 
     override fun getItemCount(): Int {

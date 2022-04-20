@@ -14,10 +14,14 @@ import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentAddWilayahBinding
 import id.deval.tebu.db.Session
 import id.deval.tebu.db.response.Wilayah
+import id.deval.tebu.utils.BasedFragment
 import id.deval.tebu.utils.Constanta
 import id.deval.tebu.viewmodels.RayonViewModel
 import id.deval.tebu.utils.HelperView
+import id.deval.tebu.utils.event.CommonParams
 import id.deval.tebu.viewmodels.WilayahViewModel
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -105,5 +109,7 @@ class AddWilayahFragment : Fragment() {
             }
         }
     }
+
+
 
 }
