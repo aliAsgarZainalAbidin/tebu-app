@@ -41,6 +41,10 @@ class Repository @Inject constructor(
         return apiInterface.getSinderById(token, id)
     }
 
+    suspend fun updateSinder(token: String, user: User, id: String):User{
+        return apiInterface.updateSinder(token, user,id)
+    }
+
     suspend fun deleteSinderById(token: String, id: String):MessageResponse{
         return apiInterface.deleteSinderById(token, id)
     }
@@ -95,6 +99,10 @@ class Repository @Inject constructor(
 
     suspend fun getKebunById(token:String,id:String):Kebun{
         return apiInterface.getKebunById(token,id)
+    }
+
+    suspend fun updateKebun(token:String, kebun: Kebun, id: String):Kebun{
+        return apiInterface.updateKebun(token,kebun, id)
     }
 
     suspend fun deleteKebunById(token: String, id: String):MessageResponse{

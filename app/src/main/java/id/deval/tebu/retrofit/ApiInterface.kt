@@ -110,6 +110,13 @@ interface ApiInterface {
         @Path("id") id:String
     ):MessageResponse
 
+    @PUT("sinder/{id}")
+    suspend fun updateSinder(
+        @Header("token") token: String,
+        @Body user: User,
+        @Path("id") id: String
+    ): User
+
     @GET("wilayah")
     suspend fun getAllWilayah(
         @Header("token") token: String
@@ -135,6 +142,13 @@ interface ApiInterface {
     @GET("kebun/{id}")
     suspend fun getKebunById(
         @Header("token") token: String,
+        @Path("id") id: String
+    ): Kebun
+
+    @PUT("kebun/{id}")
+    suspend fun updateKebun(
+        @Header("token") token: String,
+        @Body kebun: Kebun,
         @Path("id") id: String
     ): Kebun
 

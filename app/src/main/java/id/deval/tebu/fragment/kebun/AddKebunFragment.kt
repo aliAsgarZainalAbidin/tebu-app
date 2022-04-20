@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
@@ -30,6 +31,7 @@ class AddKebunFragment : Fragment() {
     lateinit var session: Session
     private lateinit var listSinder: ArrayList<String>
     private lateinit var _binding: FragmentAddKebunBinding
+    private lateinit var navController: NavController
     private val binding get() = _binding
 
     override fun onCreateView(
@@ -43,6 +45,7 @@ class AddKebunFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listSinder = arrayListOf()
+        navController = HelperView.getMainNavController(requireActivity())
         val id = arguments?.getString(Constanta.ID_ITEM_ARGS) ?: ""
 
         with(binding) {
@@ -114,7 +117,10 @@ class AddKebunFragment : Fragment() {
                                 HelperView.showToast(it.message, requireContext()).show()
                             }
                     } else {
-                        //UPDATE BY ID
+                        kebunViewModel.updateKebun(session.token!!,kebun,id).observe(viewLifecycleOwner){
+                            HelperView.showToast("Data Berhasil Terupdate",requireContext()).show()
+                            navController.popBackStack()
+                        }
                     }
                 }
 

@@ -15,6 +15,7 @@ import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentAddSinderBinding
 import id.deval.tebu.db.Session
 import id.deval.tebu.db.request.SinderRequest
+import id.deval.tebu.db.response.User
 import id.deval.tebu.utils.Constanta
 import id.deval.tebu.utils.HelperView
 import id.deval.tebu.viewmodels.SinderViewModel
@@ -29,6 +30,7 @@ class AddSinderFragment : Fragment() {
     private lateinit var navController: NavController
     private lateinit var listWilayah: ArrayList<String>
     private lateinit var _binding: FragmentAddSinderBinding
+
     @Inject
     lateinit var session: Session
     private val binding get() = _binding
@@ -45,22 +47,22 @@ class AddSinderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = findNavController()
         listWilayah = arrayListOf()
-        val id = arguments?.getString(Constanta.ID_ITEM_ARGS)?:""
+        val id = arguments?.getString(Constanta.ID_ITEM_ARGS) ?: ""
 
         with(binding) {
             ivAddsinderBack.setOnClickListener {
                 findNavController().popBackStack()
             }
 
-            if (!id.isEmpty()){
-                sinderViewModel.getSinderById(session.token!!,id).observe(viewLifecycleOwner){
+            if (!id.isEmpty()) {
+                sinderViewModel.getSinderById(session.token!!, id).observe(viewLifecycleOwner) {
                     tietAddsinderNama.setText(it.nama)
                     tietAddsinderPassword.setText(it.password)
                     tietAddsinderUsername.setText(it.username)
                     tietAddsinderTelepon.setText(it.telepon)
                     tietAddsinderAlamat.setText(it.alamat)
-                    mactvAddsinderWilayah.setText(it.wilayah,false)
-                    mactvAddsinderLokasi.setText(it.lokasi,false)
+                    mactvAddsinderWilayah.setText(it.wilayah, false)
+                    mactvAddsinderLokasi.setText(it.lokasi, false)
                 }
             }
 
@@ -85,7 +87,7 @@ class AddSinderFragment : Fragment() {
                     allow = false
                     tietAddsinderUsername.error = "Silahkan isi data"
                 }
-                if (password.isEmpty()||password.length<8) {
+                if (password.isEmpty() || password.length < 8) {
                     allow = false
                     tietAddsinderPassword.error = "Silahkan isi data minimal 8 karakter"
                 }
@@ -103,7 +105,7 @@ class AddSinderFragment : Fragment() {
                     mactvAddsinderWilayah.error = "Silahkan isi data"
                 }
                 if (allow) {
-                    if (id.isEmpty()){
+                    if (id.isEmpty()) {
                         val sinder =
                             SinderRequest(
                                 namaSinder,
@@ -114,13 +116,29 @@ class AddSinderFragment : Fragment() {
                                 wilayah,
                                 lokasi = lokasi
                             )
-
                         sinderViewModel.addSinder(sinder, session.token.toString())
                             .observe(viewLifecycleOwner) {
                                 HelperView.showToast(it.message, requireContext()).show()
                             }
                     } else {
-                        //UPDATE BY ID
+                        val user = User(
+                            id,
+                            namaSinder,
+                            username,
+                            password,
+                            "sinder",
+                            telepon,
+                            alamat,
+                            wilayah,
+                            lokasi,
+                            null
+                        )
+                        sinderViewModel.updateSinder(session.token!!, user, id)
+                            .observe(viewLifecycleOwner) {
+                                HelperView.showToast("Data Berhasil Terupdate", requireContext())
+                                    .show()
+                                navController.popBackStack()
+                            }
                     }
                 }
             }
