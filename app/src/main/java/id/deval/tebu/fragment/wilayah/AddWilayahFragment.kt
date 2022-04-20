@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
@@ -29,6 +30,7 @@ class AddWilayahFragment : Fragment() {
 
     private val wilayahViewModel: WilayahViewModel by viewModels()
     private val rayonViewModel: RayonViewModel by viewModels()
+    private lateinit var navController: NavController
 
     @Inject
     lateinit var session: Session
@@ -47,6 +49,7 @@ class AddWilayahFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listRayon = arrayListOf()
+        navController = HelperView.getMainNavController(requireActivity())
         val id = arguments?.getString(Constanta.ID_ITEM_ARGS) ?: ""
         Log.d("TAG", "onViewCreated: $id")
 
@@ -103,7 +106,10 @@ class AddWilayahFragment : Fragment() {
                                 HelperView.showToast(it.message, requireContext()).show()
                             }
                     } else {
-                        //UPDATE BY ID
+                        wilayahViewModel.updateWilayah(session.token!!,wilayah,id).observe(viewLifecycleOwner){
+                            HelperView.showToast("Data Sukses Terupdate",requireContext()).show()
+                            navController.popBackStack()
+                        }
                     }
                 }
             }

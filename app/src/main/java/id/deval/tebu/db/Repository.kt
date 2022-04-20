@@ -81,6 +81,10 @@ class Repository @Inject constructor(
         return apiInterface.addWilayah(token, wilayah)
     }
 
+    suspend fun updateWilayah(token: String,wilayah: Wilayah,id: String):Wilayah{
+        return apiInterface.updateWilayah(token, wilayah,id)
+    }
+
     suspend fun addKebun(token:String,kebun: Kebun):MessageResponse{
         return apiInterface.addKebun(token, kebun)
     }

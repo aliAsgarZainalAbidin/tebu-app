@@ -150,6 +150,13 @@ interface ApiInterface {
         @Body wilayah: Wilayah
     ): MessageResponse
 
+    @PUT("wilayah/{id}")
+    suspend fun updateWilayah(
+        @Header("token") token: String,
+        @Body wilayah: Wilayah,
+        @Path("id") id: String
+    ): Wilayah
+
     @POST("kebun")
     suspend fun addKebun(
         @Header("token") token: String,
