@@ -1,9 +1,7 @@
 package id.deval.tebu.db
 
 import android.util.Log
-import id.deval.tebu.db.request.LoginRequest
-import id.deval.tebu.db.request.RayonRequest
-import id.deval.tebu.db.request.SinderRequest
+import id.deval.tebu.db.request.*
 import id.deval.tebu.db.response.*
 import id.deval.tebu.retrofit.ApiInterface
 import java.lang.Exception
@@ -34,6 +32,20 @@ class Repository @Inject constructor(
         val listUser = arrayListOf<User>()
         val userSinder = apiInterface.getAllSinder(token).data
         listUser.addAll(userSinder as ArrayList)
+        return listUser
+    }
+
+    suspend fun getListUser(token: String):ArrayList<User>{
+        val listUser = arrayListOf<User>()
+        val user = apiInterface.getListUser(token)
+        listUser.addAll(user)
+        return listUser
+    }
+
+    suspend fun getKebunBySinder(token: String,id: String):ArrayList<TaksasiWithUserRequest>{
+        val listUser = arrayListOf<TaksasiWithUserRequest>()
+        val user = apiInterface.getKebunBySinder(token,id)
+        listUser.addAll(user)
         return listUser
     }
 
@@ -117,7 +129,7 @@ class Repository @Inject constructor(
         return apiInterface.getTaksasiByUser(token,id)
     }
 
-    suspend fun updateTaksasiUser(token: String, id:String,taksasi: Taksasi):MessageResponse{
+    suspend fun updateTaksasiUser(token: String, id:String,taksasi: TaksasiRequest):TaksasiRequest{
         return apiInterface.updateTaksasiUser(token,id,taksasi)
     }
 }

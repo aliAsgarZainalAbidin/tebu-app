@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentAddTaksasiBinding
 import id.deval.tebu.db.Session
+import id.deval.tebu.db.request.TaksasiRequest
+import id.deval.tebu.db.response.Taksasi
 import id.deval.tebu.utils.Constanta
 import id.deval.tebu.utils.HelperView
 import id.deval.tebu.viewmodels.TaksasiViewModel
@@ -54,7 +57,26 @@ class AddTaksasiFragment : Fragment() {
             }
 
             btnAddtaksasiSave.setOnClickListener {
+                val namaKebun = tietAddtaksasiNama.text.toString()
+                val luas = tietAddtaksasiLuas.text.toString()
+                val mandor = tietAddtaksasiMandor.text.toString()
+                val faktor = tietAddtaksasiFaktor.text.toString()
+                val jmlh = tietAddtaksasiJmlh.text.toString()
+                val ini = tietAddtaksasiIni.text.toString()
+                val tebang = tietAddtaksasiTebang.text.toString()
+                val diameter = tietAddtaksasiDiameter.text.toString()
+                val berat = tietAddtaksasiBerat.text.toString()
+                val pandangan = tietAddtaksasiPandangan.text.toString()
+                val row = jmlh.toDouble().times(100).toString()
+                val perHa = row.toDouble().times(faktor.toDouble()).toString()
+                val hit = (perHa.toDouble() * tebang.toDouble() * berat.toDouble() / 100)/10
+                val perHit = (hit + pandangan.toDouble())/2
+                val ton = (perHit*luas.toDouble())
 
+                val taksasiUser= TaksasiRequest(id,luas,mandor,faktor,jmlh,row,perHa,ini,tebang,diameter,berat,hit.toString(),pandangan, perHit.toString(), ton.toString())
+                taksasiViewModel.updateTaksasiUser(session.token!!, id, taksasiUser).observe(viewLifecycleOwner){
+                    findNavController().popBackStack()
+                }
             }
         }
     }

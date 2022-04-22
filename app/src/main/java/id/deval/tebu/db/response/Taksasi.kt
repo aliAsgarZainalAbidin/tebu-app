@@ -8,7 +8,7 @@ data class Taksasi(
     @field:SerializedName("luas")
     val luas:String,
     @field:SerializedName("petak")
-    val petak:String,
+    val petak:String?,
     @field:SerializedName("jenis_tebu")
     val jenisTebu:String,
     @field:SerializedName("kategori")

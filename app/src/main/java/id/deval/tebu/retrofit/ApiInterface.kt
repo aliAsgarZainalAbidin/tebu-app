@@ -1,8 +1,6 @@
 package id.deval.tebu.retrofit
 
-import id.deval.tebu.db.request.LoginRequest
-import id.deval.tebu.db.request.RayonRequest
-import id.deval.tebu.db.request.SinderRequest
+import id.deval.tebu.db.request.*
 import id.deval.tebu.db.response.*
 import retrofit2.http.*
 
@@ -98,6 +96,17 @@ interface ApiInterface {
         @Header("token") token: String
     ): GlobalWrapperResponse<ArrayList<User>>
 
+    @GET("laporan")
+    suspend fun getListUser(
+        @Header("token") token: String
+    ): ArrayList<User>
+
+    @GET("laporan/{id}")
+    suspend fun getKebunBySinder(
+        @Header("token") token: String,
+        @Path("id") id: String
+    ): ArrayList<TaksasiWithUserRequest>
+
     @GET("sinder/{id}")
     suspend fun getSinderById(
         @Header("token") token: String,
@@ -192,6 +201,6 @@ interface ApiInterface {
     suspend fun updateTaksasiUser(
         @Header("token") token:String,
         @Path("id") id:String,
-        @Body taksasi: Taksasi,
-    ):MessageResponse
+        @Body taksasi: TaksasiRequest,
+    ):TaksasiRequest
 }

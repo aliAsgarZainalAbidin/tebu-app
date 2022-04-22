@@ -61,6 +61,9 @@
             android:name="idItem"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_baseFragment_to_detailLaporanFragment"
+            app:destination="@id/detailLaporanFragment" />
     </fragment>
 
     <fragment
@@ -110,4 +113,9 @@
         android:id="@+id/detailTaksasiFragment"
         android:name="id.deval.tebu.fragment.taksasi.DetailTaksasiFragment"
         android:label="DetailTaksasiFragment" />
+    <fragment
+        android:id="@+id/detailLaporanFragment"
+        android:name="id.deval.tebu.fragment.laporan.DetailLaporanFragment"
+        android:label="fragment_detail_laporan"
+        tools:layout="@layout/fragment_detail_laporan" />
 </navigation>

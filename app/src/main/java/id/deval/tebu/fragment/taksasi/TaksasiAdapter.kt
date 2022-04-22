@@ -10,6 +10,7 @@ import id.deval.tebu.R
 import id.deval.tebu.databinding.RvItemRincianTaksasiBinding
 import id.deval.tebu.db.response.Taksasi
 import id.deval.tebu.utils.Constanta
+import id.deval.tebu.utils.HelperView
 
 class TaksasiAdapter(
     private val listTaksasi : ArrayList<Taksasi>,
@@ -30,7 +31,14 @@ class TaksasiAdapter(
                 ivRvitemDelete.setOnClickListener {
                     val bundle = Bundle()
                     bundle.putString(Constanta.ID_ITEM_ARGS, taksasi.id)
+                    bundle.putString(Constanta.PETAK, taksasi.petak)
+                    bundle.putString(Constanta.JENIS, taksasi.jenisTebu)
+                    bundle.putString(Constanta.KATEGORI, taksasi.kategori)
                     navController.navigate(R.id.action_taksasiFragment_to_detailTaksasiFragment,bundle)
+                }
+
+                ivRvitemIcon.setOnClickListener {
+                    HelperView.expandListItemRecycler(ivRvitemIcon, clRvitemContainer)
                 }
 
                 ivRvitemEdit.setOnClickListener {

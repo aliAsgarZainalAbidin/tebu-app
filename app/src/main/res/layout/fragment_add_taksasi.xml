@@ -120,7 +120,7 @@
                 android:id="@+id/tiet_addtaksasi_jmlh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 tools:text="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -210,7 +210,7 @@
                 android:id="@+id/tiet_addtaksasi_pandangan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 tools:text="1000" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -221,7 +221,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_item"
-            tools:text="Simpan"
+            android:text="Simpan"
             app:layout_constraintTop_toBottomOf="@id/til_addtaksasi_pandangan" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,15 +37,18 @@ class DetailTaksasiFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = HelperView.getMainNavController(requireActivity())
         val id = arguments?.getString(Constanta.ID_ITEM_ARGS)
+        val petak = arguments?.getString(Constanta.PETAK)
+        val jenis = arguments?.getString(Constanta.JENIS)
+        val kategori = arguments?.getString(Constanta.KATEGORI)
         with(binding){
             taksasiViewModel.getTaksasiById(session.token!!,id!!).observe(viewLifecycleOwner){
                 val taksasi = it[0]
                 mtvTaksasiGreeting.text = "Mandor : ${taksasi.mandor}"
                 mtvDetailtaksasiKebun.text = taksasi.namaKebun
-                mtvDetailtaksasiPtk.text = taksasi.petak
+                mtvDetailtaksasiPtk.text = petak
                 mtvDetailtaksasiLuas.text = taksasi.luas
-                mtvDetailtaksasiJenis.text = taksasi.jenisTebu
-                mtvDetailtaksasiKtg.text = taksasi.kategori
+                mtvDetailtaksasiJenis.text = jenis
+                mtvDetailtaksasiKtg.text = kategori
                 mtvDetailtaksasiFaktor.text = taksasi.faktorLeng
                 mtvDetailtaksasiJmlBpm.text = taksasi.batangPerMeter
                 mtvDetailtaksasiJmlBpr.text = taksasi.batangPerRow

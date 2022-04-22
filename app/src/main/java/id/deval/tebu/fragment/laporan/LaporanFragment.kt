@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentLaporanBinding
 import id.deval.tebu.db.Session
 import id.deval.tebu.utils.HelperView
+import id.deval.tebu.viewmodels.LaporanViewModel
 import id.deval.tebu.viewmodels.LoginViewModel
 import javax.inject.Inject
 
@@ -19,6 +21,7 @@ import javax.inject.Inject
 class LaporanFragment : Fragment() {
 
     private val loginViewModel: LoginViewModel by viewModels()
+    private val laporanViewModel : LaporanViewModel by viewModels()
     private lateinit var navController: NavController
     private lateinit var _binding : FragmentLaporanBinding
     private val binding get() = _binding
@@ -39,6 +42,16 @@ class LaporanFragment : Fragment() {
             mtvLaporanLogout.setOnClickListener {
                 loginViewModel.logout(session.id!!,session.token!!)
                 HelperView.logout(navController, session)
+            }
+
+            laporanViewModel.getListUser(session.token!!).observe(viewLifecycleOwner){
+                val lapAdapter = LaporanAdapter(it,navController,requireActivity())
+                lapAdapter.notifyDataSetChanged()
+                val lm = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
+                rvLaporanList.apply {
+                    adapter = lapAdapter
+                    layoutManager = lm
+                }
             }
         }
     }

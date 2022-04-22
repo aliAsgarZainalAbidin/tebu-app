@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.deval.tebu.db.Repository
+import id.deval.tebu.db.request.TaksasiRequest
 import id.deval.tebu.db.response.MessageResponse
 import id.deval.tebu.db.response.Taksasi
 import kotlinx.coroutines.GlobalScope
@@ -17,7 +18,7 @@ class TaksasiViewModel @Inject constructor(
 ) : ViewModel() {
     private lateinit var listTaksasi : MutableLiveData<ArrayList<Taksasi>>
     private lateinit var taksasi : MutableLiveData<ArrayList<Taksasi>>
-    private lateinit var messageResponse : MutableLiveData<MessageResponse>
+    private lateinit var messageResponse : MutableLiveData<TaksasiRequest>
 
     fun getTaksasiByUser(token:String):LiveData<ArrayList<Taksasi>>{
         listTaksasi = MutableLiveData()
@@ -37,7 +38,7 @@ class TaksasiViewModel @Inject constructor(
         return taksasi
     }
 
-    fun updateTaksasiUser(token:String,id:String,taksasi: Taksasi):LiveData<MessageResponse>{
+    fun updateTaksasiUser(token:String,id:String,taksasi: TaksasiRequest):LiveData<TaksasiRequest>{
         messageResponse = MutableLiveData()
         GlobalScope.launch {
             val data = repository.updateTaksasiUser(token,id,taksasi)
