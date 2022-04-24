@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.deval.tebu.db.Repository
+import id.deval.tebu.db.response.GlobalWrapperResponse
 import id.deval.tebu.db.response.Kebun
+import id.deval.tebu.db.response.KebunWrapper
 import id.deval.tebu.db.response.MessageResponse
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -17,8 +19,8 @@ data class KebunViewModel @Inject constructor(
 ) : ViewModel() {
     private lateinit var mutableMessageResponse: MutableLiveData<MessageResponse>
     private lateinit var mutableMessageResponseDelete: MutableLiveData<MessageResponse>
-    private lateinit var mutableListKebun : MutableLiveData<ArrayList<Kebun>>
-    private lateinit var mutableKebun : MutableLiveData<Kebun>
+    private lateinit var mutableListKebun : MutableLiveData<GlobalWrapperResponse<KebunWrapper<ArrayList<Kebun>>>>
+    private lateinit var mutableKebun : MutableLiveData<GlobalWrapperResponse<KebunWrapper<Kebun>>>
     private lateinit var mutableKebunUpdated : MutableLiveData<Kebun>
 
     fun addKebun(token: String, kebun: Kebun): LiveData<MessageResponse> {
@@ -39,7 +41,7 @@ data class KebunViewModel @Inject constructor(
         return mutableMessageResponseDelete
     }
 
-    fun getAllKebun(token: String):LiveData<ArrayList<Kebun>>{
+    fun getAllKebun(token: String):LiveData<GlobalWrapperResponse<KebunWrapper<ArrayList<Kebun>>>>{
         mutableListKebun = MutableLiveData()
         GlobalScope.launch {
             val data = repository.getAllKebun(token)
@@ -48,7 +50,7 @@ data class KebunViewModel @Inject constructor(
         return mutableListKebun
     }
 
-    fun getKebunById(token: String, id:String):LiveData<Kebun>{
+    fun getKebunById(token: String, id:String):LiveData<GlobalWrapperResponse<KebunWrapper<Kebun>>>{
         mutableKebun = MutableLiveData()
         GlobalScope.launch {
             val data = repository.getKebunById(token, id)

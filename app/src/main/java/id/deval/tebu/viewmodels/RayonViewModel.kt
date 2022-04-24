@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.deval.tebu.db.Repository
 import id.deval.tebu.db.request.RayonRequest
+import id.deval.tebu.db.response.GlobalWrapperResponse
 import id.deval.tebu.db.response.MessageResponse
+import id.deval.tebu.db.response.RayonWrapper
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,8 +19,8 @@ class RayonViewModel @Inject constructor(
 ) :ViewModel() {
     private lateinit var mutableMessageResponse: MutableLiveData<MessageResponse>
     private lateinit var mutableMessageResponseDelete: MutableLiveData<MessageResponse>
-    private lateinit var mutableListRayon : MutableLiveData<ArrayList<RayonRequest>>
-    private lateinit var mutableRayon : MutableLiveData<RayonRequest>
+    private lateinit var mutableListRayon : MutableLiveData<GlobalWrapperResponse<RayonWrapper<ArrayList<RayonRequest>>>>
+    private lateinit var mutableRayon : MutableLiveData<GlobalWrapperResponse<RayonWrapper<RayonRequest>>>
     private lateinit var mutableRayonUpdated : MutableLiveData<RayonRequest>
 
     fun addRayon(rayonRequest: RayonRequest, token :String):LiveData<MessageResponse>{
@@ -39,7 +41,7 @@ class RayonViewModel @Inject constructor(
         return mutableMessageResponseDelete
     }
 
-    fun getAllRayon(token: String):LiveData<ArrayList<RayonRequest>>{
+    fun getAllRayon(token: String):LiveData<GlobalWrapperResponse<RayonWrapper<ArrayList<RayonRequest>>>>{
         mutableListRayon = MutableLiveData()
         GlobalScope.launch {
             val listRayon = repository.getAllrayon(token)
@@ -48,7 +50,7 @@ class RayonViewModel @Inject constructor(
         return mutableListRayon
     }
 
-    fun getRayonById(token:String, id:String):LiveData<RayonRequest>{
+    fun getRayonById(token:String, id:String):LiveData<GlobalWrapperResponse<RayonWrapper<RayonRequest>>>{
         mutableRayon = MutableLiveData()
         GlobalScope.launch {
             val rayon = repository.getRayonById(token,id)

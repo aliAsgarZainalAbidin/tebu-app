@@ -55,13 +55,15 @@ class AddKebunFragment : Fragment() {
 
             if (!id.isNullOrEmpty()) {
                 kebunViewModel.getKebunById(session.token!!, id).observe(viewLifecycleOwner) {
-                    tietAddkebunNama.setText(it.namaKebun)
-                    tietAddkebunLuas.setText(it.luas)
-                    tietAddkebunPetak.setText(it.petak)
-                    tietAddkebunJenis.setText(it.jenisTebu)
-                    tietAddkebunKategori.setText(it.kategori)
-                    mactvAddkebunSinder.setText(it.namaSinder, false)
-                    mactvAddkebunWilayah.setText(it.wilayah, false)
+                    with(it.data.kebun){
+                        tietAddkebunNama.setText(this.namaKebun)
+                        tietAddkebunLuas.setText(this.luas)
+                        tietAddkebunPetak.setText(this.petak)
+                        tietAddkebunJenis.setText(this.jenisTebu)
+                        tietAddkebunKategori.setText(this.kategori)
+                        mactvAddkebunSinder.setText(this.namaSinder, false)
+                        mactvAddkebunWilayah.setText(this.wilayah, false)
+                    }
                 }
             }
 
@@ -127,13 +129,13 @@ class AddKebunFragment : Fragment() {
             }
 
             sinderViewModel.getAllSinder(session.token!!).observe(viewLifecycleOwner) {
-                it.map {
+                it.data.sinder.map {
                     listSinder.add("${it.nama}\\${it.wilayah}")
                 }
                 val adapterUser = ArrayAdapter(requireContext(), R.layout.list_item, listSinder)
                 mactvAddkebunSinder.setAdapter(adapterUser)
                 mactvAddkebunSinder.setOnItemClickListener { adapterView, view, i, l ->
-                    mactvAddkebunWilayah.setText(it[i].wilayah)
+                    mactvAddkebunWilayah.setText(it.data.sinder[i].wilayah)
                     mactvAddkebunSinder.error = null
                 }
             }

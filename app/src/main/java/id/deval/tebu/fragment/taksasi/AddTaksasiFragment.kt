@@ -43,7 +43,7 @@ class AddTaksasiFragment : Fragment() {
 
         with(binding){
             taksasiViewModel.getTaksasiById(session.token!!,id!!).observe(viewLifecycleOwner){
-                val taksasi = it[0]
+                val taksasi = it.data.taksasi[0]
                 tietAddtaksasiNama.setText(taksasi.namaKebun)
                 tietAddtaksasiLuas.setText(taksasi.luas)
                 tietAddtaksasiMandor.setText(taksasi.mandor)

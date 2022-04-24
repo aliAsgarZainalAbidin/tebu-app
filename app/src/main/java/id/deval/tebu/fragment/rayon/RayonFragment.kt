@@ -71,7 +71,7 @@ class RayonFragment : Fragment() {
     fun refreshDataRecycler(){
         with(binding){
             rayonViewModel.getAllRayon(session.token!!).observe(viewLifecycleOwner) {
-                val adapterRayon = RayonAdapter(it, navController, requireActivity())
+                val adapterRayon = RayonAdapter(it.data.rayon, navController, requireActivity())
                 adapterRayon.notifyDataSetChanged()
                 val lm = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 rvRayonList.apply {

@@ -62,7 +62,7 @@ class KebunFragment : BasedFragment() {
     fun refreshRecyclerView(){
         with(binding){
             kebunViewModel.getAllKebun(session.token!!).observe(viewLifecycleOwner){
-                val adapterKebun = KebunAdapter(it,navController,requireActivity())
+                val adapterKebun = KebunAdapter(it.data.kebun,navController,requireActivity())
                 val lm = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
                 rvKebunList.apply {
                     adapter = adapterKebun

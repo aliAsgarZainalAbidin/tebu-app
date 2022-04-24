@@ -56,13 +56,15 @@ class AddSinderFragment : Fragment() {
 
             if (!id.isEmpty()) {
                 sinderViewModel.getSinderById(session.token!!, id).observe(viewLifecycleOwner) {
-                    tietAddsinderNama.setText(it.nama)
-                    tietAddsinderPassword.setText(it.password)
-                    tietAddsinderUsername.setText(it.username)
-                    tietAddsinderTelepon.setText(it.telepon)
-                    tietAddsinderAlamat.setText(it.alamat)
-                    mactvAddsinderWilayah.setText(it.wilayah, false)
-                    mactvAddsinderLokasi.setText(it.lokasi, false)
+                    with(it.data.sinder){
+                        tietAddsinderNama.setText(this.nama)
+                        tietAddsinderPassword.setText(this.password)
+                        tietAddsinderUsername.setText(this.username)
+                        tietAddsinderTelepon.setText(this.telepon)
+                        tietAddsinderAlamat.setText(this.alamat)
+                        mactvAddsinderWilayah.setText(this.wilayah, false)
+                        mactvAddsinderLokasi.setText(this.lokasi, false)
+                    }
                 }
             }
 
@@ -144,13 +146,13 @@ class AddSinderFragment : Fragment() {
             }
 
             wilayahViewModel.getAllWilayah(session.token.toString()).observe(viewLifecycleOwner) {
-                it.map {
+                it.data.wilayah.map {
                     listWilayah.add("${it.wilayah}\\${it.rayon}\\${it.lokasi}")
                 }
                 val adapterWilayah = ArrayAdapter(requireContext(), R.layout.list_item, listWilayah)
                 mactvAddsinderWilayah.setAdapter(adapterWilayah)
                 mactvAddsinderWilayah.setOnItemClickListener { adapterView, view, i, l ->
-                    mactvAddsinderLokasi.setText(it[i].lokasi)
+                    mactvAddsinderLokasi.setText(it.data.wilayah[i].lokasi)
                     mactvAddsinderWilayah.error = null
                 }
             }

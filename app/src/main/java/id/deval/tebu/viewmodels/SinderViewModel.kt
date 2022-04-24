@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.deval.tebu.db.Repository
 import id.deval.tebu.db.request.SinderRequest
+import id.deval.tebu.db.response.GlobalWrapperResponse
 import id.deval.tebu.db.response.MessageResponse
+import id.deval.tebu.db.response.SinderWrapper
 import id.deval.tebu.db.response.User
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -19,8 +21,8 @@ class SinderViewModel @Inject constructor(
 
     private lateinit var mutableMessageResponse: MutableLiveData<MessageResponse>
     private lateinit var mutableMessageResponseDelete: MutableLiveData<MessageResponse>
-    private lateinit var mutableListSinder: MutableLiveData<ArrayList<User>>
-    private lateinit var mutableUser : MutableLiveData<User>
+    private lateinit var mutableListSinder: MutableLiveData<GlobalWrapperResponse<SinderWrapper<ArrayList<User>>>>
+    private lateinit var mutableUser : MutableLiveData<GlobalWrapperResponse<SinderWrapper<User>>>
     private lateinit var mutableUserUpdated : MutableLiveData<User>
 
     fun addSinder(sinderRequest: SinderRequest,token:String):LiveData<MessageResponse>{
@@ -32,7 +34,7 @@ class SinderViewModel @Inject constructor(
         return mutableMessageResponse
     }
 
-    fun getAllSinder(token : String):LiveData<ArrayList<User>>{
+    fun getAllSinder(token : String):LiveData<GlobalWrapperResponse<SinderWrapper<ArrayList<User>>>>{
         mutableListSinder = MutableLiveData()
         GlobalScope.launch {
             val data = repository.getAllSinder(token)
@@ -41,7 +43,7 @@ class SinderViewModel @Inject constructor(
         return mutableListSinder
     }
 
-    fun getSinderById(token:String,id:String):LiveData<User>{
+    fun getSinderById(token:String,id:String):LiveData<GlobalWrapperResponse<SinderWrapper<User>>>{
         mutableUser = MutableLiveData()
         GlobalScope.launch {
             val data = repository.getSinderById(token, id)

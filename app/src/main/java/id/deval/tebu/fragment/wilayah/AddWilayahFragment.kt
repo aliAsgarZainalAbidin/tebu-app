@@ -60,21 +60,23 @@ class AddWilayahFragment : Fragment() {
 
             if (!id.isEmpty()) {
                 wilayahViewModel.getWilayahById(session.token!!, id).observe(viewLifecycleOwner) {
-                    tietAddwilayahWilayah.setText(it.wilayah)
-                    mactvAddwilayahRayon.setText(it.rayon, false)
-                    mactvAddwilayahLokasi.setText(it.lokasi, false)
+                    with(it.data.wilayah){
+                        tietAddwilayahWilayah.setText(this.wilayah)
+                        mactvAddwilayahRayon.setText(this.rayon, false)
+                        mactvAddwilayahLokasi.setText(this.lokasi, false)
+                    }
                 }
             }
 
             rayonViewModel.getAllRayon(session.token!!).observe(viewLifecycleOwner) {
-                it.map {
+                it.data.rayon.map {
                     listRayon.add("${it.nama} \\ ${it.lokasi}")
                 }
                 val adapterRayon = ArrayAdapter(requireContext(), R.layout.list_item, listRayon)
                 adapterRayon.notifyDataSetChanged()
                 mactvAddwilayahRayon.setAdapter(adapterRayon)
                 mactvAddwilayahRayon.setOnItemClickListener { adapterView, view, i, l ->
-                    mactvAddwilayahLokasi.setText(it[i].lokasi, false)
+                    mactvAddwilayahLokasi.setText(it.data.rayon[i].lokasi, false)
                     mactvAddwilayahRayon.error = null
                 }
             }

@@ -42,7 +42,7 @@ class DetailTaksasiFragment : Fragment() {
         val kategori = arguments?.getString(Constanta.KATEGORI)
         with(binding){
             taksasiViewModel.getTaksasiById(session.token!!,id!!).observe(viewLifecycleOwner){
-                val taksasi = it[0]
+                val taksasi = it.data.taksasi[0]
                 mtvTaksasiGreeting.text = "Mandor : ${taksasi.mandor}"
                 mtvDetailtaksasiKebun.text = taksasi.namaKebun
                 mtvDetailtaksasiPtk.text = petak

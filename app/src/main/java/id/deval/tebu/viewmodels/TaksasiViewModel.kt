@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.deval.tebu.db.Repository
 import id.deval.tebu.db.request.TaksasiRequest
+import id.deval.tebu.db.response.GlobalWrapperResponse
 import id.deval.tebu.db.response.MessageResponse
 import id.deval.tebu.db.response.Taksasi
+import id.deval.tebu.db.response.TaksasiWrapper
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,11 +18,11 @@ import javax.inject.Inject
 class TaksasiViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
-    private lateinit var listTaksasi : MutableLiveData<ArrayList<Taksasi>>
-    private lateinit var taksasi : MutableLiveData<ArrayList<Taksasi>>
+    private lateinit var listTaksasi : MutableLiveData<GlobalWrapperResponse<TaksasiWrapper<ArrayList<Taksasi>>>>
+    private lateinit var taksasi : MutableLiveData<GlobalWrapperResponse<TaksasiWrapper<ArrayList<Taksasi>>>>
     private lateinit var messageResponse : MutableLiveData<TaksasiRequest>
 
-    fun getTaksasiByUser(token:String):LiveData<ArrayList<Taksasi>>{
+    fun getTaksasiByUser(token:String):LiveData<GlobalWrapperResponse<TaksasiWrapper<ArrayList<Taksasi>>>>{
         listTaksasi = MutableLiveData()
         GlobalScope.launch {
             val data = repository.getTaksasiByUser(token)
@@ -29,7 +31,7 @@ class TaksasiViewModel @Inject constructor(
         return listTaksasi
     }
 
-    fun getTaksasiById(token:String,id:String):LiveData<ArrayList<Taksasi>>{
+    fun getTaksasiById(token:String,id:String):LiveData<GlobalWrapperResponse<TaksasiWrapper<ArrayList<Taksasi>>>>{
         taksasi = MutableLiveData()
         GlobalScope.launch {
             val data = repository.getTaksasiById(token,id)

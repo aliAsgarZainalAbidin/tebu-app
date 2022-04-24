@@ -50,8 +50,10 @@ class AddRayonFragment : Fragment() {
             val id = arguments?.getString(Constanta.ID_ITEM_ARGS)
             if(!id.isNullOrEmpty()){
                 rayonViewModel.getRayonById(session.token!!,id).observe(viewLifecycleOwner){
-                    tietAddrayonNama.setText(it.nama)
-                    tietAddrayonLokasi.setText(it.lokasi,false)
+                    with(it.data.rayon){
+                        tietAddrayonNama.setText(this.nama)
+                        tietAddrayonLokasi.setText(this.lokasi,false)
+                    }
                 }
             }
 

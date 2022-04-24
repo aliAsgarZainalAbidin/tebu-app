@@ -15,6 +15,7 @@ import id.deval.tebu.databinding.FragmentLoginBinding
 import id.deval.tebu.db.request.LoginRequest
 import id.deval.tebu.db.Session
 import id.deval.tebu.db.response.User
+import id.deval.tebu.utils.HelperView
 import id.deval.tebu.viewmodels.LoginViewModel
 import javax.inject.Inject
 
@@ -53,9 +54,14 @@ class LoginFragment : Fragment() {
                 val password = tietLoginPassword.text.toString()
                 val loginRequest = LoginRequest(username, password)
                 loginViewModel.login(loginRequest).observe(viewLifecycleOwner) {
-                    userLogin = it
-                    session.createLoginSession(userLogin)
-                    navigateToMainMenu(userLogin.role)
+//                    try {
+                        userLogin =it
+                        session.createLoginSession(userLogin)
+                        navigateToMainMenu(userLogin.role)
+//                    } catch (e: Exception){
+                        Log.d("TAG", "onViewCreated: $it")
+//                        HelperView.showToast("Username/Password Anda Salah", requireContext()).show()
+//                    }
                 }
             }
         }

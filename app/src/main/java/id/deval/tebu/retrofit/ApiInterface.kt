@@ -48,7 +48,7 @@ interface ApiInterface {
     @POST("login")
     suspend fun login(
         @Body loginRequest: LoginRequest
-    ): GlobalWrapperResponse<User>
+    ): GlobalWrapperResponse<UserResponseObject<User>>
 
     @GET("logout/{id}")
     suspend fun logout(
@@ -65,7 +65,7 @@ interface ApiInterface {
     @GET("rayon")
     suspend fun getAllRayon(
         @Header("token") token: String
-    ): ArrayList<RayonRequest>
+    ): GlobalWrapperResponse<RayonWrapper<ArrayList<RayonRequest>>>
 
     @DELETE("rayon/{id}")
     suspend fun deleteRayonById(
@@ -77,7 +77,7 @@ interface ApiInterface {
     suspend fun getRayonById(
         @Header("token") token: String,
         @Path("id") id: String
-    ): RayonRequest
+    ): GlobalWrapperResponse<RayonWrapper<RayonRequest>>
 
     @PUT("rayon/{id}")
     suspend fun updateRayonById(
@@ -94,7 +94,7 @@ interface ApiInterface {
     @GET("sinder")
     suspend fun getAllSinder(
         @Header("token") token: String
-    ): GlobalWrapperResponse<ArrayList<User>>
+    ): GlobalWrapperResponse<SinderWrapper<ArrayList<User>>>
 
     @GET("laporan")
     suspend fun getListUser(
@@ -111,7 +111,7 @@ interface ApiInterface {
     suspend fun getSinderById(
         @Header("token") token: String,
         @Path("id") id: String
-    ): User
+    ): GlobalWrapperResponse<SinderWrapper<User>>
 
     @DELETE("sinder/{id}")
     suspend fun deleteSinderById(
@@ -129,13 +129,13 @@ interface ApiInterface {
     @GET("wilayah")
     suspend fun getAllWilayah(
         @Header("token") token: String
-    ): ArrayList<Wilayah>
+    ): GlobalWrapperResponse<WilayahWrapper<ArrayList<Wilayah>>>
 
     @GET("wilayah/{id}")
     suspend fun getWilayahById(
         @Header("token") token: String,
         @Path("id") id: String
-    ): Wilayah
+    ): GlobalWrapperResponse<WilayahWrapper<Wilayah>>
 
     @DELETE("wilayah/{id}")
     suspend fun deleteWilayahById(
@@ -146,13 +146,13 @@ interface ApiInterface {
     @GET("kebun")
     suspend fun getAllKebun(
         @Header("token") token: String
-    ): ArrayList<Kebun>
+    ): GlobalWrapperResponse<KebunWrapper<ArrayList<Kebun>>>
 
     @GET("kebun/{id}")
     suspend fun getKebunById(
         @Header("token") token: String,
         @Path("id") id: String
-    ): Kebun
+    ): GlobalWrapperResponse<KebunWrapper<Kebun>>
 
     @PUT("kebun/{id}")
     suspend fun updateKebun(
@@ -189,13 +189,13 @@ interface ApiInterface {
     @GET("taksasi")
     suspend fun getTaksasiByUser(
         @Header("token") token:String,
-    ):ArrayList<Taksasi>
+    ):GlobalWrapperResponse<TaksasiWrapper<ArrayList<Taksasi>>>
 
     @GET("taksasi/{id}")
     suspend fun getTaksasiByUser(
         @Header("token") token:String,
         @Path("id") id:String
-    ):ArrayList<Taksasi>
+    ):GlobalWrapperResponse<TaksasiWrapper<ArrayList<Taksasi>>>
 
     @PUT("taksasi/{id}")
     suspend fun updateTaksasiUser(

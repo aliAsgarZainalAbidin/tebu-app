@@ -16,7 +16,7 @@ class Repository @Inject constructor(
 
     suspend fun login(loginRequest: LoginRequest): User? {
         val loginInformation = apiInterface.login(loginRequest)
-        return loginInformation.data
+        return loginInformation.data.user
     }
 
     suspend fun logout(id: String, token: String): User {
@@ -28,11 +28,8 @@ class Repository @Inject constructor(
         return apiInterface.addSinder(sinderRequest, token)
     }
 
-    suspend fun getAllSinder(token: String): ArrayList<User> {
-        val listUser = arrayListOf<User>()
-        val userSinder = apiInterface.getAllSinder(token).data
-        listUser.addAll(userSinder as ArrayList)
-        return listUser
+    suspend fun getAllSinder(token: String): GlobalWrapperResponse<SinderWrapper<ArrayList<User>>> {
+        return apiInterface.getAllSinder(token)
     }
 
     suspend fun getListUser(token: String):ArrayList<User>{
@@ -49,7 +46,7 @@ class Repository @Inject constructor(
         return listUser
     }
 
-    suspend fun getSinderById(token: String,id: String):User{
+    suspend fun getSinderById(token: String,id: String):GlobalWrapperResponse<SinderWrapper<User>>{
         return apiInterface.getSinderById(token, id)
     }
 
@@ -65,11 +62,11 @@ class Repository @Inject constructor(
         return apiInterface.addRayon(rayonRequest, token)
     }
 
-    suspend fun getAllrayon(token:String):ArrayList<RayonRequest>{
+    suspend fun getAllrayon(token:String):GlobalWrapperResponse<RayonWrapper<ArrayList<RayonRequest>>>{
         return apiInterface.getAllRayon(token)
     }
 
-    suspend fun getRayonById(token:String,id:String):RayonRequest{
+    suspend fun getRayonById(token:String,id:String):GlobalWrapperResponse<RayonWrapper<RayonRequest>>{
         return apiInterface.getRayonById(token,id)
     }
 
@@ -81,11 +78,11 @@ class Repository @Inject constructor(
         return apiInterface.deleteRayonById(token, id)
     }
 
-    suspend fun getAllWilayah(token:String):ArrayList<Wilayah>{
+    suspend fun getAllWilayah(token:String):GlobalWrapperResponse<WilayahWrapper<ArrayList<Wilayah>>>{
         return apiInterface.getAllWilayah(token)
     }
 
-    suspend fun getWilayahById(token:String,id:String):Wilayah{
+    suspend fun getWilayahById(token:String,id:String):GlobalWrapperResponse<WilayahWrapper<Wilayah>>{
         return apiInterface.getWilayahById(token,id)
     }
 
@@ -105,11 +102,11 @@ class Repository @Inject constructor(
         return apiInterface.addKebun(token, kebun)
     }
 
-    suspend fun getAllKebun(token:String):ArrayList<Kebun>{
+    suspend fun getAllKebun(token:String):GlobalWrapperResponse<KebunWrapper<ArrayList<Kebun>>>{
         return apiInterface.getAllKebun(token)
     }
 
-    suspend fun getKebunById(token:String,id:String):Kebun{
+    suspend fun getKebunById(token:String,id:String):GlobalWrapperResponse<KebunWrapper<Kebun>>{
         return apiInterface.getKebunById(token,id)
     }
 
@@ -121,11 +118,11 @@ class Repository @Inject constructor(
         return apiInterface.deleteKebunById(token, id)
     }
 
-    suspend fun getTaksasiByUser(token: String):ArrayList<Taksasi>{
+    suspend fun getTaksasiByUser(token: String):GlobalWrapperResponse<TaksasiWrapper<ArrayList<Taksasi>>>{
         return apiInterface.getTaksasiByUser(token)
     }
 
-    suspend fun getTaksasiById(token: String, id:String):ArrayList<Taksasi>{
+    suspend fun getTaksasiById(token: String, id:String):GlobalWrapperResponse<TaksasiWrapper<ArrayList<Taksasi>>>{
         return apiInterface.getTaksasiByUser(token,id)
     }
 

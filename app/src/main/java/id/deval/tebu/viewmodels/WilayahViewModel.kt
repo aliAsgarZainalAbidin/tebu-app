@@ -7,8 +7,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.deval.tebu.db.Repository
+import id.deval.tebu.db.response.GlobalWrapperResponse
 import id.deval.tebu.db.response.MessageResponse
 import id.deval.tebu.db.response.Wilayah
+import id.deval.tebu.db.response.WilayahWrapper
 import id.deval.tebu.fragment.wilayah.WilayahRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -21,13 +23,13 @@ class WilayahViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
     val status: MutableLiveData<Boolean> = MutableLiveData()
-    lateinit var mutableListWilayah : MutableLiveData<ArrayList<Wilayah>>
+    lateinit var mutableListWilayah : MutableLiveData<GlobalWrapperResponse<WilayahWrapper<ArrayList<Wilayah>>>>
     lateinit var mutableliveMessageResponse: MutableLiveData<MessageResponse>
     lateinit var mutableliveMessageResponseDelete: MutableLiveData<MessageResponse>
-    lateinit var mutableWilayah : MutableLiveData<Wilayah>
+    lateinit var mutableWilayah : MutableLiveData<GlobalWrapperResponse<WilayahWrapper<Wilayah>>>
     lateinit var mutableWilayahUpdated : MutableLiveData<Wilayah>
 
-    fun getAllWilayah(token:String):LiveData<ArrayList<Wilayah>>{
+    fun getAllWilayah(token:String):LiveData<GlobalWrapperResponse<WilayahWrapper<ArrayList<Wilayah>>>>{
         mutableListWilayah = MutableLiveData()
         GlobalScope.launch {
             val listWilayah = repository.getAllWilayah(token)
@@ -54,7 +56,7 @@ class WilayahViewModel @Inject constructor(
         return mutableliveMessageResponseDelete
     }
 
-    fun getWilayahById(token: String, id:String):LiveData<Wilayah>{
+    fun getWilayahById(token: String, id:String):LiveData<GlobalWrapperResponse<WilayahWrapper<Wilayah>>>{
         mutableWilayah = MutableLiveData()
         GlobalScope.launch {
             val message = repository.getWilayahById(token,id)

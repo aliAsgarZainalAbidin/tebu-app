@@ -41,7 +41,7 @@ class TaksasiFragment : Fragment() {
 
         with(binding){
             taksasiViewModel.getTaksasiByUser(session.token!!).observe(viewLifecycleOwner){
-                val taksasiAdapter = TaksasiAdapter(it, navController, requireActivity())
+                val taksasiAdapter = TaksasiAdapter(it.data.taksasi, navController, requireActivity())
                 val lm = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
                 rvTaksasiList.apply{
                     adapter = taksasiAdapter
