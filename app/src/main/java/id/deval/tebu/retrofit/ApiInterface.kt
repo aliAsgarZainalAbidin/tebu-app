@@ -99,13 +99,13 @@ interface ApiInterface {
     @GET("laporan")
     suspend fun getListUser(
         @Header("token") token: String
-    ): ArrayList<User>
+    ): GlobalWrapperResponse<SinderWrapper<ArrayList<User>>>
 
     @GET("laporan/{id}")
     suspend fun getKebunBySinder(
         @Header("token") token: String,
         @Path("id") id: String
-    ): ArrayList<TaksasiWithUserRequest>
+    ): GlobalWrapperResponse<LaporanWrapper<ArrayList<TaksasiWithUserRequest>>>
 
     @GET("sinder/{id}")
     suspend fun getSinderById(

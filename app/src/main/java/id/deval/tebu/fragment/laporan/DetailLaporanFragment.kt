@@ -23,12 +23,16 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.deval.tebu.R
 import id.deval.tebu.databinding.FragmentDetailLaporanBinding
 import id.deval.tebu.db.Session
+import id.deval.tebu.db.request.TaksasiWithUserRequest
 import id.deval.tebu.utils.Constanta
+import id.deval.tebu.utils.Constanta.headers
+import id.deval.tebu.utils.HelperView
 import id.deval.tebu.viewmodels.LaporanViewModel
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 
 @AndroidEntryPoint
@@ -40,6 +44,7 @@ class DetailLaporanFragment : Fragment() {
     lateinit var session: Session
     private lateinit var _binding: FragmentDetailLaporanBinding
     private val binding get() = _binding
+    private lateinit var listLaporan: ArrayList<TaksasiWithUserRequest>
     val width = 529
     val height = 824
 
@@ -66,98 +71,123 @@ class DetailLaporanFragment : Fragment() {
 
 
         with(binding) {
-            laporanViewModel.getKebunBySinder(session.token!!, id.toString()).observe(viewLifecycleOwner){
-                mtvLaporanNamaSinder.text = it[0].nama
-                mtvLaporanWilayah.text = it[0].wilayah
-                mtvLaporanLokasi.text = it[0].lokasi
+            listLaporan = ArrayList()
+            laporanViewModel.getKebunBySinder(session.token!!, id.toString())
+                .observe(viewLifecycleOwner) {
+                    if (it.status == "failed"){
+                        HelperView.showToast(it.message,requireContext()).show()
+                    } else {
+                        val data = it.data.laporan
+                        if (data != null){
+                            listLaporan.addAll(data)
+                            if (data.size > 0) {
+                                mtvLaporanNamaSinder.text = data[0].nama
+                                mtvLaporanWilayah.text = data[0].wilayah
+                                mtvLaporanLokasi.text = data[0].lokasi
+                            }
 
-                val detailAdapter = DetailLaporanAdapter(it, findNavController(), requireActivity())
-                detailAdapter.notifyDataSetChanged()
-                val lm = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                rvLaporanList.apply{
-                    adapter = detailAdapter
-                    layoutManager = lm
+                            val detailAdapter =
+                                DetailLaporanAdapter(data, findNavController(), requireActivity())
+                            detailAdapter.notifyDataSetChanged()
+                            val lm =
+                                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                            rvLaporanList.apply {
+                                adapter = detailAdapter
+                                layoutManager = lm
+                            }
+                        }
+                    }
                 }
-            }
             val bitmapFactory = BitmapFactory.decodeResource(resources, R.drawable.ptpn)
             val logoBitmap = Bitmap.createScaledBitmap(bitmapFactory, 60, 60, false)
 
-            val headers = arrayOf("No", "Username", "First Name", "Last Name")
-            val rows = arrayOf(
-                arrayOf("1", "jdow", "John", "Dow"),
-                arrayOf("2", "stiger", "Scott", "Tiger"),
-                arrayOf("3", "fbar", "Foo", "Bar")
-            )
+            mbLaporanPdf.setOnClickListener {
+                val document = Document(PageSize.A4.rotate())
+                try {
+                    val pdf = File("/sdcard/Download", "/Sinder-${binding.mtvLaporanNamaSinder.text}.pdf")
+                    PdfWriter.getInstance(document, FileOutputStream(pdf))
+                    document.open()
 
-            val document = Document(PageSize.A4)
-            try {
-                val pdf = File("/sdcard/Download", "/TableDEMO.pdf")
-                PdfWriter.getInstance(document, FileOutputStream(pdf))
-                document.open()
+                    val fontHeader: Font = Font(Font.FontFamily.TIMES_ROMAN, 10f, Font.BOLD)
+                    val fontRow: Font = Font(Font.FontFamily.TIMES_ROMAN, 9f, Font.NORMAL)
 
-                val fontHeader: Font = Font(Font.FontFamily.TIMES_ROMAN, 12f, Font.BOLD)
-                val fontRow: Font = Font(Font.FontFamily.TIMES_ROMAN, 10f, Font.NORMAL)
+                    //Header Document
+                    val paragraph = Paragraph("Pabrik Gula Takalar", fontHeader)
+                    paragraph.alignment = Element.ALIGN_CENTER
+                    paragraph.font = fontHeader
+//                    val image = Image()
 
-                //Header Document
-                val paragraph = Paragraph("Pabrik Gula Takalar")
-                paragraph.alignment = Element.ALIGN_CENTER
-                paragraph.font = fontHeader
+                    val table = PdfPTable(headers.size)
+                    table.widthPercentage = 100f
 
-                //Doc per Kebun
-
-
-                val table = PdfPTable(headers.size)
-                for (header in headers) {
-                    val cell = PdfPCell()
-                    cell.grayFill = 0.9f
-                    cell.phrase = Phrase(header.toUpperCase(), fontHeader)
-                    cell.horizontalAlignment = Element.ALIGN_CENTER
-                    table.addCell(cell)
-                }
-                table.completeRow()
-                for (row in rows) {
-                    for (data in row) {
-                        val phrase = Phrase(data, fontRow)
-                        table.addCell(PdfPCell(phrase))
+                    for (header in headers) {
+                        val cell = PdfPCell()
+                        cell.grayFill = 0.9f
+                        cell.phrase = Phrase(header, fontHeader)
+                        cell.horizontalAlignment = Element.ALIGN_CENTER
+                        table.addCell(cell)
                     }
                     table.completeRow()
+                    for (data in listLaporan) {
+                        val mandor = Phrase(data.mandor, fontRow)
+                        table.addCell(PdfPCell(mandor))
+                        val kebun = Phrase(data.namaKebun, fontRow)
+                        table.addCell(PdfPCell(kebun))
+                        val petak = Phrase(data.petak, fontRow)
+                        table.addCell(PdfPCell(petak))
+                        val luas = Phrase(data.luas, fontRow)
+                        table.addCell(PdfPCell(luas))
+                        val jenis = Phrase(data.jenis, fontRow)
+                        table.addCell(PdfPCell(jenis))
+                        val kategori = Phrase(data.kategori, fontRow)
+                        table.addCell(PdfPCell(kategori))
+                        val faktorLeng = Phrase(data.faktorLeng, fontRow)
+                        table.addCell(PdfPCell(faktorLeng))
+                        val batangPerMeter = Phrase(data.batangPerMeter, fontRow)
+                        table.addCell(PdfPCell(batangPerMeter))
+                        val batangPerRow = Phrase(data.batangPerRow, fontRow)
+                        table.addCell(PdfPCell(batangPerRow))
+                        val batangPerHa = Phrase(data.batangPerHa, fontRow)
+                        table.addCell(PdfPCell(batangPerHa))
+                        val tinggiIni = Phrase(data.tinggiIni, fontRow)
+                        table.addCell(PdfPCell(tinggiIni))
+                        val tinggiTebang = Phrase(data.tinggiTebang, fontRow)
+                        table.addCell(PdfPCell(tinggiTebang))
+                        val diameterBatang = Phrase(data.diameterBatang, fontRow)
+                        table.addCell(PdfPCell(diameterBatang))
+                        val beratPerMeter = Phrase(data.beratPerMeter, fontRow)
+                        table.addCell(PdfPCell(beratPerMeter))
+                        val hit = Phrase(data.hit, fontRow)
+                        table.addCell(PdfPCell(hit))
+                        val pandangan = Phrase(data.pandangan, fontRow)
+                        table.addCell(PdfPCell(pandangan))
+                        val perHit = Phrase(data.perHit, fontRow)
+                        table.addCell(PdfPCell(perHit))
+                        val kui = Phrase(data.kui.toDouble().roundToInt().toString(), fontRow)
+                        table.addCell(PdfPCell(kui))
+                        table.completeRow()
+                    }
+                    document.addTitle("PDF Table Demo")
+
+                    //Doc per Kebun
+                    val phraseSinder = Paragraph("Nama Sinder \t:${binding.mtvLaporanNamaSinder.text}")
+                    val phraseWilayah = Paragraph("Wilayah \t\t:${binding.mtvLaporanWilayah.text}")
+                    val phraseLokasi = Paragraph("Lokasi \t\t:${binding.mtvLaporanLokasi.text}")
+                    val pharagrapSpace = Paragraph(" ")
+
+                    document.add(paragraph)
+                    document.add(phraseSinder)
+                    document.add(phraseWilayah)
+                    document.add(phraseLokasi)
+                    document.add(pharagrapSpace)
+                    document.add(table)
+                } catch (e: DocumentException) {
+                    e.printStackTrace()
+                } catch (e: FileNotFoundException) {
+                    e.printStackTrace()
+                } finally {
+                    document.close()
                 }
-                document.addTitle("PDF Table Demo")
-
-                document.add(paragraph)
-                document.add(table)
-            } catch (e: DocumentException) {
-                e.printStackTrace()
-            } catch (e: FileNotFoundException) {
-                e.printStackTrace()
-            } finally {
-                document.close()
-            }
-
-            mbLaporanPdf.setOnClickListener {
-                val document = PdfDocument()
-                val pdf = PdfDocument.PageInfo.Builder(width, height, 1).create()
-                val pdf1 = document.startPage(pdf)
-                val canva = pdf1.canvas
-
-                val paint = Paint()
-                val titlePaint = Paint()
-                titlePaint.textAlign = Paint.Align.CENTER
-                titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD))
-                titlePaint.textSize = 16f
-                canva.drawText("Pabrik Gula Takalar", (width / 2).toFloat(), 32f, titlePaint)
-                canva.drawBitmap(logoBitmap, 16f, 16f, paint)
-
-                document.finishPage(pdf1)
-                Log.d("TAG", "onViewCreatedsss: ${Environment.getExternalStorageDirectory().path}")
-                val file = File("/sdcard/Download", "/Hello.pdf")
-                try {
-                    document.writeTo(FileOutputStream(file))
-                } catch (e: Exception) {
-                    Log.d("TAG", "onViewCreated: $e")
-                }
-
-                document.close()
             }
         }
     }

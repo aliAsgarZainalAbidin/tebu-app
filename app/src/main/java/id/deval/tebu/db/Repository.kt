@@ -32,18 +32,13 @@ class Repository @Inject constructor(
         return apiInterface.getAllSinder(token)
     }
 
-    suspend fun getListUser(token: String):ArrayList<User>{
-        val listUser = arrayListOf<User>()
-        val user = apiInterface.getListUser(token)
-        listUser.addAll(user)
-        return listUser
+    suspend fun getListUser(token: String):GlobalWrapperResponse<SinderWrapper<ArrayList<User>>>{
+        return apiInterface.getListUser(token)
     }
 
-    suspend fun getKebunBySinder(token: String,id: String):ArrayList<TaksasiWithUserRequest>{
-        val listUser = arrayListOf<TaksasiWithUserRequest>()
+    suspend fun getKebunBySinder(token: String,id: String):GlobalWrapperResponse<LaporanWrapper<ArrayList<TaksasiWithUserRequest>>>{
         val user = apiInterface.getKebunBySinder(token,id)
-        listUser.addAll(user)
-        return listUser
+        return user
     }
 
     suspend fun getSinderById(token: String,id: String):GlobalWrapperResponse<SinderWrapper<User>>{

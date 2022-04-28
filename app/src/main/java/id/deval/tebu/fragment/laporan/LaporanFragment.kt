@@ -45,7 +45,7 @@ class LaporanFragment : Fragment() {
             }
 
             laporanViewModel.getListUser(session.token!!).observe(viewLifecycleOwner){
-                val lapAdapter = LaporanAdapter(it,navController,requireActivity())
+                val lapAdapter = LaporanAdapter(it.data.sinder,navController,requireActivity())
                 lapAdapter.notifyDataSetChanged()
                 val lm = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
                 rvLaporanList.apply {
