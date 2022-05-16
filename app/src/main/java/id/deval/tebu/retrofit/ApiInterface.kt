@@ -48,7 +48,7 @@ interface ApiInterface {
     @POST("login")
     suspend fun login(
         @Body loginRequest: LoginRequest
-    ): GlobalWrapperResponse<UserResponseObject<User>>
+    ): GlobalWrapperResponse<UserResponseObject<User?>>
 
     @GET("logout/{id}")
     suspend fun logout(

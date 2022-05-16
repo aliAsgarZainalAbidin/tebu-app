@@ -40,6 +40,7 @@ class DetailLaporanAdapter(
                 ivRvitemIcon.setOnClickListener {
                     HelperView.expandListItemRecycler(ivRvitemIcon, clRvitemContainer)
                 }
+
             }
         }
     }

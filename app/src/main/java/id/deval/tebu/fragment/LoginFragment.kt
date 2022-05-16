@@ -26,6 +26,7 @@ class LoginFragment : Fragment() {
     private val loginViewModel: LoginViewModel by viewModels()
     private lateinit var navController: NavController
     private lateinit var userLogin: User
+    private var enable = true
     private val binding get() = _binding
 
     @Inject
@@ -52,16 +53,21 @@ class LoginFragment : Fragment() {
             btnLoginLogin.setOnClickListener {
                 val username = tietLoginEmail.text.toString()
                 val password = tietLoginPassword.text.toString()
-                val loginRequest = LoginRequest(username, password)
-                loginViewModel.login(loginRequest).observe(viewLifecycleOwner) {
-//                    try {
-                        userLogin =it
-                        session.createLoginSession(userLogin)
-                        navigateToMainMenu(userLogin.role)
-//                    } catch (e: Exception){
-                        Log.d("TAG", "onViewCreated: $it")
-//                        HelperView.showToast("Username/Password Anda Salah", requireContext()).show()
-//                    }
+                if (username.isEmpty() || password.isEmpty()){
+                    enable = false
+                    HelperView.showToast("Silahkan Isi Username/Password terlebih dahulu", requireContext()).show()
+                }
+                if (enable){
+                    val loginRequest = LoginRequest(username, password)
+                    loginViewModel.login(loginRequest).observe(viewLifecycleOwner) {
+                        if (it != null){
+                            userLogin =it
+                            session.createLoginSession(userLogin)
+                            navigateToMainMenu(userLogin.role)
+                        } else {
+                            HelperView.showToast("Failed to Login", requireContext()).show()
+                        }
+                    }
                 }
             }
         }

@@ -44,8 +44,12 @@ data class KebunViewModel @Inject constructor(
     fun getAllKebun(token: String):LiveData<GlobalWrapperResponse<KebunWrapper<ArrayList<Kebun>>>>{
         mutableListKebun = MutableLiveData()
         GlobalScope.launch {
-            val data = repository.getAllKebun(token)
-            mutableListKebun.postValue(data)
+            try {
+                val data = repository.getAllKebun(token)
+                mutableListKebun.postValue(data)
+            } catch (e:Exception){
+                mutableListKebun.postValue(null)
+            }
         }
         return mutableListKebun
     }

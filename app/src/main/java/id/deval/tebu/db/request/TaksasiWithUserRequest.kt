@@ -22,29 +22,29 @@ data class TaksasiWithUserRequest(
     @field:SerializedName("kategori")
     val kategori:String,
     @field:SerializedName("mandor")
-    val mandor: String,
+    val mandor: String?,
     @field:SerializedName("faktor_leng")
-    val faktorLeng: String,
+    val faktorLeng: String?,
     @field:SerializedName("batang_per_meter")
-    val batangPerMeter: String,
+    val batangPerMeter: String?,
     @field:SerializedName("batang_per_row")
-    val batangPerRow: String,
+    val batangPerRow: String?,
     @field:SerializedName("batang_per_ha")
-    val batangPerHa: String,
+    val batangPerHa: String?,
     @field:SerializedName("tinggi_ini")
-    val tinggiIni: String,
+    val tinggiIni: String?,
     @field:SerializedName("tinggi_tebang")
-    val tinggiTebang: String,
+    val tinggiTebang: String?,
     @field:SerializedName("diameter_batang")
-    val diameterBatang: String,
+    val diameterBatang: String?,
     @field:SerializedName("berat_per_meter")
-    val beratPerMeter: String,
+    val beratPerMeter: String?,
     @field:SerializedName("hit")
-    val hit: String,
+    val hit: String?,
     @field:SerializedName("pandangan")
-    val pandangan: String,
+    val pandangan: String?,
     @field:SerializedName("per_hit")
-    val perHit: String,
+    val perHit: String?,
     @field:SerializedName("kui")
-    val kui: String
+    val kui: String?
 )

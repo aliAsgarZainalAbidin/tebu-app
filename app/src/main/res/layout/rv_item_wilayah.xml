@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <View
         android:id="@+id/view_rvitem_line"
@@ -50,7 +51,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="R1W1"
+        tools:text="R1W1"
         android:textColor="@color/gray"
         app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_titlename"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,7 +114,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="Rayon 1"
+            tools:text="Rayon 1"
             android:textColor="@color/gray"
             app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_title_nama_rayon"
             app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +138,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="Takalar"
+            tools:text="Takalar"
             android:textColor="@color/gray"
             app:layout_constraintBottom_toBottomOf="@id/mtv_rvitem_title_lokasi"
             app:layout_constraintEnd_toEndOf="parent"

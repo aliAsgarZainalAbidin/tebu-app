@@ -41,16 +41,21 @@ class TaksasiFragment : Fragment() {
 
         with(binding){
             taksasiViewModel.getTaksasiByUser(session.token!!).observe(viewLifecycleOwner){
-                val taksasiAdapter = TaksasiAdapter(it.data.taksasi, navController, requireActivity())
-                val lm = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
-                rvTaksasiList.apply{
-                    adapter = taksasiAdapter
-                    layoutManager = lm
-                }
+                if (it != null){
+                    val taksasiAdapter = TaksasiAdapter(it.data.taksasi, navController, requireActivity())
+                    val lm = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
+                    rvTaksasiList.apply{
+                        adapter = taksasiAdapter
+                        layoutManager = lm
+                    }
 
-                mtvTaksasiNamaSinder.text = session.nama
-                mtvTaksasiTaksasi.text = session.wilayah
-                mtvTaksasiLokasi.text = session.lokasi
+                    mtvTaksasiNamaSinder.text = session.nama
+                    mtvTaksasiTaksasi.text = session.wilayah
+                    mtvTaksasiLokasi.text = session.lokasi
+                } else {
+                    HelperView.showToast("Silahkan Login Kembali", requireContext()).show()
+                    HelperView.logout(navController, session)
+                }
             }
 
             mtvTaksasiLogout.setOnClickListener {

@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="ali" />
+                tools:text="ali" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,7 +60,7 @@
                 android:id="@+id/tiet_login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="12345678"
+                tools:text="12345678"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>

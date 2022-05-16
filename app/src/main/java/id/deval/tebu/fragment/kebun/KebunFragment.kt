@@ -62,11 +62,16 @@ class KebunFragment : BasedFragment() {
     fun refreshRecyclerView(){
         with(binding){
             kebunViewModel.getAllKebun(session.token!!).observe(viewLifecycleOwner){
-                val adapterKebun = KebunAdapter(it.data.kebun,navController,requireActivity())
-                val lm = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-                rvKebunList.apply {
-                    adapter = adapterKebun
-                    layoutManager = lm
+                if (it != null){
+                    val adapterKebun = KebunAdapter(it.data.kebun,navController,requireActivity())
+                    val lm = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+                    rvKebunList.apply {
+                        adapter = adapterKebun
+                        layoutManager = lm
+                    }
+                } else {
+                    HelperView.showToast("Silahkan Login Kembali", requireContext()).show()
+                    HelperView.logout(navController, session)
                 }
             }
         }

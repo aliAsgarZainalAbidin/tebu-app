@@ -37,8 +37,12 @@ class SinderViewModel @Inject constructor(
     fun getAllSinder(token : String):LiveData<GlobalWrapperResponse<SinderWrapper<ArrayList<User>>>>{
         mutableListSinder = MutableLiveData()
         GlobalScope.launch {
-            val data = repository.getAllSinder(token)
-            mutableListSinder.postValue(data)
+            try {
+                val data = repository.getAllSinder(token)
+                mutableListSinder.postValue(data)
+            } catch (e:Exception){
+                mutableListSinder.postValue(null)
+            }
         }
         return mutableListSinder
     }

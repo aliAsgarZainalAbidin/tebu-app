@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="Ali Asgar Zainal Abidin" />
+                tools:text="Ali Asgar Zainal Abidin" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:text="ArogaN61" />
+                tools:text="ArogaN61" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:text="Takalar1" />
+                tools:text="Takalar1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
-                android:text="081231232" />
+                tools:text="081231232" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,7 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="Jln. Veteran Bakung" />
+                tools:text="Jln. Veteran Bakung" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

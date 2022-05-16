@@ -12,6 +12,20 @@ object Constanta {
         "Luas",
         "Jenis Tebu",
         "KTG",
+        "Jumlah Batang",
+        "Tinggi Batang",
+        "Diameter Btg",
+        "Berat/Meter",
+        "Ku/Ha",
+        "Jumlah Tebu Taksasi"
+    )
+    val headersPdf = arrayOf(
+        "Mandor",
+        "Kebun",
+        "PTK",
+        "Luas",
+        "Jenis Tebu",
+        "KTG",
         "Faktor Leng",
         "JML BTG PER MTR",
         "JML BTG PER ROW",
@@ -22,6 +36,24 @@ object Constanta {
         "Berat/Meter",
         "Hit",
         "Pandangan",
+        "Per Ha",
+        "Ton"
+    )
+    val jmlhBatang = arrayOf(
+        "Faktor Leng",
+        "JML BTG PER MTR",
+        "JML BTG PER ROW",
+        "JML BTG PER HA",
+    )
+    val tinggiBatang = arrayOf(
+        "SAAT INI",
+        "SAAT TEBANG",
+    )
+    val kuha = arrayOf(
+        "Hit",
+        "Pandangan",
+    )
+    val taksasi = arrayOf(
         "Per Ha",
         "Ton"
     )

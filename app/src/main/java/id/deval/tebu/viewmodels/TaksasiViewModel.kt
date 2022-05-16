@@ -25,8 +25,12 @@ class TaksasiViewModel @Inject constructor(
     fun getTaksasiByUser(token:String):LiveData<GlobalWrapperResponse<TaksasiWrapper<ArrayList<Taksasi>>>>{
         listTaksasi = MutableLiveData()
         GlobalScope.launch {
-            val data = repository.getTaksasiByUser(token)
-            listTaksasi.postValue(data)
+            try {
+                val data = repository.getTaksasiByUser(token)
+                listTaksasi.postValue(data)
+            } catch (e : Exception){
+                listTaksasi.postValue(null)
+            }
         }
         return listTaksasi
     }

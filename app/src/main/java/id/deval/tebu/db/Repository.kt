@@ -14,9 +14,9 @@ class Repository @Inject constructor(
     val database: Database
 ) {
 
-    suspend fun login(loginRequest: LoginRequest): User? {
+    suspend fun login(loginRequest: LoginRequest): GlobalWrapperResponse<UserResponseObject<User?>> {
         val loginInformation = apiInterface.login(loginRequest)
-        return loginInformation.data.user
+        return loginInformation
     }
 
     suspend fun logout(id: String, token: String): User {

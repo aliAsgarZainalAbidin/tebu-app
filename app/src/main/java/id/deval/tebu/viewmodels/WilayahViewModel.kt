@@ -32,8 +32,12 @@ class WilayahViewModel @Inject constructor(
     fun getAllWilayah(token:String):LiveData<GlobalWrapperResponse<WilayahWrapper<ArrayList<Wilayah>>>>{
         mutableListWilayah = MutableLiveData()
         GlobalScope.launch {
-            val listWilayah = repository.getAllWilayah(token)
-            mutableListWilayah.postValue(listWilayah)
+            try {
+                val listWilayah = repository.getAllWilayah(token)
+                mutableListWilayah.postValue(listWilayah)
+            } catch (e : Exception){
+                mutableListWilayah.postValue(null)
+            }
         }
         return mutableListWilayah
     }

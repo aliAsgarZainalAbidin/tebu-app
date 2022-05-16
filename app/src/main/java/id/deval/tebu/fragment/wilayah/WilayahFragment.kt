@@ -59,11 +59,16 @@ class WilayahFragment : BasedFragment() {
     fun refreshRecyclerView(){
         with(binding){
             wilayahViewModel.getAllWilayah(session.token!!).observe(viewLifecycleOwner) {
-                val wilayahAdapter = WilayahAdapter(it.data.wilayah, navController, requireActivity())
-                val lm = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                rvWilayahList.apply {
-                    adapter = wilayahAdapter
-                    layoutManager = lm
+                if (it != null){
+                    val wilayahAdapter = WilayahAdapter(it.data.wilayah, navController, requireActivity())
+                    val lm = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                    rvWilayahList.apply {
+                        adapter = wilayahAdapter
+                        layoutManager = lm
+                    }
+                } else {
+                    HelperView.showToast("Silahkan Login Kembali", requireContext()).show()
+                    HelperView.logout(navController, session)
                 }
             }
         }

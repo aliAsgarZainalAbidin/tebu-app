@@ -97,7 +97,7 @@
                     style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sinder"
+                    tools:text="Sinder"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@id/gl_detail_vertikal"
                     app:layout_constraintTop_toTopOf="@id/mtv_taksasi_title_nama_sinder" />
@@ -118,7 +118,7 @@
                     style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Samata"
+                    tools:text="Samata"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@id/gl_detail_vertikal"
                     app:layout_constraintTop_toTopOf="@id/mtv_taksasi_title_taksasi" />
@@ -139,7 +139,7 @@
                     style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Takalar"
+                    tools:text="Takalar"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@id/gl_detail_vertikal"
                     app:layout_constraintTop_toTopOf="@id/mtv_taksasi_title_lokasi" />

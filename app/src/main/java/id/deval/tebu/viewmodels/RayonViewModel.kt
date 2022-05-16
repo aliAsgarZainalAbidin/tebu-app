@@ -1,5 +1,6 @@
 package id.deval.tebu.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -44,8 +45,12 @@ class RayonViewModel @Inject constructor(
     fun getAllRayon(token: String):LiveData<GlobalWrapperResponse<RayonWrapper<ArrayList<RayonRequest>>>>{
         mutableListRayon = MutableLiveData()
         GlobalScope.launch {
-            val listRayon = repository.getAllrayon(token)
-            mutableListRayon.postValue(listRayon)
+            try {
+                val listRayon = repository.getAllrayon(token)
+                mutableListRayon.postValue(listRayon)
+            } catch (e : Exception){
+                mutableListRayon.postValue(null)
+            }
         }
         return mutableListRayon
     }

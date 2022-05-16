@@ -23,7 +23,11 @@ class LoginViewModel @Inject constructor(
         mutableUserLogin = MutableLiveData()
         GlobalScope.launch {
             val data = repository.login(loginRequest)
-            mutableUserLogin.postValue(data)
+            if (data.status.equals("success")){
+                mutableUserLogin.postValue(data.data.user)
+            } else {
+                mutableUserLogin.postValue(null)
+            }
         }
         return mutableUserLogin
     }

@@ -61,11 +61,16 @@ class SinderFragment : BasedFragment() {
     fun refreshRecylcerView(){
         with(binding){
             sinderViewModel.getAllSinder(session.token.toString()).observe(viewLifecycleOwner) {
-                val sinderAdapter = SinderAdapter(it.data.sinder, navController, requireActivity())
-                val lm = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-                rvSinderList.apply {
-                    adapter = sinderAdapter
-                    layoutManager = lm
+                if (it != null){
+                    val sinderAdapter = SinderAdapter(it.data.sinder, navController, requireActivity())
+                    val lm = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                    rvSinderList.apply {
+                        adapter = sinderAdapter
+                        layoutManager = lm
+                    }
+                } else {
+                    HelperView.showToast("Silahkan Login Kembali", requireContext()).show()
+                    HelperView.logout(navController, session)
                 }
             }
         }

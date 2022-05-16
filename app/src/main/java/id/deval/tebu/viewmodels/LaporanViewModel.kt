@@ -25,8 +25,12 @@ class LaporanViewModel @Inject constructor(
     fun getListUser(token: String): LiveData<GlobalWrapperResponse<SinderWrapper<ArrayList<User>>>> {
         mutableListSinder = MutableLiveData()
         GlobalScope.launch {
-            val data = repository.getListUser(token)
-            mutableListSinder.postValue(data)
+            try {
+                val data = repository.getListUser(token)
+                mutableListSinder.postValue(data)
+            } catch (e: Exception){
+                mutableListSinder.postValue(null)
+            }
         }
         return mutableListSinder
     }
