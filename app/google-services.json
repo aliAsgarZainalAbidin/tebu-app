@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "529495896271",
+    "project_id": "tebu-c2256",
+    "storage_bucket": "tebu-c2256.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529495896271:android:a63d0e47b57ace4d1187ba",
+        "android_client_info": {
+          "package_name": "id.deval.tebu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529495896271-qkn5g9tam7ip9srkthrdof6ar172i5hr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_Ho_sV9GqYax6voxBL69Zn3r87OchVMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529495896271-qkn5g9tam7ip9srkthrdof6ar172i5hr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

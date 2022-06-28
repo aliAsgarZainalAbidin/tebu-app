@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 apply plugin: 'dagger.hilt.android.plugin'
 
 
@@ -26,7 +28,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            buildConfigField "String", "BASE_URL", "\"http://apitebu.h-main.xyz\""
+            buildConfigField "String", "BASE_URL", "\"http://192.168.43.35:8000/\""//Client
+//            buildConfigField "String", "BASE_URL", "\"http://192.168.113.241:8000/\""//Me
+//            buildConfigField "String", "BASE_URL", "\"http://192.168.152.121:8000/\""//Yudhy
 //            buildConfigField("String", "BUILD_TIME", "\"${minutesSinceEpoch}\"")
         }
     }
@@ -192,4 +196,6 @@ dependencies {
     implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.1'
 //    implementation 'com.github.SUPERCILEX.poi-android:poi:3.17'
 //    compileOnly 'org.apache.poi:poi-ooxml:3.17'
+    implementation platform('com.google.firebase:firebase-bom:30.0.1')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }

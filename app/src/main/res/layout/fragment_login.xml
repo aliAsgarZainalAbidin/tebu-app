@@ -19,7 +19,7 @@
             android:layout_height="159dp"
             android:layout_marginTop="92dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ptpn"
+            android:src="@drawable/img"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

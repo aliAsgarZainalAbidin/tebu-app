@@ -45,22 +45,22 @@ class DetailTaksasiFragment : Fragment() {
                 val taksasi = it.data.taksasi[0]
                 mtvTaksasiGreeting.text = "Mandor : ${taksasi.mandor}"
                 mtvDetailtaksasiKebun.text = taksasi.namaKebun
-                mtvDetailtaksasiPtk.text = petak
-                mtvDetailtaksasiLuas.text = taksasi.luas
+                mtvDetailtaksasiPtk.text = "$petak petak"
+                mtvDetailtaksasiLuas.text = "${taksasi.luas} ha"
                 mtvDetailtaksasiJenis.text = jenis
                 mtvDetailtaksasiKtg.text = kategori
                 mtvDetailtaksasiFaktor.text = taksasi.faktorLeng
-                mtvDetailtaksasiJmlBpm.text = taksasi.batangPerMeter
-                mtvDetailtaksasiJmlBpr.text = taksasi.batangPerRow
-                mtvDetailtaksasiJmlBph.text = taksasi.batangPerHa
-                mtvDetailtaksasiIni.text = taksasi.tinggiIni
-                mtvDetailtaksasiTebang.text = taksasi.tinggiTebang
-                mtvDetailtaksasiDiameter.text = taksasi.diameterBatang
-                mtvDetailtaksasiBerat.text = taksasi.beratPerMeter
-                mtvDetailtaksasiHit.text = taksasi.hit
-                mtvDetailtaksasiPandangan.text = taksasi.pandangan
-                mtvDetailtaksasiPerhit.text = taksasi.perHit
-                mtvDetailtaksasiKui.text = taksasi.kui
+                mtvDetailtaksasiJmlBpm.text = "${taksasi.batangPerMeter} batang"
+                mtvDetailtaksasiJmlBpr.text = "${taksasi.batangPerRow} batang"
+                mtvDetailtaksasiJmlBph.text = "${taksasi.batangPerHa} batang"
+                mtvDetailtaksasiIni.text = "${taksasi.tinggiIni} m"
+                mtvDetailtaksasiTebang.text = "${taksasi.tinggiTebang} m"
+                mtvDetailtaksasiDiameter.text = "${taksasi.diameterBatang} cm"
+                mtvDetailtaksasiBerat.text = "${taksasi.beratPerMeter} Kg"
+                mtvDetailtaksasiHit.text = "${taksasi.hit} ton/ha"
+                mtvDetailtaksasiPandangan.text = "${taksasi.pandangan} ton/ha"
+                mtvDetailtaksasiPerhit.text = "${taksasi.perHit} ton"
+                mtvDetailtaksasiKui.text = "${taksasi.kui} kwintal"
             }
         }
     }

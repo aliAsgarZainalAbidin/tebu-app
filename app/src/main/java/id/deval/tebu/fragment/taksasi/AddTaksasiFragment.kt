@@ -22,17 +22,18 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class AddTaksasiFragment : Fragment() {
 
-    private val taksasiViewModel : TaksasiViewModel by viewModels()
-    @Inject lateinit var session: Session
+    private val taksasiViewModel: TaksasiViewModel by viewModels()
+    @Inject
+    lateinit var session: Session
     private lateinit var navController: NavController
-    private lateinit var _binding : FragmentAddTaksasiBinding
+    private lateinit var _binding: FragmentAddTaksasiBinding
     private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       _binding = FragmentAddTaksasiBinding.inflate(inflater, container, false)
+        _binding = FragmentAddTaksasiBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,8 +42,8 @@ class AddTaksasiFragment : Fragment() {
         navController = HelperView.getMainNavController(requireActivity())
         val id = arguments?.getString(Constanta.ID_ITEM_ARGS)
 
-        with(binding){
-            taksasiViewModel.getTaksasiById(session.token!!,id!!).observe(viewLifecycleOwner){
+        with(binding) {
+            taksasiViewModel.getTaksasiById(session.token!!, id!!).observe(viewLifecycleOwner) {
                 val taksasi = it.data.taksasi[0]
                 tietAddtaksasiNama.setText(taksasi.namaKebun)
                 tietAddtaksasiLuas.setText(taksasi.luas)
@@ -69,14 +70,31 @@ class AddTaksasiFragment : Fragment() {
                 val pandangan = tietAddtaksasiPandangan.text.toString()
                 val row = jmlh.toDouble().times(100).toString()
                 val perHa = row.toDouble().times(faktor.toDouble()).toString()
-                val hit = (perHa.toDouble() * tebang.toDouble() * berat.toDouble() / 100)/10
-                val perHit = (hit + pandangan.toDouble())/2
-                val ton = (perHit*luas.toDouble())
+                val hit = (perHa.toDouble() * tebang.toDouble() * berat.toDouble() / 100) / 10
+                val perHit = (hit + pandangan.toDouble()) / 2
+                val ton = (perHit * luas.toDouble())
 
-                val taksasiUser= TaksasiRequest(id,luas,mandor,faktor,jmlh,row,perHa,ini,tebang,diameter,berat,hit.toString(),pandangan, perHit.toString(), ton.toString())
-                taksasiViewModel.updateTaksasiUser(session.token!!, id, taksasiUser).observe(viewLifecycleOwner){
-                    findNavController().popBackStack()
-                }
+                val taksasiUser = TaksasiRequest(
+                    id,
+                    luas,
+                    mandor,
+                    faktor,
+                    jmlh,
+                    row,
+                    perHa,
+                    ini,
+                    tebang,
+                    diameter,
+                    berat,
+                    hit.toString(),
+                    pandangan,
+                    perHit.toString(),
+                    ton.toString()
+                )
+                taksasiViewModel.updateTaksasiUser(session.token!!, id, taksasiUser)
+                    .observe(viewLifecycleOwner) {
+                        findNavController().popBackStack()
+                    }
             }
         }
     }

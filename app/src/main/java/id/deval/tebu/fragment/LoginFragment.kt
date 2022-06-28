@@ -1,5 +1,6 @@
 package id.deval.tebu.fragment
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -51,8 +52,8 @@ class LoginFragment : Fragment() {
             }
 
             btnLoginLogin.setOnClickListener {
-                val username = tietLoginEmail.text.toString()
-                val password = tietLoginPassword.text.toString()
+                val username = tietLoginEmail.text.toString().trim()
+                val password = tietLoginPassword.text.toString().trim()
                 if (username.isEmpty() || password.isEmpty()){
                     enable = false
                     HelperView.showToast("Silahkan Isi Username/Password terlebih dahulu", requireContext()).show()
@@ -64,6 +65,7 @@ class LoginFragment : Fragment() {
                             userLogin =it
                             session.createLoginSession(userLogin)
                             navigateToMainMenu(userLogin.role)
+                            Log.d(TAG, "onViewCreated: ${it.token}")
                         } else {
                             HelperView.showToast("Failed to Login", requireContext()).show()
                         }

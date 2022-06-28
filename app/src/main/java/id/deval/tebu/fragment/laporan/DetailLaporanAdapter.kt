@@ -20,22 +20,22 @@ class DetailLaporanAdapter(
             with(binding){
                 mtvRvitemName.text = data.mandor
                 mtvRvitemKebun.text = data.namaKebun
-                mtvRvitemPtk.text = data.petak
-                mtvRvitemLuas.text = data.luas
+                mtvRvitemPtk.text = "${data.petak} petak"
+                mtvRvitemLuas.text = "${data.luas} ha"
                 mtvRvitemJenis.text = data.jenis
                 mtvRvitemKtg.text = data.kategori
                 mtvRvitemFaktor.text = data.faktorLeng
-                mtvRvitemJmlBpm.text = data.batangPerMeter
-                mtvRvitemJmlBpr.text = data.batangPerRow
-                mtvRvitemJmlBph.text = data.batangPerHa
-                mtvRvitemIni.text = data.tinggiIni
-                mtvRvitemTebang.text = data.tinggiTebang
-                mtvRvitemDiameter.text = data.diameterBatang
-                mtvRvitemBerat.text = data.beratPerMeter
-                mtvRvitemHit.text = data.hit
-                mtvRvitemPandangan.text = data.pandangan
-                mtvRvitemPerhit.text = data.perHit
-                mtvRvitemKui.text = data.kui
+                mtvRvitemJmlBpm.text = "${data.batangPerMeter} batang"
+                mtvRvitemJmlBpr.text = "${data.batangPerRow} batang"
+                mtvRvitemJmlBph.text = "${data.batangPerHa} batang"
+                mtvRvitemIni.text = "${data.tinggiIni} m"
+                mtvRvitemTebang.text = "${data.tinggiTebang} m"
+                mtvRvitemDiameter.text = "${data.diameterBatang} cm"
+                mtvRvitemBerat.text = "${data.beratPerMeter} Kg"
+                mtvRvitemHit.text = "${data.hit} ton/ha"
+                mtvRvitemPandangan.text = "${data.pandangan} ton/ha"
+                mtvRvitemPerhit.text = "${data.perHit} ton"
+                mtvRvitemKui.text = "${data.kui} kwintal"
 
                 ivRvitemIcon.setOnClickListener {
                     HelperView.expandListItemRecycler(ivRvitemIcon, clRvitemContainer)

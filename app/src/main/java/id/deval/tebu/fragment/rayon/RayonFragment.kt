@@ -58,6 +58,7 @@ class RayonFragment : Fragment() {
         navController = HelperView.getMainNavController(requireActivity())
 
         with(binding) {
+            Log.d(TAG, "onViewCreated: ${session.token}")
             mtvRayonLogout.setOnClickListener {
                 loginViewModel.logout(session.id!!, session.token!!)
                 HelperView.logout(navController, session)
