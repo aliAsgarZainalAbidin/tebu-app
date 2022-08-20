@@ -37,7 +37,7 @@ object Constanta {
         "Hit (ton/ha)",
         "Pandangan (ton/ha)",
         "Per Ha (ton)",
-        "Ton (kwintal)"
+        "Ton (ton)"
     )
     val jmlhBatang = arrayOf(
         "Faktor Leng",

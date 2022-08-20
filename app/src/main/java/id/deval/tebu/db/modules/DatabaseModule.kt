@@ -10,6 +10,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import id.deval.tebu.db.Database
 import id.deval.tebu.db.Session
+import id.deval.tebu.retrofit.ApiInterface
 
 @InstallIn(SingletonComponent::class)
 @Module
